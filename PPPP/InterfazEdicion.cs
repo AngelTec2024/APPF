@@ -20,9 +20,19 @@ namespace PPPP
 
 
 
+        // RECORTAR
 
+        private bool recortarActivo = false;
+        int xDown = 0;
+        int yDown = 0;
+        int xUp = 0;
+        int yUp = 0;
+        Rectangle rectCropArea = new Rectangle();
+        System.IO.MemoryStream ms = new System.IO.MemoryStream();
+        Task timeout;
+        string fn = "";
 
-
+        ///
         Metodos Metodo = new Metodos();//llamar Clase
         int inX, inY; 
         int innX,innY,NNC; String Direc;
@@ -41,7 +51,8 @@ namespace PPPP
             InitializeComponent();
             LRegistro.Visible = false;
             Metodos Metodos = new Metodos();   
-            resoluciones.Visible = false;
+            pnResoluciones.Visible = false;
+            btnAplicar.Visible = false;
         }
 
         private void AbrirImagen()
@@ -55,6 +66,17 @@ namespace PPPP
                 Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
                 Imagen.Image = System.Drawing.Image.FromFile(openFileDialog1.FileName); // Carga la imagen
                 pnPrevisualizacion.Controls.Add(Imagen);// Agrega el PictureBox al panel
+
+
+                pbRecortar.Image = Image.FromFile(openFileDialog1.FileName);
+                pbRecortar.Size = pbRecortar.Image.Size;
+
+
+
+
+                fn = FName;
+
+                pbRecortar.Cursor = Cursors.Cross;
             }
             catch
             {
@@ -393,8 +415,8 @@ namespace PPPP
         private void NCopias_ValueChanged(object sender, EventArgs e)
         {
             NC = (int)NCopias.Value;
-          //  AgrImgHoj(NC, zoomFactor);
-            //Hoja.Update();
+          AgrImgHoj(NC, zoomFactor);
+            Hoja.Update();
         }
 
 
@@ -430,12 +452,12 @@ namespace PPPP
         private void button4_Click(object sender, EventArgs e)
         {
 
-            if (resoluciones.Visible == true)
+            if (pnResoluciones.Visible == true)
             {
-                resoluciones.Visible = false;
+                pnResoluciones.Visible = false;
             }
             else {
-                resoluciones.Visible = true;
+                pnResoluciones.Visible = true;
             }
         }
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
@@ -453,6 +475,7 @@ namespace PPPP
 
         private void in5x7(object sender, EventArgs e)
         {
+            pnResoluciones.Visible=false;
             pnPrevisualizacion.Controls.Clear();
             NCopias.Value = 0;
             NC = (int)NCopias.Value;
@@ -461,6 +484,7 @@ namespace PPPP
 
             Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
             pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
         }
 
         private void in4x6(object sender, EventArgs e)
@@ -473,6 +497,7 @@ namespace PPPP
             
             Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
             pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
         }
 
         private void inInf(object sender, EventArgs e)
@@ -486,6 +511,10 @@ namespace PPPP
 
             Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
             pnPrevisualizacion.Controls.Add(Imagen);
+
+
+
+            pnResoluciones.Visible = false;
         }
         
 
@@ -512,13 +541,27 @@ namespace PPPP
             
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRecortar_Click(object sender, EventArgs e)
+        {
+            recortarActivo = true;
+            btnAplicar.Visible = true;
+            
+        }
+
+       
+
         private void Agregar_Click(object sender, EventArgs e)
         {
             LRegistro.Items.Add(openFileDialog1.FileName+ ',' + inX +','+ inY +',' + NC);
             LeerRegistro();
         }
 
-
+        
 
         public void LeerRegistro()
         {
@@ -565,8 +608,7 @@ for (int i = 0; i < LRegistro.Items.Count; i++)
 
         }
 
-
-
+       
         private void LimpiarHoja()
         {
             // Remueve todas las imágenes de la hoja
@@ -578,8 +620,95 @@ for (int i = 0; i < LRegistro.Items.Count; i++)
 
 
 
+        // ----------------------- METODOS RECORTAR IMAGEN -----------------------------
+        private Image ObtenerImagenRecortada()
+        {
+            // Verificar si hay una región recortada
+            if (rectCropArea.Width > 0 && rectCropArea.Height > 0)
+            {
+                // Crear un nuevo Bitmap para la imagen recortada
+                Bitmap recortadaBitmap = new Bitmap(rectCropArea.Width, rectCropArea.Height);
 
+                // Dibujar el área recortada en el nuevo Bitmap
+                using (Graphics g = Graphics.FromImage(recortadaBitmap))
+                {
+                    g.DrawImage(pbRecortar.Image, new Rectangle(0, 0, rectCropArea.Width, rectCropArea.Height), rectCropArea, GraphicsUnit.Pixel);
+                }
 
+                // Devolver la imagen recortada
+                return recortadaBitmap;
+            }
+            else
+            {
+                // Si no hay región recortada, devolver la imagen original del PictureBox pbRecortar
+                return pbRecortar.Image;
+            }
 
-    }
+        }
+
+        private void PanelPre_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pbRecortar_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (recortarActivo)
+            {
+                // Guarda las coordenadas del punto inicial del área de recorte
+                xDown = e.X;
+                yDown = e.Y;
+            }
+        }
+
+        private void pbRecortar_MouseUp(object sender, MouseEventArgs e)
+        {
+             if (recortarActivo)
+            {
+                // Guarda las coordenadas del punto final del área de recorte
+                xUp = e.X;
+                yUp = e.Y;
+
+                // Calcula las coordenadas y dimensiones del área de recorte
+                rectCropArea = new Rectangle(
+                    Math.Min(xDown, xUp),
+                    Math.Min(yDown, yUp),
+                    Math.Abs(xUp - xDown),
+                    Math.Abs(yUp - yDown));
+
+                // Dibuja un rectángulo en el PictureBox para mostrar el área seleccionada
+                using (Pen pen = new Pen(Color.YellowGreen, 3))
+                {
+                    pbRecortar.CreateGraphics().DrawRectangle(pen, rectCropArea);
+                }
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Crea un nuevo Bitmap para la imagen recortada
+                Bitmap recortadaBitmap = new Bitmap(rectCropArea.Width, rectCropArea.Height);
+
+                // Dibuja el área recortada en el nuevo Bitmap
+                using (Graphics g = Graphics.FromImage(recortadaBitmap))
+                {
+                    g.DrawImage(pbRecortar.Image, new Rectangle(0, 0, rectCropArea.Width, rectCropArea.Height), rectCropArea, GraphicsUnit.Pixel);
+                }
+
+                // Actualiza la imagen del PictureBox pbRecortar con la imagen recortada
+                pbRecortar.Image = recortadaBitmap;
+
+                // Oculta el botón para aplicar el recorte
+                btnAplicar.Visible = false;
+                recortarActivo = false;
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier excepción que pueda ocurrir
+                MessageBox.Show("Error al aplicar el recorte: " + ex.Message);
+            }
+        } ////
+        }
 }
