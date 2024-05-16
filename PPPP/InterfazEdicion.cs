@@ -15,8 +15,8 @@ namespace PPPP
 {
     public partial class InterfazEdicion : Form
     {
-        private List<PosicionOcupada> posicionesOcupadas = new List<PosicionOcupada>();
         private int maxAlturaFila = 0; // Declaración de la variable maxAlturaFila
+        private List<Rectangle> posicionesOcupadas = new List<Rectangle>();
 
 
 
@@ -86,7 +86,7 @@ namespace PPPP
         }
 
 
-
+        /*
         private void AgrImgHoj(int nC, double zoomFactor)
         {
             int hojaAncho = Hoja.Width; // Ancho del contenedor Hoja
@@ -160,154 +160,124 @@ namespace PPPP
                 posicionesOcupadas.Add(new PosicionOcupada(pictureBox1.Location.X, pictureBox1.Location.Y, pictureBox1.Width, pictureBox1.Height));
             }
         }
+*/
 
 
 
-
-
-        /*
-         private void AgrImgHoj(int nC, double zoomFactor)
-         {
-             int hojaAncho = Hoja.Width; // Ancho del contenedor Hoja
-             int hojaAlto = Hoja.Height; // Alto del contenedor Hoja
-
-             // Iterar sobre cada imagen
-
-             for (int i = 0; i < nC; i++)
-             {
-                 // Crear un nuevo PictureBox para la imagen
-                 PictureBox pictureBox1 = new PictureBox();
-                 pictureBox1.Image = Imagen.Image; // Asignar la imagen
-                 pictureBox1.Size = Imagen.Size; // Asignar el tamaño de la imagen
-
-                 // Verificar si la imagen cabe en la fila actual
-                 if (currentX + pictureBox1.Width <= hojaAncho)
-                 {
-                     // La imagen cabe en la fila actual
-                     pictureBox1.Location = new Point(currentX, currentY); // Posicionar la imagen en la fila
-                     currentX += pictureBox1.Width + 10; // Actualizar la posición X con el espacio entre imágenes
-                 }
-                 else
-                 {
-                     // La imagen no cabe en la fila actual, mover a la siguiente fila
-                    currentX = 0; // Reiniciar la posición horizontal
-                    currentY += pictureBox1.Height + 10; // Actualizar la posición Y con el espacio entre imágenes
-
-                    pictureBox1.Location = new Point(currentX, currentY); // Posicionar la imagen en la nueva fila
-                     currentX += pictureBox1.Width + 10; // Actualizar la posición X con el espacio entre imágenes
-                 }
-                    // Verificar si la imagen cabe en el contenedor en términos de altura
-                 if (currentY + pictureBox1.Height <= hojaAlto)
-                 {
-                     // Agregar el PictureBox al PictureBox de la hoja solo si cabe en el contenedor en términos de altura
-                     Hoja.Controls.Add(pictureBox1);
-                 }
-                 else
-                 {
-                     // No hay suficiente espacio en la hoja para esta imagen, salir del bucle
-                     break;
-                 }
-             }
-         }
-        
-
-        /*
+        // Campo de clase para almacenar las posiciones ocupadas
+       
         private void AgrImgHoj(int nC, double zoomFactor)
         {
-            int hojaAncho = Hoja.Width; // Ancho del contenedor Hoja
-            int hojaAlto = Hoja.Height; // Alto del contenedor Hoja
+            int hojaAncho = Hoja.Width;
+            int hojaAlto = Hoja.Height;
 
-            // Iterar sobre cada imagen
-            for (int i = 0; i < nC; i++)
+            // Inicializar la lista de espacios libres con el espacio completo de la hoja si es la primera vez
+            List<Rectangle> espaciosLibres;
+            if (posicionesOcupadas.Count == 0)
             {
-                // Crear un nuevo PictureBox para la imagen
-                PictureBox pictureBox1 = new PictureBox();
-                pictureBox1.Image = Imagen.Image; // Asignar la imagen
-                pictureBox1.Size = Imagen.Size; // Asignar el tamaño de la imagen
-
-                // Verificar si hay espacio disponible para esta imagen
-                bool espacioDisponible = false;
-                for (int y = currentY; y < hojaAlto - pictureBox1.Height; y++)
-                {
-                    for (int x = currentX; x < hojaAncho - pictureBox1.Width; x++)
-                    {
-                        bool espacioOcupado = posicionesOcupadas.Any(pos => x >= pos.X && x + pictureBox1.Width <= pos.X + pos.Width && y >= pos.Y && y + pictureBox1.Height <= pos.Y + pos.Height);
-                        if (!espacioOcupado)
-                        {
-                            pictureBox1.Location = new Point(x, y);
-                            currentX = x + pictureBox1.Width + 10; // Actualizar la posición X con el espacio entre imágenes
-                            currentY = y; // Actualizar la posición Y
-                            espacioDisponible = true;
-                            break;
-                        }
-                    }
-                    if (espacioDisponible) break;
-                }
-
-                // Si no hay espacio disponible, salir del bucle
-                if (!espacioDisponible) break;
-
-                // Agregar el PictureBox al PictureBox de la hoja
-                Hoja.Controls.Add(pictureBox1);
-
-                // Guardar la posición ocupada
-                posicionesOcupadas.Add(new PosicionOcupada(pictureBox1.Location.X, pictureBox1.Location.Y, pictureBox1.Width, pictureBox1.Height));
+                espaciosLibres = new List<Rectangle>
+        {
+            new Rectangle(0, 0, hojaAncho, hojaAlto)
+        };
             }
-        }*/
+            else
+            {
+                // Si ya hay posiciones ocupadas, calcular los espacios libres restantes
+                espaciosLibres = CalcularEspaciosLibres(hojaAncho, hojaAlto);
+            }
 
-
-
-        /*
-        private void AgrImgHoj(int nC, double zoomFactor)
-        {
-            int hojaAncho = Hoja.Width; // Ancho del contenedor Hoja
-            int hojaAlto = Hoja.Height; // Alto del contenedor Hoja
-
-            // Iterar sobre cada imagen
             for (int i = 0; i < nC; i++)
             {
-                // Crear un nuevo PictureBox para la imagen
-                PictureBox pictureBox1 = new PictureBox();
-                pictureBox1.Image = Imagen.Image; // Asignar la imagen
-                pictureBox1.Size = Imagen.Size; // Asignar el tamaño de la imagen
+                Size tamanoImagen = new Size((int)(Imagen.Width * zoomFactor), (int)(Imagen.Height * zoomFactor));
+                Rectangle mejorEspacio = Rectangle.Empty;
+                int mejorIndice = -1;
 
-                // Verificar si hay espacio disponible para esta imagen
-
-
-                /*bool espacioDisponible = false;
-                for (int y = currentY; y < hojaAlto - pictureBox1.Height; y++)
+                // Buscar el mejor espacio para la imagen
+                for (int j = 0; j < espaciosLibres.Count; j++)
                 {
-                    for (int x = currentX; x < hojaAncho - pictureBox1.Width; x++)
+                    Rectangle espacio = espaciosLibres[j];
+                    if (tamanoImagen.Width <= espacio.Width && tamanoImagen.Height <= espacio.Height)
                     {
-                        bool espacioOcupado = posicionesOcupadas.Any(pos => x >= pos.X && x + pictureBox1.Width <= pos.X + pos.Width && y >= pos.Y && y + pictureBox1.Height <= pos.Y + pos.Height);
-                        if (!espacioOcupado)
+                        if (mejorEspacio == Rectangle.Empty || espacio.Width * espacio.Height < mejorEspacio.Width * mejorEspacio.Height)
                         {
-                            pictureBox1.Location = new Point(x, y);
-                            currentX = x + pictureBox1.Width + 10; // Actualizar la posición X con el espacio entre imágenes
-                            currentY = y; // Actualizar la posición Y
-                            espacioDisponible = true;
-                            break;
+                            mejorEspacio = espacio;
+                            mejorIndice = j;
                         }
                     }
-                    if (espacioDisponible) break;
                 }
 
-                // Si no hay espacio disponible, salir del bucle
-                if (!espacioDisponible) break;
- 
+                // Si no se encuentra un espacio adecuado, salir del bucle
+                if (mejorEspacio == Rectangle.Empty)
+                {
+                    MessageBox.Show("No hay suficiente espacio en la hoja para colocar todas las imágenes.");
+                    break;
+                }
 
-
-
-
-
-                // Agregar el PictureBox al PictureBox de la hoja
+                // Crear el PictureBox y ubicarlo en el mejor espacio encontrado
+                PictureBox pictureBox1 = new PictureBox
+                {
+                    Image = Imagen.Image,
+                    Size = tamanoImagen,
+                    Location = new Point(mejorEspacio.X, mejorEspacio.Y),
+                    SizeMode = PictureBoxSizeMode.StretchImage
+                };
                 Hoja.Controls.Add(pictureBox1);
 
-                // Guardar la posición ocupada
-                posicionesOcupadas.Add(new PosicionOcupada(pictureBox1.Location.X, pictureBox1.Location.Y, pictureBox1.Width, pictureBox1.Height));
+                // Actualizar la lista de posiciones ocupadas
+                Rectangle espacioUsado = new Rectangle(mejorEspacio.X, mejorEspacio.Y, tamanoImagen.Width, tamanoImagen.Height);
+                posicionesOcupadas.Add(espacioUsado);
+
+                // Actualizar la lista de espacios libres
+                espaciosLibres.RemoveAt(mejorIndice);
+                // Agregar los nuevos espacios libres generados por el espacio ocupado
+                espaciosLibres.Add(new Rectangle(espacioUsado.Right, espacioUsado.Top, mejorEspacio.Width - espacioUsado.Width, espacioUsado.Height)); // Espacio a la derecha
+                espaciosLibres.Add(new Rectangle(espacioUsado.Left, espacioUsado.Bottom, espacioUsado.Width, mejorEspacio.Height - espacioUsado.Height)); // Espacio debajo
+
+                // Eliminar espacios libres que tengan ancho o alto cero
+                espaciosLibres = espaciosLibres.Where(e => e.Width > 0 && e.Height > 0).ToList();
             }
         }
-*/
+
+        private List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto)
+        {
+            List<Rectangle> espaciosLibres = new List<Rectangle>
+    {
+        new Rectangle(0, 0, hojaAncho, hojaAlto)
+    };
+
+            foreach (var pos in posicionesOcupadas)
+            {
+                for (int i = espaciosLibres.Count - 1; i >= 0; i--)
+                {
+                    var espacio = espaciosLibres[i];
+                    if (pos.IntersectsWith(espacio))
+                    {
+                        espaciosLibres.RemoveAt(i);
+                        var interseccion = Rectangle.Intersect(pos, espacio);
+                        if (interseccion.Top > espacio.Top)
+                        {
+                            espaciosLibres.Add(new Rectangle(espacio.Left, espacio.Top, espacio.Width, interseccion.Top - espacio.Top));
+                        }
+                        if (interseccion.Bottom < espacio.Bottom)
+                        {
+                            espaciosLibres.Add(new Rectangle(espacio.Left, interseccion.Bottom, espacio.Width, espacio.Bottom - interseccion.Bottom));
+                        }
+                        if (interseccion.Left > espacio.Left)
+                        {
+                            espaciosLibres.Add(new Rectangle(espacio.Left, interseccion.Top, interseccion.Left - espacio.Left, interseccion.Height));
+                        }
+                        if (interseccion.Right < espacio.Right)
+                        {
+                            espaciosLibres.Add(new Rectangle(interseccion.Right, interseccion.Top, espacio.Right - interseccion.Right, interseccion.Height));
+                        }
+                    }
+                }
+            }
+
+            return espaciosLibres;
+        }
+
+
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -415,8 +385,9 @@ namespace PPPP
         private void NCopias_ValueChanged(object sender, EventArgs e)
         {
             NC = (int)NCopias.Value;
-          AgrImgHoj(NC, zoomFactor);
-            Hoja.Update();
+            LeerRegistro();
+            AgrImgHoj(NC, zoomFactor);
+            
         }
 
 
@@ -558,6 +529,7 @@ namespace PPPP
         private void Agregar_Click(object sender, EventArgs e)
         {
             LRegistro.Items.Add(openFileDialog1.FileName+ ',' + inX +','+ inY +',' + NC);
+
             LeerRegistro();
         }
 
@@ -566,11 +538,11 @@ namespace PPPP
         public void LeerRegistro()
         {
             LimpiarHoja();
-          /*  
+          
             NNC = NC;
             innX = inX;
             innY = inY;
-            Direc = openFileDialog1.FileName;*/
+            Direc = openFileDialog1.FileName;
 //--------------------------------------------//
 for (int i = 0; i < LRegistro.Items.Count; i++)
             {
@@ -599,12 +571,12 @@ for (int i = 0; i < LRegistro.Items.Count; i++)
             }
 
             //--------------------------------------------//
-            /*
+            
                     openFileDialog1.FileName=Direc;
             inX = innX;
             inY = innY;
             NC = NNC;
-            */
+            
 
         }
 
