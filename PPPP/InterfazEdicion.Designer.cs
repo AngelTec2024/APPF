@@ -40,7 +40,6 @@
             this.SelectImg = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnRecortar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Registro = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -54,6 +53,7 @@
             this.Agregar = new System.Windows.Forms.Button();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.pbRecortar = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.pnResoluciones.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).BeginInit();
@@ -67,12 +67,13 @@
             this.pnPrevisualizacion.Name = "pnPrevisualizacion";
             this.pnPrevisualizacion.Size = new System.Drawing.Size(445, 356);
             this.pnPrevisualizacion.TabIndex = 0;
+            this.pnPrevisualizacion.Paint += new System.Windows.Forms.PaintEventHandler(this.pnPrevisualizacion_Paint);
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(46, 617);
+            this.btnGuardar.Location = new System.Drawing.Point(229, 694);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(482, 79);
+            this.btnGuardar.Size = new System.Drawing.Size(352, 48);
             this.btnGuardar.TabIndex = 1;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
@@ -80,9 +81,9 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(46, 518);
+            this.btnSalir.Location = new System.Drawing.Point(229, 748);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(482, 62);
+            this.btnSalir.Size = new System.Drawing.Size(352, 41);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -183,15 +184,6 @@
             this.btnRecortar.UseVisualStyleBackColor = true;
             this.btnRecortar.Click += new System.EventHandler(this.btnRecortar_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(0, 73);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 40);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Ajustar y Recortar";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(0, 110);
@@ -229,7 +221,7 @@
             // NCopias
             // 
             this.NCopias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NCopias.Location = new System.Drawing.Point(615, 411);
+            this.NCopias.Location = new System.Drawing.Point(569, 644);
             this.NCopias.Name = "NCopias";
             this.NCopias.Size = new System.Drawing.Size(59, 26);
             this.NCopias.TabIndex = 8;
@@ -241,7 +233,7 @@
             this.PanelPre.BackColor = System.Drawing.SystemColors.ControlLight;
             this.PanelPre.Location = new System.Drawing.Point(709, 47);
             this.PanelPre.Name = "PanelPre";
-            this.PanelPre.Size = new System.Drawing.Size(638, 152);
+            this.PanelPre.Size = new System.Drawing.Size(745, 525);
             this.PanelPre.TabIndex = 9;
             this.PanelPre.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPre_Paint);
             // 
@@ -249,7 +241,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(469, 413);
+            this.label2.Location = new System.Drawing.Point(423, 650);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(140, 20);
             this.label2.TabIndex = 10;
@@ -259,7 +251,7 @@
             // 
             this.Acercar.BackgroundImage = global::PPPP.Properties.Resources.boton_para_acercar__1_;
             this.Acercar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Acercar.Location = new System.Drawing.Point(1019, 626);
+            this.Acercar.Location = new System.Drawing.Point(987, 694);
             this.Acercar.Name = "Acercar";
             this.Acercar.Size = new System.Drawing.Size(70, 70);
             this.Acercar.TabIndex = 7;
@@ -270,7 +262,7 @@
             // 
             this.Alejar.BackgroundImage = global::PPPP.Properties.Resources.lupa_con_signo_menos__2_;
             this.Alejar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Alejar.Location = new System.Drawing.Point(908, 626);
+            this.Alejar.Location = new System.Drawing.Point(857, 710);
             this.Alejar.Name = "Alejar";
             this.Alejar.Size = new System.Drawing.Size(70, 70);
             this.Alejar.TabIndex = 6;
@@ -280,15 +272,15 @@
             // LRegistro
             // 
             this.LRegistro.FormattingEnabled = true;
-            this.LRegistro.Location = new System.Drawing.Point(103, 448);
+            this.LRegistro.Location = new System.Drawing.Point(12, 408);
             this.LRegistro.Name = "LRegistro";
-            this.LRegistro.Size = new System.Drawing.Size(343, 69);
+            this.LRegistro.Size = new System.Drawing.Size(211, 381);
             this.LRegistro.TabIndex = 11;
             this.LRegistro.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // Agregar
             // 
-            this.Agregar.Location = new System.Drawing.Point(114, 386);
+            this.Agregar.Location = new System.Drawing.Point(114, 349);
             this.Agregar.Name = "Agregar";
             this.Agregar.Size = new System.Drawing.Size(96, 23);
             this.Agregar.TabIndex = 13;
@@ -299,7 +291,7 @@
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(229, 408);
+            this.btnAplicar.Location = new System.Drawing.Point(229, 645);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(188, 31);
             this.btnAplicar.TabIndex = 14;
@@ -309,20 +301,29 @@
             // 
             // pbRecortar
             // 
-            this.pbRecortar.Location = new System.Drawing.Point(739, 244);
+            this.pbRecortar.Location = new System.Drawing.Point(229, 409);
             this.pbRecortar.Name = "pbRecortar";
-            this.pbRecortar.Size = new System.Drawing.Size(445, 356);
+            this.pbRecortar.Size = new System.Drawing.Size(222, 189);
             this.pbRecortar.TabIndex = 15;
             this.pbRecortar.TabStop = false;
             this.pbRecortar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbRecortar_MouseDown);
             this.pbRecortar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbRecortar_MouseUp);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 73);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(85, 40);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Ajustar y Recortar";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // InterfazEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1359, 749);
+            this.ClientSize = new System.Drawing.Size(1599, 814);
             this.Controls.Add(this.pbRecortar);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.Agregar);
@@ -359,7 +360,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnResoluciones;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnRecortar;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button SelectImg;
@@ -379,6 +379,7 @@
         private System.Windows.Forms.Button Agregar;
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.PictureBox pbRecortar;
+        private System.Windows.Forms.Button button3;
     }
 }
 

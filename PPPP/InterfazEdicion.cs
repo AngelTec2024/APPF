@@ -623,6 +623,16 @@ for (int i = 0; i < LRegistro.Items.Count; i++)
 
         }
 
+        private void pnPrevisualizacion_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void pbRecortar_MouseDown(object sender, MouseEventArgs e)
         {
             if (recortarActivo)
