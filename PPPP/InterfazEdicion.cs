@@ -69,7 +69,7 @@ namespace PPPP
 
 
                 pbRecortar.Image = Image.FromFile(openFileDialog1.FileName);
-                pbRecortar.Size = pbRecortar.Image.Size;
+                pbRecortar.Size = pbRecortar.Image.Size;//
 
 
 

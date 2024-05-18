@@ -40,6 +40,7 @@
             this.SelectImg = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnRecortar = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Registro = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -53,7 +54,6 @@
             this.Agregar = new System.Windows.Forms.Button();
             this.btnAplicar = new System.Windows.Forms.Button();
             this.pbRecortar = new System.Windows.Forms.PictureBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.pnResoluciones.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).BeginInit();
@@ -71,7 +71,7 @@
             // 
             // btnGuardar
             // 
-            this.btnGuardar.Location = new System.Drawing.Point(229, 694);
+            this.btnGuardar.Location = new System.Drawing.Point(229, 495);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(352, 48);
             this.btnGuardar.TabIndex = 1;
@@ -81,7 +81,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(229, 748);
+            this.btnSalir.Location = new System.Drawing.Point(229, 559);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(352, 41);
             this.btnSalir.TabIndex = 2;
@@ -184,6 +184,15 @@
             this.btnRecortar.UseVisualStyleBackColor = true;
             this.btnRecortar.Click += new System.EventHandler(this.btnRecortar_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 73);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(85, 40);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Ajustar y Recortar";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(0, 110);
@@ -221,7 +230,7 @@
             // NCopias
             // 
             this.NCopias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NCopias.Location = new System.Drawing.Point(569, 644);
+            this.NCopias.Location = new System.Drawing.Point(615, 414);
             this.NCopias.Name = "NCopias";
             this.NCopias.Size = new System.Drawing.Size(59, 26);
             this.NCopias.TabIndex = 8;
@@ -241,7 +250,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(423, 650);
+            this.label2.Location = new System.Drawing.Point(469, 420);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(140, 20);
             this.label2.TabIndex = 10;
@@ -291,7 +300,7 @@
             // btnAplicar
             // 
             this.btnAplicar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAplicar.Location = new System.Drawing.Point(229, 645);
+            this.btnAplicar.Location = new System.Drawing.Point(229, 409);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.Size = new System.Drawing.Size(188, 31);
             this.btnAplicar.TabIndex = 14;
@@ -301,22 +310,13 @@
             // 
             // pbRecortar
             // 
-            this.pbRecortar.Location = new System.Drawing.Point(229, 409);
+            this.pbRecortar.Location = new System.Drawing.Point(359, 625);
             this.pbRecortar.Name = "pbRecortar";
             this.pbRecortar.Size = new System.Drawing.Size(222, 189);
             this.pbRecortar.TabIndex = 15;
             this.pbRecortar.TabStop = false;
             this.pbRecortar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbRecortar_MouseDown);
             this.pbRecortar.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbRecortar_MouseUp);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(0, 73);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 40);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Ajustar y Recortar";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // InterfazEdicion
             // 
