@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -36,11 +37,50 @@ namespace PPPP
 
 
 
+        public static List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto, List<Rectangle> posicionesOcupadas)
+        {
+            List<Rectangle> espaciosLibres = new List<Rectangle>
+        {
+            new Rectangle(0, 0, hojaAncho, hojaAlto)
+        };
+
+            foreach (var pos in posicionesOcupadas)
+            {
+                for (int i = espaciosLibres.Count - 1; i >= 0; i--)
+                {
+                    var espacio = espaciosLibres[i];
+                    if (pos.IntersectsWith(espacio))
+                    {
+                        espaciosLibres.RemoveAt(i);
+                        var interseccion = Rectangle.Intersect(pos, espacio);
+                        if (interseccion.Top > espacio.Top)
+                        {
+                            espaciosLibres.Add(new Rectangle(espacio.Left, espacio.Top, espacio.Width, interseccion.Top - espacio.Top));
+                        }
+                        if (interseccion.Bottom < espacio.Bottom)
+                        {
+                            espaciosLibres.Add(new Rectangle(espacio.Left, interseccion.Bottom, espacio.Width, espacio.Bottom - interseccion.Bottom));
+                        }
+                        if (interseccion.Left > espacio.Left)
+                        {
+                            espaciosLibres.Add(new Rectangle(espacio.Left, interseccion.Top, interseccion.Left - espacio.Left, interseccion.Height));
+                        }
+                        if (interseccion.Right < espacio.Right)
+                        {
+                            espaciosLibres.Add(new Rectangle(interseccion.Right, interseccion.Top, espacio.Right - interseccion.Right, interseccion.Height));
+                        }
+                    }
+                }
+            }
+            return espaciosLibres;
+        }
+    
 
 
 
 
 
 
-    }
+
+}
 }
