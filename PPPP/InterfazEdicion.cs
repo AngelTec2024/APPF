@@ -238,7 +238,7 @@ namespace PPPP
             }
         }
 
-        private List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto)
+        public  List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto)
         {
             List<Rectangle> espaciosLibres = new List<Rectangle>
     {
@@ -529,7 +529,6 @@ namespace PPPP
         private void Agregar_Click(object sender, EventArgs e)
         {
             LRegistro.Items.Add(openFileDialog1.FileName+ ',' + inX +','+ inY +',' + NC);
-
             LeerRegistro();
         }
 
@@ -581,7 +580,7 @@ for (int i = 0; i < LRegistro.Items.Count; i++)
         }
 
        
-        private void LimpiarHoja()
+        public void LimpiarHoja()
         {
             // Remueve todas las imágenes de la hoja
             Hoja.Controls.Clear();
