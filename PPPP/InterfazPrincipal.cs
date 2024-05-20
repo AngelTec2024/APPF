@@ -25,7 +25,7 @@ namespace PPPP
             //pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        public void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             openFileDialog1.ShowDialog();
