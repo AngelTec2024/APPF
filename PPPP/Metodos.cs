@@ -24,7 +24,7 @@ namespace PPPP
             Img.Image = resizedImage;
         }
 
-        private Image ResizeImage(Image image, int width, int height)
+        public Image ResizeImage(Image image, int width, int height)
         {
             Bitmap resizedImage = new Bitmap(width, height);
             using (Graphics graphics = Graphics.FromImage(resizedImage))
@@ -74,13 +74,16 @@ namespace PPPP
             }
             return espaciosLibres;
         }
-    
+
+
+        public static class ImageContainer
+        {
+            public static Image ImagenRecortada { get; set; }
+        }
 
 
 
 
 
-
-
-}
+    }
 }
