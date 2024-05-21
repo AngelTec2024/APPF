@@ -736,6 +736,38 @@ namespace PPPP
 
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Guardar_Click(object sender, EventArgs e)
+        {
+
+            // Crear un bitmap del tamaño del PictureBox
+            Bitmap bmp = new Bitmap(Hoja.Width, Hoja.Height);
+
+            // Dibujar el contenido del PictureBox en el bitmap
+            Hoja.DrawToBitmap(bmp, new Rectangle(0, 0, Hoja.Width, Hoja.Height));
+            // Crear un cuadro de diálogo para guardar archivo
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Archivos de imagen (*.jpg)|*.jpg|Documentos PDF (*.pdf)|*.pdf|Todos los archivos (*.*)|*.*";
+            saveFileDialog.Title = "Guardar como";
+
+            // Si el usuario selecciona una ruta y hace clic en "Guardar"
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                bmp.Save(saveFileDialog.FileName, ImageFormat.Jpeg);
+                MessageBox.Show("La hoja se ha guardado correctamente en formato JPG.");
+
+            }
+
+            // Liberar los recursos del bitmap
+            bmp.Dispose();
+
+        }
+
         private void pbRecortar_MouseDown(object sender, MouseEventArgs e)
         {
             if (recortarActivo)

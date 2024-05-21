@@ -83,6 +83,9 @@
     <Compile Include="Recorte.Designer.cs">
       <DependentUpon>Recorte.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\RJButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="InterfazEdicion.resx">
       <DependentUpon>InterfazEdicion.cs</DependentUpon>
     </EmbeddedResource>
