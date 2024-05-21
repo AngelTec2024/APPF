@@ -40,10 +40,8 @@
             this.SelectImg = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnRecortar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.Registro = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.NCopias = new System.Windows.Forms.NumericUpDown();
             this.PanelPre = new System.Windows.Forms.Panel();
@@ -145,18 +143,16 @@
             this.panel2.Controls.Add(this.SelectImg);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.btnRecortar);
-            this.panel2.Controls.Add(this.button3);
             this.panel2.Controls.Add(this.button4);
             this.panel2.Controls.Add(this.Registro);
-            this.panel2.Controls.Add(this.button7);
             this.panel2.Location = new System.Drawing.Point(12, 115);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(85, 257);
+            this.panel2.Size = new System.Drawing.Size(85, 187);
             this.panel2.TabIndex = 5;
             // 
             // SelectImg
             // 
-            this.SelectImg.Location = new System.Drawing.Point(0, 184);
+            this.SelectImg.Location = new System.Drawing.Point(0, 149);
             this.SelectImg.Name = "SelectImg";
             this.SelectImg.Size = new System.Drawing.Size(85, 40);
             this.SelectImg.TabIndex = 9;
@@ -170,7 +166,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 40);
             this.button1.TabIndex = 6;
-            this.button1.Text = "Ajustar";
+            this.button1.Text = "Restablecer Imagen";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -184,18 +180,9 @@
             this.btnRecortar.UseVisualStyleBackColor = true;
             this.btnRecortar.Click += new System.EventHandler(this.btnRecortar_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(0, 73);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(85, 40);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Ajustar y Recortar";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(0, 110);
+            this.button4.Location = new System.Drawing.Point(0, 72);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(85, 40);
             this.button4.TabIndex = 8;
@@ -205,22 +192,13 @@
             // 
             // Registro
             // 
-            this.Registro.Location = new System.Drawing.Point(0, 147);
+            this.Registro.Location = new System.Drawing.Point(0, 112);
             this.Registro.Name = "Registro";
             this.Registro.Size = new System.Drawing.Size(85, 40);
             this.Registro.TabIndex = 9;
             this.Registro.Text = "Registro";
             this.Registro.UseVisualStyleBackColor = true;
             this.Registro.Click += new System.EventHandler(this.Registro_Click);
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(0, 219);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(85, 75);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "AtoAjustarImgH";
-            this.button7.UseVisualStyleBackColor = true;
             // 
             // openFileDialog1
             // 
@@ -323,7 +301,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1599, 814);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.pbRecortar);
             this.Controls.Add(this.btnAplicar);
             this.Controls.Add(this.Agregar);
@@ -365,7 +343,6 @@
         private System.Windows.Forms.Button SelectImg;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button Registro;
-        private System.Windows.Forms.Button button7;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button Alejar;
         private System.Windows.Forms.Button Acercar;
@@ -379,7 +356,6 @@
         private System.Windows.Forms.Button Agregar;
         private System.Windows.Forms.Button btnAplicar;
         private System.Windows.Forms.PictureBox pbRecortar;
-        private System.Windows.Forms.Button button3;
     }
 }
 

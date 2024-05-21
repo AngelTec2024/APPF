@@ -510,27 +510,29 @@ namespace PPPP
 
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
-            /*pnResoluciones.Visible = false;
-            pnPrevisualizacion.Controls.Clear();
-            NCopias.Value = 0;
-            NC = (int)NCopias.Value;
-            inX = 5;
-            inY = 7;
 
-            Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
-            pnPrevisualizacion.Controls.Add(Imagen);
-            pnResoluciones.Visible = false;*/
         }
 
         private void in4x6(object sender, EventArgs e)
         {
+            pnResoluciones.Visible = false;
             pnPrevisualizacion.Controls.Clear();
-            NCopias.Value=0;
+            NCopias.Value = 0;
             NC = (int)NCopias.Value;
             inX = 4;
             inY = 6;
-            
-            Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
+
+            // Usar la imagen recortada si está disponible
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
+
+            // Mostrar la imagen redimensionada en el PictureBox
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            Imagen.Size = resizedImage.Size;
+            Imagen.Image = resizedImage;
+
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
         }
@@ -538,17 +540,25 @@ namespace PPPP
         private void inInf(object sender, EventArgs e)
         {
 
+            pnResoluciones.Visible = false;
             pnPrevisualizacion.Controls.Clear();
             NCopias.Value = 0;
             NC = (int)NCopias.Value;
             inX = 2;
             inY = 2;
 
-            Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
+            // Usar la imagen recortada si está disponible
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
+
+            // Mostrar la imagen redimensionada en el PictureBox
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            Imagen.Size = resizedImage.Size;
+            Imagen.Image = resizedImage;
+
             pnPrevisualizacion.Controls.Add(Imagen);
-
-
-
             pnResoluciones.Visible = false;
         }
         
@@ -578,7 +588,7 @@ namespace PPPP
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // restablecer imagen original
         }
 
         private void btnRecortar_Click(object sender, EventArgs e)
@@ -612,30 +622,30 @@ namespace PPPP
             innY = inY;
             Direc = openFileDialog1.FileName;
 //--------------------------------------------//
-for (int i = 0; i < LRegistro.Items.Count; i++)
-            {
-                string cadena = LRegistro.Items[i].ToString();
-                string[] partes = cadena.Split(',');
-                
-                if (partes.Length >= 4) // Asegúrate de que haya al menos tres partes
+            for (int i = 0; i < LRegistro.Items.Count; i++)
                 {
-                     openFileDialog1.FileName= partes[0];
-                     inX = int.Parse(partes[1]);
-                     inY =  int.Parse(partes[2]);
-                     NC= int.Parse(partes[3]);
+                    string cadena = LRegistro.Items[i].ToString();
+                    string[] partes = cadena.Split(',');
+                
+                    if (partes.Length >= 4) // Asegúrate de que haya al menos tres partes
+                    {
+                         openFileDialog1.FileName= partes[0];
+                         inX = int.Parse(partes[1]);
+                         inY =  int.Parse(partes[2]);
+                         NC= int.Parse(partes[3]);
 
-                     Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
-                     Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
-                     Imagen.Image = System.Drawing.Image.FromFile(openFileDialog1.FileName); // Carga la imagen
+                         Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
+                         Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
+                         Imagen.Image = System.Drawing.Image.FromFile(openFileDialog1.FileName); // Carga la imagen
                   
-                     Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
-                     AgrImgHoj(NC,zoomFactor);
+                         Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
+                         AgrImgHoj(NC,zoomFactor);
                 }
                 else
-                {
-                    // El formato de la cadena no es válido
-                    Console.WriteLine("Formato de cadena no válido: " + cadena);
-                }
+                    {
+                        // El formato de la cadena no es válido
+                        Console.WriteLine("Formato de cadena no válido: " + cadena);
+                    }
             }
 
             //--------------------------------------------//
