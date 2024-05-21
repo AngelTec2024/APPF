@@ -40,7 +40,7 @@ namespace PPPP
 
         ///
         Metodos Metodo = new Metodos();//llamar Clase
-        int inX, inY; 
+        int inX=0, inY=0; 
         int innX,innY,NNC; String Direc;
         string FName;
         public StreamReader lector;
@@ -335,6 +335,7 @@ namespace PPPP
             // Mostrar el nuevo formulario
             this.Visible = false;
             interfazPrincipal.Show();
+            //System.exit()
 
 
         }
@@ -429,7 +430,6 @@ namespace PPPP
         {
             NC = (int)NCopias.Value;
             LeerRegistro();
-            //AgrImgHoj(NC, zoomFactor);
             AgrImgHoj(NC, zoomFactor, ImageContainer.ImagenRecortada);
 
         }
@@ -490,6 +490,7 @@ namespace PPPP
 
         private void in5x7(object sender, EventArgs e)
         {
+            
             pnResoluciones.Visible = false;
             pnPrevisualizacion.Controls.Clear();
             NCopias.Value = 0;
@@ -524,15 +525,14 @@ namespace PPPP
 
             // Usar la imagen recortada si está disponible
             Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
-
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
-
             // Mostrar la imagen redimensionada en el PictureBox
             Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
             Imagen.Size = resizedImage.Size;
             Imagen.Image = resizedImage;
 
+            
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
         }
@@ -607,8 +607,34 @@ namespace PPPP
 
         private void Agregar_Click(object sender, EventArgs e)
         {
-            LRegistro.Items.Add(openFileDialog1.FileName+ ',' + inX +','+ inY +',' + NC);
-            LeerRegistro();
+
+
+            //Reglas Basicas Para Agregar Img A Registro
+            if (NC > 0)
+            {
+                if (inX != 0 && inY != 0) {
+
+                     if (!string.IsNullOrEmpty(openFileDialog1.FileName))
+                            {
+                                LRegistro.Items.Add(openFileDialog1.FileName + ',' + inX.ToString() + ',' + inY.ToString() + ',' + NC);
+                                LeerRegistro();
+                            }
+                        else
+                           {
+                                MessageBox.Show("El nombre del archivo no puede ser nulo o vacío");
+                           }
+
+                }
+                else {
+                    MessageBox.Show("Ingresa Un Formato");
+                }
+            }            
+            else
+            {
+
+                MessageBox.Show("Ingresa un Numero de Copias Valido");
+            }
+            
         }
 
         
@@ -637,7 +663,6 @@ namespace PPPP
                          Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
                          Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
                          Imagen.Image = System.Drawing.Image.FromFile(openFileDialog1.FileName); // Carga la imagen
-                  
                          Metodo.AddImageToPictureBox(openFileDialog1.FileName, Imagen, inX, inY);
                          AgrImgHoj(NC,zoomFactor);
                 }
@@ -650,7 +675,7 @@ namespace PPPP
 
             //--------------------------------------------//
             
-                    openFileDialog1.FileName=Direc;
+            openFileDialog1.FileName=Direc;
             inX = innX;
             inY = innY;
             NC = NNC;
