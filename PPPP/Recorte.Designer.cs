@@ -95,7 +95,7 @@
             this.Aceptar.FlatAppearance.BorderSize = 0;
             this.Aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Aceptar.ForeColor = System.Drawing.Color.PaleVioletRed;
-            this.Aceptar.Location = new System.Drawing.Point(25, 103);
+            this.Aceptar.Location = new System.Drawing.Point(25, 111);
             this.Aceptar.Name = "Aceptar";
             this.Aceptar.Size = new System.Drawing.Size(150, 40);
             this.Aceptar.TabIndex = 4;
