@@ -125,5 +125,51 @@ namespace PPPP
                 }
             }
         }
+
+        private void Recortar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                // Crea un nuevo Bitmap para la imagen recortada
+                Bitmap recortadaBitmap = new Bitmap(rectCropArea.Width, rectCropArea.Height);
+
+                // Dibuja el área recortada en el nuevo Bitmap
+                using (Graphics g = Graphics.FromImage(recortadaBitmap))
+                {
+                    g.DrawImage(pbRecortar2.Image, new Rectangle(0, 0, rectCropArea.Width, rectCropArea.Height), rectCropArea, GraphicsUnit.Pixel);
+                }
+
+                // Actualiza la imagen del PictureBox pbRecortar con la imagen recortada
+                pbRecortar2.Image = recortadaBitmap;
+
+                this.ImagenRecortada = pbRecortar2.Image;
+
+                ImageContainer.ImagenRecortada = this.ImagenRecortada;
+                ImageContainer.ImagenRecortada = recortadaBitmap;
+
+                // Cerrar el formulario de recorte
+                //this.Close();
+
+
+
+            }
+            catch (Exception ex)
+            {
+                // Maneja cualquier excepción que pueda ocurrir
+                MessageBox.Show("Error al aplicar el recorte: " + ex.Message);
+            }
+
+
+        }
+
+        private void Aceptar_Click(object sender, EventArgs e)
+        {
+            InterfazEdicion IE = new InterfazEdicion();
+            IE.Show();
+            //Recorte pnRecorte = new Recorte();
+            //pnRecorte.Show();
+            this.Visible = false;
+        }
     }
 }

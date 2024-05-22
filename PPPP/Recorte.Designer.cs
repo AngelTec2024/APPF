@@ -31,6 +31,8 @@
             this.pbRecortar2 = new System.Windows.Forms.PictureBox();
             this.btnRecortar = new System.Windows.Forms.Button();
             this.btnRegresar = new System.Windows.Forms.Button();
+            this.Recortar = new PPPP.Resources.RJButton();
+            this.Aceptar = new PPPP.Resources.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.pbRecortar2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +48,7 @@
             // 
             // btnRecortar
             // 
-            this.btnRecortar.Location = new System.Drawing.Point(76, 63);
+            this.btnRecortar.Location = new System.Drawing.Point(254, 46);
             this.btnRecortar.Name = "btnRecortar";
             this.btnRecortar.Size = new System.Drawing.Size(75, 23);
             this.btnRecortar.TabIndex = 1;
@@ -56,7 +58,7 @@
             // 
             // btnRegresar
             // 
-            this.btnRegresar.Location = new System.Drawing.Point(76, 148);
+            this.btnRegresar.Location = new System.Drawing.Point(263, 87);
             this.btnRegresar.Name = "btnRegresar";
             this.btnRegresar.Size = new System.Drawing.Size(75, 23);
             this.btnRegresar.TabIndex = 2;
@@ -64,12 +66,52 @@
             this.btnRegresar.UseVisualStyleBackColor = true;
             this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
             // 
+            // Recortar
+            // 
+            this.Recortar.BackColor = System.Drawing.Color.Transparent;
+            this.Recortar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.Recortar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Recortar.BorderRadius = 10;
+            this.Recortar.BorderSize = 2;
+            this.Recortar.FlatAppearance.BorderSize = 0;
+            this.Recortar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Recortar.ForeColor = System.Drawing.Color.PaleVioletRed;
+            this.Recortar.Location = new System.Drawing.Point(25, 46);
+            this.Recortar.Name = "Recortar";
+            this.Recortar.Size = new System.Drawing.Size(150, 40);
+            this.Recortar.TabIndex = 3;
+            this.Recortar.Text = "Recortar";
+            this.Recortar.TextColor = System.Drawing.Color.PaleVioletRed;
+            this.Recortar.UseVisualStyleBackColor = false;
+            this.Recortar.Click += new System.EventHandler(this.Recortar_Click);
+            // 
+            // Aceptar
+            // 
+            this.Aceptar.BackColor = System.Drawing.Color.Transparent;
+            this.Aceptar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.Aceptar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.Aceptar.BorderRadius = 10;
+            this.Aceptar.BorderSize = 2;
+            this.Aceptar.FlatAppearance.BorderSize = 0;
+            this.Aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Aceptar.ForeColor = System.Drawing.Color.PaleVioletRed;
+            this.Aceptar.Location = new System.Drawing.Point(25, 103);
+            this.Aceptar.Name = "Aceptar";
+            this.Aceptar.Size = new System.Drawing.Size(150, 40);
+            this.Aceptar.TabIndex = 4;
+            this.Aceptar.Text = "Aceptar";
+            this.Aceptar.TextColor = System.Drawing.Color.PaleVioletRed;
+            this.Aceptar.UseVisualStyleBackColor = false;
+            this.Aceptar.Click += new System.EventHandler(this.Aceptar_Click);
+            // 
             // Recorte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1101, 697);
+            this.Controls.Add(this.Aceptar);
+            this.Controls.Add(this.Recortar);
             this.Controls.Add(this.btnRegresar);
             this.Controls.Add(this.btnRecortar);
             this.Controls.Add(this.pbRecortar2);
@@ -85,5 +127,7 @@
         private System.Windows.Forms.PictureBox pbRecortar2;
         private System.Windows.Forms.Button btnRecortar;
         private System.Windows.Forms.Button btnRegresar;
+        private Resources.RJButton Recortar;
+        private Resources.RJButton Aceptar;
     }
 }

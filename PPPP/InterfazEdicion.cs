@@ -35,6 +35,7 @@ namespace PPPP
         Task timeout;
         string fn = "";
 
+
         int AuxRecortar = 0;
         int AuxTHoja;
 
@@ -765,6 +766,182 @@ namespace PPPP
 
             // Liberar los recursos del bitmap
             bmp.Dispose();
+
+        }
+
+        private void Recortar_Click(object sender, EventArgs e)
+        {
+            AuxRecortar = 100; //REC
+            Recorte recorteForm = new Recorte(imagenARecortar);  //REC
+            recorteForm.Show(); //REC
+            //Recorte pnRecorte = new Recorte();
+            //pnRecorte.Show();
+            this.Visible = false;
+            //recortarActivo = true;
+            //btnAplicar.Visible = true;
+        }
+
+        private void Regist_Click(object sender, EventArgs e)
+        {
+
+            if (LRegistro.Visible == true)
+            {
+                LRegistro.Visible = false;
+            }
+            else
+            {
+                LRegistro.Visible = true;
+            }
+
+
+        }
+
+        private void Resolucion_Click(object sender, EventArgs e)
+        {
+
+            if (pnResoluciones.Visible == true)
+            {
+                pnResoluciones.Visible = false;
+            }
+            else
+            {
+                pnResoluciones.Visible = true;
+            }
+
+
+        }
+
+        private void Seleccionar_Click(object sender, EventArgs e)
+        {
+            AbrirImagen();
+        }
+
+        private void AgregarImg_Click(object sender, EventArgs e)
+        {
+
+
+            //Reglas Basicas Para Agregar Img A Registro
+            if (NC > 0)
+            {
+                if (inX != 0 && inY != 0)
+                {
+
+                    if (!string.IsNullOrEmpty(openFileDialog1.FileName))
+                    {
+                        LRegistro.Items.Add(openFileDialog1.FileName + ',' + inX.ToString() + ',' + inY.ToString() + ',' + NC);
+                        LeerRegistro();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El nombre del archivo no puede ser nulo o vacío");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("Ingresa Un Formato");
+                }
+            }
+            else
+            {
+
+                MessageBox.Show("Ingresa un Numero de Copias Valido");
+            }
+
+
+
+        }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+
+            var result = MessageBox.Show("¿Estás seguro de que deseas salir?", "Confirmar salida", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result != DialogResult.Cancel)
+            { 
+            InterfazPrincipal interfazPrincipal = new InterfazPrincipal();
+
+            // Mostrar el nuevo formulario
+            this.Visible = false;
+            interfazPrincipal.Show();
+                //System.exit()
+            }
+
+
+
+        }
+
+        private void i5x7_Click(object sender, EventArgs e)
+        {
+
+            pnResoluciones.Visible = false;
+            pnPrevisualizacion.Controls.Clear();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 5;
+            inY = 7;
+
+            // Usar la imagen recortada si está disponible
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
+
+            // Mostrar la imagen redimensionada en el PictureBox
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            Imagen.Size = resizedImage.Size;
+            Imagen.Image = resizedImage;
+
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
+
+        }
+
+        private void i4x6_Click(object sender, EventArgs e)
+        {
+            pnResoluciones.Visible = false;
+            pnPrevisualizacion.Controls.Clear();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 4;
+            inY = 6;
+
+            // Usar la imagen recortada si está disponible
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
+            // Mostrar la imagen redimensionada en el PictureBox
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            Imagen.Size = resizedImage.Size;
+            Imagen.Image = resizedImage;
+
+
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
+        }
+
+        private void infantil_Click(object sender, EventArgs e)
+        {
+
+            pnResoluciones.Visible = false;
+            pnPrevisualizacion.Controls.Clear();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 2;
+            inY = 2;
+
+            // Usar la imagen recortada si está disponible
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
+
+            // Mostrar la imagen redimensionada en el PictureBox
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
+            Imagen.Size = resizedImage.Size;
+            Imagen.Image = resizedImage;
+
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
 
         }
 
