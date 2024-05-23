@@ -43,6 +43,7 @@
             this.pbRecortar2.Size = new System.Drawing.Size(172, 240);
             this.pbRecortar2.TabIndex = 0;
             this.pbRecortar2.TabStop = false;
+            this.pbRecortar2.Click += new System.EventHandler(this.pbRecortar2_Click);
             this.pbRecortar2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbRecortar2_MouseDown);
             this.pbRecortar2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbRecortar2_MouseUp);
             // 

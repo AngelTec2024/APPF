@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,12 +40,23 @@ namespace PPPP
 
         private void MostrarImagen()
         {
-            if (imagenARecortar != null)
+            // Mostrar la imagen recortada si existe, de lo contrario mostrar la imagen global
+            if (ImageContainer.ImagenRecortada != null)
             {
-                pbRecortar2.Image = imagenARecortar;
-                pbRecortar2.Size = pbRecortar2.Image.Size;
-                pbRecortar2.Cursor = Cursors.Cross;
+                pbRecortar2.Image = ImageContainer.ImagenRecortada;
             }
+            else if (Globales.ImagenGlobal != null)
+            {
+                pbRecortar2.Image = Globales.ImagenGlobal;
+            }
+            else
+            {
+                MessageBox.Show("No hay imagen disponible para mostrar.");
+                return;
+            }
+
+            pbRecortar2.Size = pbRecortar2.Image.Size;
+            pbRecortar2.Cursor = Cursors.Cross;
         }
 
         private void btnRecortar_Click(object sender, EventArgs e)
@@ -152,6 +164,24 @@ namespace PPPP
                 //this.Close();
 
 
+                // Define la ruta específica donde se guardará la imagen recortada
+                string directorioGuardado = @"C:\Users\ANGEL TEC\Downloads\X";
+                string nombreArchivo = "imagen_recortada.png"; // Puedes generar un nombre de archivo dinámicamente si lo deseas
+                string rutaCompleta = Path.Combine(directorioGuardado, nombreArchivo);
+
+                // Asegúrate de que el directorio existe
+                if (!Directory.Exists(directorioGuardado))
+                {
+                    Directory.CreateDirectory(directorioGuardado);
+                }
+
+                // Guarda la imagen recortada en el directorio especificado
+                recortadaBitmap.Save(rutaCompleta);
+
+                Globales.RutaImagen = rutaCompleta;
+
+
+
 
             }
             catch (Exception ex)
@@ -170,6 +200,11 @@ namespace PPPP
             //Recorte pnRecorte = new Recorte();
             //pnRecorte.Show();
             this.Visible = false;
+        }
+
+        private void pbRecortar2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
