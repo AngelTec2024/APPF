@@ -234,7 +234,7 @@ namespace PPPP
             for (int i = 0; i < nC; i++)
             {
                 // Usar la imagen recortada si está disponible, de lo contrario usar la imagen original
-                Image imagenAUsar = ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal;    // MODIFICADO 
+                Image imagenAUsar = Imagen.Image ?? ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal;    // MODIFICADO 
 
                 Size tamanoImagen = new Size((int)(imagenAUsar.Width * zoomFactor), (int)(imagenAUsar.Height * zoomFactor));
                 Rectangle mejorEspacio = Rectangle.Empty;
@@ -682,6 +682,9 @@ namespace PPPP
                         Console.WriteLine("Formato de cadena no válido: " + cadena);
                     }
             }
+
+
+
 
             //--------------------------------------------//
             
