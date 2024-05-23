@@ -31,7 +31,6 @@ namespace PPPP
         int xUp = 0;
         int yUp = 0;
         Rectangle rectCropArea = new Rectangle();
-        System.IO.MemoryStream ms = new System.IO.MemoryStream();
         Task timeout;
         string fn = "";
 
@@ -41,15 +40,15 @@ namespace PPPP
 
         ///
         Metodos Metodo = new Metodos();//llamar Clase
-        int inX=0, inY=0; 
-        int innX,innY,NNC; String Direc;
+        int inX = 0, inY = 0;
+        int innX, innY, NNC; String Direc;
         string FName;
         public StreamReader lector;
         PictureBox Hoja;
-        
+
         PictureBox Imagen = new PictureBox();
-        
-        int NC=0;
+
+        int NC = 0;
         double zoomFactor = 1.0;
 
         public InterfazEdicion()
@@ -57,7 +56,7 @@ namespace PPPP
 
             InitializeComponent();
             LRegistro.Visible = false;
-            Metodos Metodos = new Metodos();   
+            Metodos Metodos = new Metodos();
             pnResoluciones.Visible = false;
             btnAplicar.Visible = false;
 
@@ -72,29 +71,31 @@ namespace PPPP
         private void VerificarRecorte()
         {
 
-            if (ImageContainer.ImagenRecortada != null)
+            // Limpiar cualquier control existente en el panel
+            pnPrevisualizacion.Controls.Clear();
+
+            Image imagen = ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal; // SI NO NADA EN ImageContainer, usa la ImagenGlobal
+
+            if (imagen == null)
             {
-                // Limpiar cualquier control existente en el panel
-                pnPrevisualizacion.Controls.Clear();
-
-                // Crear un nuevo PictureBox para la imagen recortada
-                PictureBox Imagen = new PictureBox
-                {
-                    Size = pnPrevisualizacion.Size, // Tamaño de la imagen dentro del panel
-                    SizeMode = PictureBoxSizeMode.StretchImage, // Escala la imagen para ajustarse al PictureBox
-                    Image = ImageContainer.ImagenRecortada // Asigna la imagen recortada
-                };
-
-                // Agregar el PictureBox al panel
-                pnPrevisualizacion.Controls.Add(Imagen);
-
-                // Resetear la imagen recortada después de usarla
-                //ImageContainer.ImagenRecortada = null;
-                AuxRecortar = 10;
-                TPHoja(1);
+                //MessageBox.Show("No se encontró ninguna imagen para mostrar.");
+                return;
             }
-        }
 
+            // Crear un nuevo PictureBox para la imagen
+            PictureBox imagenPictureBox = new PictureBox
+            {
+                Size = pnPrevisualizacion.Size, // Tamaño de la imagen dentro del panel
+                SizeMode = PictureBoxSizeMode.StretchImage, // Escala la imagen para ajustarse al PictureBox
+                Image = imagen // Asigna la imagen recortada o la imagen global si no hay recorte
+            };
+
+            // Agregar el PictureBox al panel
+            pnPrevisualizacion.Controls.Add(imagenPictureBox);
+            AuxRecortar = 10;
+            TPHoja(1);
+
+        }
 
         private void AbrirImagen()
         {
@@ -117,6 +118,10 @@ namespace PPPP
                 //pbPrueba.Cursor = Cursors.Cross;
 
                 AuxRecortar = 5;
+                Globales.RutaImagen = FName;
+                Globales.ImagenGlobal = System.Drawing.Image.FromFile(FName);
+                imagenARecortar = Globales.ImagenGlobal;
+
             }
             catch
             {
@@ -229,7 +234,7 @@ namespace PPPP
             for (int i = 0; i < nC; i++)
             {
                 // Usar la imagen recortada si está disponible, de lo contrario usar la imagen original
-                Image imagenAUsar = imagenRecortada ?? Imagen.Image;
+                Image imagenAUsar = ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal;    // MODIFICADO 
 
                 Size tamanoImagen = new Size((int)(imagenAUsar.Width * zoomFactor), (int)(imagenAUsar.Height * zoomFactor));
                 Rectangle mejorEspacio = Rectangle.Empty;
@@ -393,6 +398,7 @@ namespace PPPP
             if (AuxRecortar == 0)//REC
             { //REC
                 AbrirImagen(); // SELECCIONAR IMAGEN AL ABRIR LA VENTANA
+                //VerificarRecorte();
             }//REC
         }
 
@@ -515,6 +521,9 @@ namespace PPPP
 
         }
 
+
+
+
         private void in4x6(object sender, EventArgs e)
         {
             pnResoluciones.Visible = false;
@@ -525,7 +534,7 @@ namespace PPPP
             inY = 6;
 
             // Usar la imagen recortada si está disponible
-            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal;
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
             // Mostrar la imagen redimensionada en el PictureBox
@@ -549,7 +558,7 @@ namespace PPPP
             inY = 2;
 
             // Usar la imagen recortada si está disponible
-            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal;
 
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
@@ -881,7 +890,7 @@ namespace PPPP
             inY = 7;
 
             // Usar la imagen recortada si está disponible
-            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal;
 
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
@@ -890,11 +899,12 @@ namespace PPPP
             Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
             Imagen.Size = resizedImage.Size;
             Imagen.Image = resizedImage;
-
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
 
         }
+
+
 
         private void i4x6_Click(object sender, EventArgs e)
         {
@@ -906,7 +916,7 @@ namespace PPPP
             inY = 6;
 
             // Usar la imagen recortada si está disponible
-            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal;
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);
             // Mostrar la imagen redimensionada en el PictureBox
@@ -930,7 +940,7 @@ namespace PPPP
             inY = 2;
 
             // Usar la imagen recortada si está disponible
-            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Image.FromFile(openFileDialog1.FileName);
+            Image imagenAUsar = ImageContainer.ImagenRecortada ?? Globales.ImagenGlobal;
 
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(imagenAUsar, inX * 300, inY * 300);

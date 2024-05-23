@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Globales.cs" />
     <Compile Include="PosicionOcupada.cs" />
     <Compile Include="InterfazPrincipal.cs">
       <SubType>Form</SubType>
