@@ -48,21 +48,21 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Tabloide = new System.Windows.Forms.Panel();
             this.A2 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.A4 = new System.Windows.Forms.Panel();
             this.Oficio = new System.Windows.Forms.Panel();
             this.Carta = new System.Windows.Forms.Panel();
-            this.Tabloide = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.Tabloide.SuspendLayout();
             this.A2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.A4.SuspendLayout();
             this.Oficio.SuspendLayout();
             this.Carta.SuspendLayout();
-            this.Tabloide.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -238,6 +238,20 @@
             this.panel1.TabIndex = 21;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // Tabloide
+            // 
+            this.Tabloide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Tabloide.BackgroundImage")));
+            this.Tabloide.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Tabloide.Controls.Add(this.label11);
+            this.Tabloide.Controls.Add(this.label9);
+            this.Tabloide.Location = new System.Drawing.Point(841, 357);
+            this.Tabloide.Name = "Tabloide";
+            this.Tabloide.Size = new System.Drawing.Size(200, 200);
+            this.Tabloide.TabIndex = 25;
+            this.Tabloide.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDoubleClick);
+            this.Tabloide.MouseEnter += new System.EventHandler(this.Tabloide_MouseEnter);
+            this.Tabloide.MouseLeave += new System.EventHandler(this.Tabloide_MouseLeave);
+            // 
             // A2
             // 
             this.A2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("A2.BackgroundImage")));
@@ -248,7 +262,7 @@
             this.A2.Name = "A2";
             this.A2.Size = new System.Drawing.Size(200, 200);
             this.A2.TabIndex = 24;
-            this.A2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.A2_MouseClick);
+            this.A2.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.A2_MouseClick);
             this.A2.MouseEnter += new System.EventHandler(this.A2_MouseEnter);
             this.A2.MouseLeave += new System.EventHandler(this.A2_MouseLeave);
             // 
@@ -317,20 +331,6 @@
             this.Carta.MouseEnter += new System.EventHandler(this.Carta_MouseEnter);
             this.Carta.MouseLeave += new System.EventHandler(this.Carta_MouseLeave);
             // 
-            // Tabloide
-            // 
-            this.Tabloide.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Tabloide.BackgroundImage")));
-            this.Tabloide.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Tabloide.Controls.Add(this.label11);
-            this.Tabloide.Controls.Add(this.label9);
-            this.Tabloide.Location = new System.Drawing.Point(841, 357);
-            this.Tabloide.Name = "Tabloide";
-            this.Tabloide.Size = new System.Drawing.Size(200, 200);
-            this.Tabloide.TabIndex = 25;
-            this.Tabloide.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDoubleClick);
-            this.Tabloide.MouseEnter += new System.EventHandler(this.Tabloide_MouseEnter);
-            this.Tabloide.MouseLeave += new System.EventHandler(this.Tabloide_MouseLeave);
-            // 
             // InterfazPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,6 +347,8 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.Tabloide.ResumeLayout(false);
+            this.Tabloide.PerformLayout();
             this.A2.ResumeLayout(false);
             this.A2.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -357,8 +359,6 @@
             this.Oficio.PerformLayout();
             this.Carta.ResumeLayout(false);
             this.Carta.PerformLayout();
-            this.Tabloide.ResumeLayout(false);
-            this.Tabloide.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

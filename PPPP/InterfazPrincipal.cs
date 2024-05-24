@@ -40,18 +40,6 @@ namespace PPPP
 
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            // Mostrar el nuevo formulario
-            TipoH = 1;
-            
-            InterfazEdicion interfazEdicion = new InterfazEdicion();
-            interfazEdicion.TPHoja(TipoH);
-            interfazEdicion.Show();
-            
-            this.Visible=false;
-            
-        }
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -98,8 +86,9 @@ namespace PPPP
             TipoH = 1;
             // Mostrar el nuevo formulario
 
+            
+            Globales.TamañoHoja = Metodos.TPHoja(1);
             InterfazEdicion interfazEdicion = new InterfazEdicion();
-            interfazEdicion.TPHoja(TipoH);
             interfazEdicion.Show();
 
             this.Visible = false;
@@ -110,9 +99,9 @@ namespace PPPP
             //Oficio
             TipoH = 2;
             // Mostrar el nuevo formulario
-
+            Globales.TamañoHoja = Metodos.TPHoja(2);
             InterfazEdicion interfazEdicion = new InterfazEdicion();
-            interfazEdicion.TPHoja(TipoH);
+            
             interfazEdicion.Show();
 
             this.Visible = false;
@@ -122,8 +111,9 @@ namespace PPPP
         {
             //A4
             TipoH = 3;
+            Globales.TamañoHoja = Metodos.TPHoja(3);
             InterfazEdicion interfazEdicion = new InterfazEdicion();
-            interfazEdicion.TPHoja(TipoH);
+            
             interfazEdicion.Show();
             this.Visible = false;
 
@@ -135,9 +125,8 @@ namespace PPPP
             //A3
             TipoH = 4;
             // Mostrar el nuevo formulario
-
+            Globales.TamañoHoja = Metodos.TPHoja(4);
             InterfazEdicion interfazEdicion = new InterfazEdicion();
-            interfazEdicion.TPHoja(TipoH);
             interfazEdicion.Show();
 
             this.Visible = false;
@@ -148,8 +137,9 @@ namespace PPPP
         {
             //A2
             TipoH = 5;
+            Globales.TamañoHoja = Metodos.TPHoja(5);
             InterfazEdicion interfazEdicion = new InterfazEdicion();
-            interfazEdicion.TPHoja(TipoH);
+            
             interfazEdicion.Show();
             this.Visible = false;
         }
@@ -158,11 +148,12 @@ namespace PPPP
         private void panel3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //A2
-            //TipoH = 5;
-            //InterfazEdicion interfazEdicion = new InterfazEdicion();
-            //interfazEdicion.TPHoja(TipoH);
-            //interfazEdicion.Show();
-            //this.Visible = false;
+            TipoH = 6;
+            Globales.TamañoHoja = Metodos.TPHoja(5);
+            InterfazEdicion interfazEdicion = new InterfazEdicion();
+
+            interfazEdicion.Show();
+            this.Visible = false;
         }
 
         private void Carta_MouseEnter(object sender, EventArgs e)

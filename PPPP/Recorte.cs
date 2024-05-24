@@ -25,16 +25,15 @@ namespace PPPP
         Rectangle rectCropArea = new Rectangle();
         Task timeout;
         string fn = "";
-        public Image imagenARecortar;
+        
+       
 
 
 
-
-        public Recorte(Image imagen)
+        public Recorte()
         {
             //this.WindowState = FormWindowState.Maximized;
             InitializeComponent();
-            this.imagenARecortar = imagen;
             MostrarImagen();
         }
 
@@ -44,10 +43,6 @@ namespace PPPP
             if (ImageContainer.ImagenRecortada != null)
             {
                 pbRecortar2.Image = ImageContainer.ImagenRecortada;
-            }
-            else if (Globales.ImagenGlobal != null)
-            {
-                pbRecortar2.Image = Globales.ImagenGlobal;
             }
             else
             {
@@ -140,7 +135,7 @@ namespace PPPP
 
         private void Recortar_Click(object sender, EventArgs e)
         {
-
+            Globales.AlertaRecorte = 1;
             try
             {
                 // Crea un nuevo Bitmap para la imagen recortada
