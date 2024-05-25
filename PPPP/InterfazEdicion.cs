@@ -58,7 +58,7 @@ namespace PPPP
             
             
             //VerificarRecorte();
-            Globales.Hoja.Tag = Globales.TamañoHoja; // Almacenar el tamaño original de la imagen en el Tag del PictureBox
+            
             RecuperaInfo();
             this.PanelPre.Controls.Add(Globales.Hoja);
            
@@ -67,7 +67,14 @@ namespace PPPP
 
         private void InicializaListBox()
         {
-            // Configurar el ListBox
+            //desactivo Variables Principales
+            NCopias.Enabled = false;
+            Resolucion.Enabled = false;
+            Recortar.Enabled = false;
+
+
+
+
             Globales.Registro.Location = new Point(16, 408); // Establecer la ubicación
             Globales.Registro.Size = new Size(225, 238);    // Establecer el tamaño
             panel1.Controls.Add(Globales.Registro);
@@ -75,11 +82,10 @@ namespace PPPP
 
         private void RecuperaInfo()
         {
-            LeerRegistro();
+            if (Globales.AlertaRecorte == true)
+            {
 
-            if (Globales.AlertaRecorte == true) {
 
-                Globales.AlertaRecorte = false;
                 NCopias.Value = 0;
                 NC = (int)NCopias.Value;
                 Globales.inX = 0;
@@ -92,33 +98,38 @@ namespace PPPP
                 LeerRegistro();
 
             }
-            
+            else {
+                Globales.Hoja.Tag = Globales.TamañoHoja; // Almacenar el tamaño original de la imagen en el Tag del PictureBox
 
+            }
+
+            LeerRegistro();
             //  VerificarRecorte();
         }
 
-    
 
-    /*    private void VerificarRecorte()
-        {
 
-            // Limpiar cualquier control existente en el panel
-            pnPrevisualizacion.Controls.Clear();
-
-            Imagen.Image = ImageContainer.ImagenRecortada ?? Imagen.Image ; // SI NO NADA EN ImageContainer, usa la ImagenGlobal
-
-            if (Imagen.Image == null)
+        /*    private void VerificarRecorte()
             {
-                MessageBox.Show("No se encontró ninguna imagen para mostrar.");
-                
-            }
 
-        }
-      */
+                // Limpiar cualquier control existente en el panel
+                pnPrevisualizacion.Controls.Clear();
+
+                Imagen.Image = ImageContainer.ImagenRecortada ?? Imagen.Image ; // SI NO NADA EN ImageContainer, usa la ImagenGlobal
+
+                if (Imagen.Image == null)
+                {
+                    MessageBox.Show("No se encontró ninguna imagen para mostrar.");
+
+                }
+
+            }
+          */
         private void AbrirImagen()
         {
             try
             {
+                
                 NCopias.Value = 0;
                 NC = (int)NCopias.Value;
                 Globales.inX = 0;
@@ -133,6 +144,16 @@ namespace PPPP
                 
                 Globales.ImagenGlobal = System.Drawing.Image.FromFile(Globales.RutaImagen);
                 Globales.ImagenGlobalCP = System.Drawing.Image.FromFile(Globales.RutaImagen);
+                if (Globales.RutaImagen != null)
+                {
+                    NCopias.Enabled = true;
+                    Resolucion.Enabled = true;
+                    Recortar.Enabled = true;
+                }
+                else {
+
+                    MessageBox.Show("Ingresa Una Imagen");
+                }
 
                 // Configurar el cursor para el PictureBox de recorte
             }
@@ -496,8 +517,14 @@ namespace PPPP
 
         private void Resolucion_Click(object sender, EventArgs e)
         {
+            if (Globales.RutaImagen!=null)
+            {
+                pnResoluciones.Visible = !pnResoluciones.Visible;
+            }
+            else {
+                MessageBox.Show("Seleciona Una IMG Primero");
+            }
 
-            pnResoluciones.Visible = !pnResoluciones.Visible;
             
         }
 
@@ -519,7 +546,7 @@ namespace PPPP
                     if (!string.IsNullOrEmpty(Globales.RutaImagen))
                     {
                        // LRegistro.Items.Add(openFileDialog1.FileName + ',' + inX.ToString() + ',' + inY.ToString() + ',' + NC);
-                        Globales.Registro.Items.Add( Globales.RutaImagen + ',' + Globales.inX.ToString() + ',' + Globales.inY.ToString() + ',' + NC);
+                        Globales.Registro.Items.Add(Globales.RutaImagen + ',' + Globales.inX.ToString() + ',' + Globales.inY.ToString() + ',' + NC);
                         LeerRegistro();
                     }
                     else
