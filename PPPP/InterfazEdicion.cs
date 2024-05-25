@@ -112,10 +112,15 @@ namespace PPPP
             // Limpiar cualquier control existente en el panel
             //pnPrevisualizacion.Controls.Clear();
             Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
-            Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
-            Imagen.Image = ImageContainer.ImagenRecortada ??Globales.ImagenGlobalCP; // SI NO NADA EN ImageContainer, usa la ImagenGlobal
 
-                pnPrevisualizacion.Controls.Add(Imagen);
+            //Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
+            
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+
+            Imagen.Image = ImageContainer.ImagenRecortada ??Globales.ImagenGlobalCP; // SI NO NADA EN ImageContainer, usa la ImagenGlobal
+            pnPrevisualizacion.Controls.Add(Imagen);
             if (Imagen.Image == null)
                 {
                     //MessageBox.Show("No se encontró ninguna imagen para mostrar.");
@@ -138,11 +143,21 @@ namespace PPPP
                 
                 Globales.ImagenGlobalCP = System.Drawing.Image.FromFile(Globales.RutaImagen);
 
+
+                pnPrevisualizacion.BackColor = Color.Gray;
+                Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
+                Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+                Imagen.Dock = DockStyle.Fill;
+                Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
+                pnPrevisualizacion.Controls.Add(Imagen);
+
+
+                /*
                 Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
                 Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
                 Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
                 pnPrevisualizacion.Controls.Add(Imagen);// Agrega el PictureBox al panel
-                
+                */
                 
                 if (Globales.RutaImagen != null)
                 {
@@ -616,13 +631,26 @@ namespace PPPP
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
 
+
+
+
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = resizedImage;
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
+
+
             // Mostrar la imagen redimensionada en el PictureBox
+            /*
             Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
             Imagen.Size = resizedImage.Size;
             Imagen.Image = resizedImage;
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
-
+            */
         }
 
 
@@ -640,14 +668,24 @@ namespace PPPP
            
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
+
+
+
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = resizedImage;
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
+
+            /*
             // Mostrar la imagen redimensionada en el PictureBox
             Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
             Imagen.Size = resizedImage.Size;
             Imagen.Image = resizedImage;
-
-
-            pnPrevisualizacion.Controls.Add(Imagen);
-            pnResoluciones.Visible = false;
+             pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;*/
         }
 
         private void infantil_Click(object sender, EventArgs e)
@@ -666,10 +704,11 @@ namespace PPPP
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
 
             // Mostrar la imagen redimensionada en el PictureBox
-            Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
-            Imagen.Size = resizedImage.Size;
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
             Imagen.Image = resizedImage;
-
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
 
@@ -711,6 +750,16 @@ namespace PPPP
                     return;
             }
 
+
+            /*
+            panelPre.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = resizedImage;
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
+            */
             Hoja = new PictureBox();
             Hoja.Left = 50;
             Hoja.BackColor = Color.White;
@@ -719,7 +768,7 @@ namespace PPPP
             Hoja.SizeMode = PictureBoxSizeMode.Zoom; // Escalar la imagen para ajustarse al PictureBox
             PanelPre.Controls.Add(Hoja);
         }
-
+ 
 
 
     }
