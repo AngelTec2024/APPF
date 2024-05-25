@@ -202,5 +202,12 @@ namespace PPPP
         {
 
         }
+
+        private void rjButton1_Click(object sender, EventArgs e)
+        {
+            Globales.RutaImagen = Globales.RutaImagenCP;
+            ImageContainer.ImagenRecortada = Globales.ImagenGlobalCP;
+
+        }
     }
 }

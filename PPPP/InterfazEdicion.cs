@@ -715,7 +715,7 @@ namespace PPPP
         }
 
 
-        public void  TPHoja()
+        public void TPHoja()
         {
             Size tamañoHoja;
             switch (Globales.tipoH)
@@ -732,7 +732,6 @@ namespace PPPP
                     tamañoHoja = new Size(2490, 3510); // Tamaño en píxeles (ancho x alto)
                     break;
 
-                // ------------------- 01/05/24 -----------------------------------------------
                 case 4://A3
                     tamañoHoja = new Size(3510, 4950);
                     break;
@@ -750,23 +749,61 @@ namespace PPPP
                     return;
             }
 
+            /*PanelPre.BackColor = Color.Gray;
+            Hoja = new PictureBox
+            {
+                BackColor = Color.White,
+                SizeMode = PictureBoxSizeMode.Zoom // Ajustar la imagen manteniendo la proporción
+            };
 
-            /*
-            panelPre.BackColor = Color.Gray;
-            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
-            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
-            Imagen.Dock = DockStyle.Fill;
-            Imagen.Image = resizedImage;
-            pnPrevisualizacion.Controls.Add(Imagen);
-            pnResoluciones.Visible = false;
-            */
+            // Calcular las dimensiones del PictureBox para que se ajuste dentro del Panel manteniendo la proporción
+            Size panelSize = PanelPre.ClientSize;
+            float ratioHoja = (float)tamañoHoja.Width / tamañoHoja.Height;
+            float ratioPanel = (float)panelSize.Width / panelSize.Height;
+
+            if (ratioHoja > ratioPanel)
+            {
+                Hoja.Width = panelSize.Width;
+                Hoja.Height = (int)(panelSize.Width / ratioHoja);
+            }
+            else
+            {
+                Hoja.Height = panelSize.Height;
+                Hoja.Width = (int)(panelSize.Height * ratioHoja);
+            }
+
+            // Centrando el PictureBox dentro del Panel
+            Hoja.Location = new Point(
+                (panelSize.Width - Hoja.Width) / 2,
+                (panelSize.Height - Hoja.Height) / 2
+            );
+
+            // Añadir el PictureBox grande (Hoja) al Panel
+            PanelPre.Controls.Clear(); // Limpiar controles previos si existen
+            PanelPre.Controls.Add(Hoja);
+            PanelPre.BackColor = Color.Gray;
+        
+        //-------------
+        */
+
+
+
+
+
+       
+
+            
+            // funciona con scroll
             Hoja = new PictureBox();
+
             Hoja.Left = 50;
             Hoja.BackColor = Color.White;
             Hoja.Top = 50;
             Hoja.Size = tamañoHoja; // Tamaño del PictureBox igual al tamaño de la hoja
             Hoja.SizeMode = PictureBoxSizeMode.Zoom; // Escalar la imagen para ajustarse al PictureBox
+
             PanelPre.Controls.Add(Hoja);
+            
         }
  
 
