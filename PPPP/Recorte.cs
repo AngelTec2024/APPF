@@ -41,13 +41,12 @@ namespace PPPP
         {
             // Mostrar la imagen recortada si existe, de lo contrario mostrar la imagen global
 
-            if (Globales.ImagenGlobal != null)
+            if (Globales.ImagenGlobalCP != null)
             {
-                pbRecortar2.Image = Globales.ImagenGlobal;
+                pbRecortar2.Image = Globales.ImagenGlobalCP;
             }
             else
             {
-
                 MessageBox.Show("No hay imagen disponible para mostrar.");
                 return;
             }
@@ -137,7 +136,7 @@ namespace PPPP
 
         private void Recortar_Click(object sender, EventArgs e)
         {
-            Globales.AlertaRecorte = 1;
+            Globales.AlertaRecorte = true;
             try
             {
                 // Crea un nuevo Bitmap para la imagen recortada
@@ -173,7 +172,7 @@ namespace PPPP
                 // Guarda la imagen recortada en el directorio especificado
                 recortadaBitmap.Save(rutaCompleta);
 
-                ImageContainer.RutaRecorte = rutaCompleta;
+                Globales.RutaImagen = rutaCompleta;
 
 
 

@@ -149,7 +149,7 @@ namespace PPPP
         {
             //A2
             TipoH = 6;
-            Globales.TamañoHoja = Metodos.TPHoja(5);
+            Globales.TamañoHoja = Metodos.TPHoja(6);
             InterfazEdicion interfazEdicion = new InterfazEdicion();
 
             interfazEdicion.Show();

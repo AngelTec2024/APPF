@@ -14,12 +14,13 @@ namespace PPPP
         public static class Globales
         {
         public static string RutaImagen { get; set; } // ruta
-        public static string RutaImagenRecortada { get; set; } // ruta
+        public static string RutaImagenCP { get; set; } // ruta
+        public static Image ImagenGlobalCP { get; set; } // imagen
         public static Image ImagenGlobal { get; set; } // imagen
 
         public static ListBox Registro { get; set; } = new ListBox();
 
-        public static int AlertaRecorte { get; set; }
+        public static Boolean AlertaRecorte { get; set; }
 
         public static int inX { get; set; } 
         public static int inY  { get; set; }

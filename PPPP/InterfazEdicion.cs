@@ -20,9 +20,7 @@ namespace PPPP
 
         private int maxAlturaFila = 0; // Declaración de la variable maxAlturaFila
         private List<Rectangle> posicionesOcupadas = new List<Rectangle>();
-
-
-
+        
         // RECORTAR
         //public Image imagenARecortar;
         private bool recortarActivo = false;
@@ -77,17 +75,20 @@ namespace PPPP
 
         private void RecuperaInfo()
         {
-
             LeerRegistro();
-            if (Globales.AlertaRecorte == 1) {
 
-                Imagen.Image = System.Drawing.Image.FromFile(ImageContainer.RutaRecorte) ?? System.Drawing.Image.FromFile(Globales.RutaImagen);
+            if (Globales.AlertaRecorte == true) {
+
+                Globales.AlertaRecorte = false;
+                NCopias.Value = 0;
+                NC = (int)NCopias.Value;
+                Globales.inX = 0;
+                Globales.inY = 0;
+
+                Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen);
                 Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
                 Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
                 pnPrevisualizacion.Controls.Add(Imagen);// Agrega el PictureBox al panel
-
-                NCopias.Value = 0;
-                NC = (int)NCopias.Value;
                 LeerRegistro();
 
             }
@@ -120,16 +121,22 @@ namespace PPPP
             {
                 NCopias.Value = 0;
                 NC = (int)NCopias.Value;
+                Globales.inX = 0;
+                Globales.inY = 0;
                 openFileDialog1.ShowDialog();
                 Globales.RutaImagen = openFileDialog1.FileName;
+                Globales.RutaImagenCP = openFileDialog1.FileName;
                 Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
                 Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
                 Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
                 pnPrevisualizacion.Controls.Add(Imagen);// Agrega el PictureBox al panel
                 
                 Globales.ImagenGlobal = System.Drawing.Image.FromFile(Globales.RutaImagen);
+                Globales.ImagenGlobalCP = System.Drawing.Image.FromFile(Globales.RutaImagen);
+
                 // Configurar el cursor para el PictureBox de recorte
-                  }catch{}}
+            }
+            catch{}}
 
 
         /*
@@ -210,8 +217,7 @@ namespace PPPP
 
         // Campo de clase para almacenar las posiciones ocupadas
        
-        private void AgrImgHoj(int nC, double zoomFactor,Image Imagen
-                                                         )
+        private void AgrImgHoj(int nC, double zoomFactor,Image Imagen)
         {
             int hojaAncho = Globales.Hoja.Width;
             int hojaAlto = Globales.Hoja.Height;
