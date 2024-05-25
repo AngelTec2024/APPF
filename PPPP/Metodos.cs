@@ -79,6 +79,8 @@ namespace PPPP
         public static class ImageContainer
         {
             public static Image ImagenRecortada { get; set; }
+            public static String RutaRecorte { get; set; }
+
         }
 
 

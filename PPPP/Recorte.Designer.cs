@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.pbRecortar2 = new System.Windows.Forms.PictureBox();
-            this.btnRecortar = new System.Windows.Forms.Button();
-            this.btnRegresar = new System.Windows.Forms.Button();
             this.Recortar = new PPPP.Resources.RJButton();
             this.Aceptar = new PPPP.Resources.RJButton();
+            this.rjButton1 = new PPPP.Resources.RJButton();
             ((System.ComponentModel.ISupportInitialize)(this.pbRecortar2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,26 +46,6 @@
             this.pbRecortar2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pbRecortar2_MouseDown);
             this.pbRecortar2.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pbRecortar2_MouseUp);
             // 
-            // btnRecortar
-            // 
-            this.btnRecortar.Location = new System.Drawing.Point(254, 46);
-            this.btnRecortar.Name = "btnRecortar";
-            this.btnRecortar.Size = new System.Drawing.Size(75, 23);
-            this.btnRecortar.TabIndex = 1;
-            this.btnRecortar.Text = "button1";
-            this.btnRecortar.UseVisualStyleBackColor = true;
-            this.btnRecortar.Click += new System.EventHandler(this.btnRecortar_Click);
-            // 
-            // btnRegresar
-            // 
-            this.btnRegresar.Location = new System.Drawing.Point(263, 87);
-            this.btnRegresar.Name = "btnRegresar";
-            this.btnRegresar.Size = new System.Drawing.Size(75, 23);
-            this.btnRegresar.TabIndex = 2;
-            this.btnRegresar.Text = "button2";
-            this.btnRegresar.UseVisualStyleBackColor = true;
-            this.btnRegresar.Click += new System.EventHandler(this.btnRegresar_Click);
-            // 
             // Recortar
             // 
             this.Recortar.BackColor = System.Drawing.Color.Transparent;
@@ -77,7 +56,7 @@
             this.Recortar.FlatAppearance.BorderSize = 0;
             this.Recortar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Recortar.ForeColor = System.Drawing.Color.PaleVioletRed;
-            this.Recortar.Location = new System.Drawing.Point(25, 46);
+            this.Recortar.Location = new System.Drawing.Point(12, 122);
             this.Recortar.Name = "Recortar";
             this.Recortar.Size = new System.Drawing.Size(150, 40);
             this.Recortar.TabIndex = 3;
@@ -96,7 +75,7 @@
             this.Aceptar.FlatAppearance.BorderSize = 0;
             this.Aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Aceptar.ForeColor = System.Drawing.Color.PaleVioletRed;
-            this.Aceptar.Location = new System.Drawing.Point(25, 111);
+            this.Aceptar.Location = new System.Drawing.Point(12, 207);
             this.Aceptar.Name = "Aceptar";
             this.Aceptar.Size = new System.Drawing.Size(150, 40);
             this.Aceptar.TabIndex = 4;
@@ -105,16 +84,33 @@
             this.Aceptar.UseVisualStyleBackColor = false;
             this.Aceptar.Click += new System.EventHandler(this.Aceptar_Click);
             // 
+            // rjButton1
+            // 
+            this.rjButton1.BackColor = System.Drawing.Color.Transparent;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.Transparent;
+            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton1.BorderRadius = 10;
+            this.rjButton1.BorderSize = 2;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.ForeColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton1.Location = new System.Drawing.Point(12, 39);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(150, 40);
+            this.rjButton1.TabIndex = 5;
+            this.rjButton1.Text = "Desasher";
+            this.rjButton1.TextColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton1.UseVisualStyleBackColor = false;
+            // 
             // Recorte
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1101, 697);
+            this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.Aceptar);
             this.Controls.Add(this.Recortar);
-            this.Controls.Add(this.btnRegresar);
-            this.Controls.Add(this.btnRecortar);
             this.Controls.Add(this.pbRecortar2);
             this.Name = "Recorte";
             this.Text = "Recorte";
@@ -126,9 +122,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pbRecortar2;
-        private System.Windows.Forms.Button btnRecortar;
-        private System.Windows.Forms.Button btnRegresar;
         private Resources.RJButton Recortar;
         private Resources.RJButton Aceptar;
+        private Resources.RJButton rjButton1;
     }
 }

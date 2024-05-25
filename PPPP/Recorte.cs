@@ -40,12 +40,14 @@ namespace PPPP
         private void MostrarImagen()
         {
             // Mostrar la imagen recortada si existe, de lo contrario mostrar la imagen global
-            if (ImageContainer.ImagenRecortada != null)
+
+            if (Globales.ImagenGlobal != null)
             {
-                pbRecortar2.Image = ImageContainer.ImagenRecortada;
+                pbRecortar2.Image = Globales.ImagenGlobal;
             }
             else
             {
+
                 MessageBox.Show("No hay imagen disponible para mostrar.");
                 return;
             }
@@ -155,14 +157,9 @@ namespace PPPP
                 ImageContainer.ImagenRecortada = this.ImagenRecortada;
                 ImageContainer.ImagenRecortada = recortadaBitmap;
 
-                // Cerrar el formulario de recorte
-                //this.Close();
-
-
+               
                 // Define la ruta específica donde se guardará la imagen recortada
-                string directorioGuardado = @"C:\Users\ANGEL TEC\Downloads\X";
-                string nombreArchivo = "imagen_recortada.png"; // Puedes generar un nombre de archivo dinámicamente si lo deseas
-                string rutaCompleta = Path.Combine(directorioGuardado, nombreArchivo);
+                string directorioGuardado = @"C:\MiCarpetaDeImagenes"; // Cambia esto a la ruta deseada
 
                 // Asegúrate de que el directorio existe
                 if (!Directory.Exists(directorioGuardado))
@@ -170,10 +167,13 @@ namespace PPPP
                     Directory.CreateDirectory(directorioGuardado);
                 }
 
+                string nombreArchivo = $"cropped_image_{DateTime.Now:yyyyMMdd_HHmmssfff}.png";
+                string rutaCompleta = Path.Combine(directorioGuardado, nombreArchivo);
+
                 // Guarda la imagen recortada en el directorio especificado
                 recortadaBitmap.Save(rutaCompleta);
 
-                Globales.RutaImagen = rutaCompleta;
+                ImageContainer.RutaRecorte = rutaCompleta;
 
 
 
@@ -192,6 +192,7 @@ namespace PPPP
         {
             InterfazEdicion IE = new InterfazEdicion();
             IE.Show();
+
             //Recorte pnRecorte = new Recorte();
             //pnRecorte.Show();
             this.Visible = false;
