@@ -83,11 +83,11 @@ namespace PPPP
         {
 
             //Carta
-            TipoH = 1;
+            Globales.tipoH= 1;
             // Mostrar el nuevo formulario
 
             
-            Globales.TamañoHoja = Metodos.TPHoja(1);
+            
             InterfazEdicion interfazEdicion = new InterfazEdicion();
             interfazEdicion.Show();
 
@@ -97,9 +97,7 @@ namespace PPPP
         private void Oficio_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //Oficio
-            TipoH = 2;
-            // Mostrar el nuevo formulario
-            Globales.TamañoHoja = Metodos.TPHoja(2);
+            Globales.tipoH = 2;
             InterfazEdicion interfazEdicion = new InterfazEdicion();
             
             interfazEdicion.Show();
@@ -110,8 +108,7 @@ namespace PPPP
         private void A4_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //A4
-            TipoH = 3;
-            Globales.TamañoHoja = Metodos.TPHoja(3);
+            Globales.tipoH = 3;
             InterfazEdicion interfazEdicion = new InterfazEdicion();
             
             interfazEdicion.Show();
@@ -123,9 +120,7 @@ namespace PPPP
         private void panel2_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //A3
-            TipoH = 4;
-            // Mostrar el nuevo formulario
-            Globales.TamañoHoja = Metodos.TPHoja(4);
+            Globales.tipoH = 4;
             InterfazEdicion interfazEdicion = new InterfazEdicion();
             interfazEdicion.Show();
 
@@ -136,8 +131,7 @@ namespace PPPP
         private void A2_MouseClick(object sender, MouseEventArgs e)
         {
             //A2
-            TipoH = 5;
-            Globales.TamañoHoja = Metodos.TPHoja(5);
+            Globales.tipoH = 5;
             InterfazEdicion interfazEdicion = new InterfazEdicion();
             
             interfazEdicion.Show();
@@ -148,8 +142,7 @@ namespace PPPP
         private void panel3_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //A2
-            TipoH = 6;
-            Globales.TamañoHoja = Metodos.TPHoja(6);
+            Globales.tipoH = 6;
             InterfazEdicion interfazEdicion = new InterfazEdicion();
 
             interfazEdicion.Show();

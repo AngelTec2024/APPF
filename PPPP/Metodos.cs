@@ -13,7 +13,7 @@ namespace PPPP
 
 
         public void AddImageToPictureBox(string imagePath, PictureBox Img,int inX,int  inY)
-        {
+        {   
             // Cargar la imagen original
             Image originalImage = Image.FromFile(imagePath);
             // Redimensionar la imagen
@@ -29,7 +29,7 @@ namespace PPPP
             Bitmap resizedImage = new Bitmap(width, height);
             using (Graphics graphics = Graphics.FromImage(resizedImage))
             {
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                graphics.InterpolationMode = System.Drawing.Drawing2D   .InterpolationMode.HighQualityBicubic;
                 graphics.DrawImage(image, 0, 0, width, height);
             }
             return resizedImage;
@@ -86,50 +86,7 @@ namespace PPPP
 
 
 
-        public static Size TPHoja(int tipoH)
-        {
-            Size tamañoHoja;
-            switch (tipoH)
-            {
-                case 1: // Carta
-                    tamañoHoja = new Size(2550, 3300); // Tamaño en píxeles (ancho x alto)
-                    break;
-
-                case 2: // Oficio
-                    tamañoHoja = new Size(2550, 4200); // Tamaño en píxeles (ancho x alto)
-                    break;
-
-                case 3: // A4
-                    tamañoHoja = new Size(2490, 3510); // Tamaño en píxeles (ancho x alto)
-                    break;
-
-                // ------------------- 01/05/24 -----------------------------------------------
-                case 4://A3
-                    tamañoHoja = new Size(3510, 4950);
-                    break;
-
-                case 5://A2
-                    tamañoHoja = new Size(4950, 7020);
-                    break;
-
-                case 6:
-                    tamañoHoja = new Size(3300, 5100);
-                    break;
-
-
-                default:
-                    MessageBox.Show("Tipo de número no válido. Por favor, elija 1 para Carta o 2 para Oficio.");
-                    return new Size(2550, 3300);
-            }
-
-            Globales.Hoja = new PictureBox();
-            Globales.Hoja.Left = 50;
-            Globales.Hoja.BackColor = Color.White;
-            Globales.Hoja.Top = 50;
-            Globales.Hoja.Size = tamañoHoja; // Tamaño del PictureBox igual al tamaño de la hoja
-            Globales.Hoja.SizeMode = PictureBoxSizeMode.Zoom; // Escalar la imagen para ajustarse al PictureBox
-            return tamañoHoja;
-        }
+      
 
 
 

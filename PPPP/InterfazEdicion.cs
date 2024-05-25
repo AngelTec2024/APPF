@@ -17,19 +17,10 @@ namespace PPPP
     public partial class InterfazEdicion : Form
     {
         private int HojaOriginal1;
-
+        PictureBox Hoja;
         private int maxAlturaFila = 0; // Declaración de la variable maxAlturaFila
         private List<Rectangle> posicionesOcupadas = new List<Rectangle>();
         
-        // RECORTAR
-        //public Image imagenARecortar;
-        private bool recortarActivo = false;
-        int xDown = 0;
-        int yDown = 0;
-        int xUp = 0;
-        int yUp = 0;
-        Rectangle rectCropArea = new Rectangle();
-        Task timeout;
         
         int AuxRecortar = 0;
 
@@ -45,22 +36,34 @@ namespace PPPP
         PictureBox ImagenL = new PictureBox();
 
 
-        int NC = 0;
+        int NC = 0,inX=0,inY=0;
         double zoomFactor = 1.0;
 
         public InterfazEdicion()
         {
 
             InitializeComponent();
+            TPHoja();
+            VerificarRecorte();
             InicializaListBox();
+            LeerRegistro();
             Globales.Registro.Visible = false;;
             pnResoluciones.Visible = false;
             
+        /*    if (Globales.AlertaRecorte == true)  {
+                NCopias.Enabled = true;
+                Resolucion.Enabled = true;
+                Recortar.Enabled = true;
+                RecuperaInfo();
+              
+            } else {
+                NCopias.Enabled = false;
+                Resolucion.Enabled = false;
+                Recortar.Enabled = false;
+               
+            }
+          */  
             
-            //VerificarRecorte();
-            
-            RecuperaInfo();
-            this.PanelPre.Controls.Add(Globales.Hoja);
            
 
         }
@@ -68,63 +71,58 @@ namespace PPPP
         private void InicializaListBox()
         {
             //desactivo Variables Principales
-            NCopias.Enabled = false;
-            Resolucion.Enabled = false;
-            Recortar.Enabled = false;
-
-
-
-
+          
             Globales.Registro.Location = new Point(16, 408); // Establecer la ubicación
             Globales.Registro.Size = new Size(225, 238);    // Establecer el tamaño
             panel1.Controls.Add(Globales.Registro);
+         
+           
+
+
         }
 
-        private void RecuperaInfo()
+      /*  private void RecuperaInfo()
         {
-            if (Globales.AlertaRecorte == true)
-            {
 
-
-                NCopias.Value = 0;
-                NC = (int)NCopias.Value;
-                Globales.inX = 0;
-                Globales.inY = 0;
-
-                Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen);
-                Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
-                Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
-                pnPrevisualizacion.Controls.Add(Imagen);// Agrega el PictureBox al panel
-                LeerRegistro();
-
-            }
-            else {
-                Globales.Hoja.Tag = Globales.TamañoHoja; // Almacenar el tamaño original de la imagen en el Tag del PictureBox
-
-            }
-
+            PanelPre.Controls.Clear();
+            PanelPre.Controls.Add(Globales.Hoja);
+            LimpiarHoja();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 0;
+            inY = 0;
+            zoomFactor = 1;
             LeerRegistro();
+
+            Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen);
+            Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
+            pnPrevisualizacion.Controls.Add(Imagen); // Agrega el PictureBox al panel
+            
+            Globales.Hoja.Tag = Globales.TamañoHoja; // Almacenar el tamaño original de la imagen en el Tag del PictureBox
+            
             //  VerificarRecorte();
         }
+      */
 
 
-
-        /*    private void VerificarRecorte()
+            private void VerificarRecorte()
             {
 
-                // Limpiar cualquier control existente en el panel
-                pnPrevisualizacion.Controls.Clear();
+            // Limpiar cualquier control existente en el panel
+            //pnPrevisualizacion.Controls.Clear();
+            Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
+            Imagen.Image = ImageContainer.ImagenRecortada ??Globales.ImagenGlobalCP; // SI NO NADA EN ImageContainer, usa la ImagenGlobal
 
-                Imagen.Image = ImageContainer.ImagenRecortada ?? Imagen.Image ; // SI NO NADA EN ImageContainer, usa la ImagenGlobal
-
-                if (Imagen.Image == null)
+                pnPrevisualizacion.Controls.Add(Imagen);
+            if (Imagen.Image == null)
                 {
-                    MessageBox.Show("No se encontró ninguna imagen para mostrar.");
-
+                    //MessageBox.Show("No se encontró ninguna imagen para mostrar.");
                 }
 
             }
-          */
+        
         private void AbrirImagen()
         {
             try
@@ -132,18 +130,20 @@ namespace PPPP
                 
                 NCopias.Value = 0;
                 NC = (int)NCopias.Value;
-                Globales.inX = 0;
-                Globales.inY = 0;
+                inX = 0;
+                inY = 0;
                 openFileDialog1.ShowDialog();
                 Globales.RutaImagen = openFileDialog1.FileName;
                 Globales.RutaImagenCP = openFileDialog1.FileName;
+                
+                Globales.ImagenGlobalCP = System.Drawing.Image.FromFile(Globales.RutaImagen);
+
                 Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
                 Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
                 Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
                 pnPrevisualizacion.Controls.Add(Imagen);// Agrega el PictureBox al panel
                 
-                Globales.ImagenGlobal = System.Drawing.Image.FromFile(Globales.RutaImagen);
-                Globales.ImagenGlobalCP = System.Drawing.Image.FromFile(Globales.RutaImagen);
+                
                 if (Globales.RutaImagen != null)
                 {
                     NCopias.Enabled = true;
@@ -236,123 +236,126 @@ namespace PPPP
         }
 */
 
-        // Campo de clase para almacenar las posiciones ocupadas
-       
-        private void AgrImgHoj(int nC, double zoomFactor,Image Imagen)
-        {
-            int hojaAncho = Globales.Hoja.Width;
-            int hojaAlto = Globales.Hoja.Height;
+        // Version PreUlti
+        
+         private void AgrImgHoj(int nC, double zoomFactor,Image Imagen)
+         {
+             int hojaAncho =Hoja.Width;
+             int hojaAlto = Hoja.Height;
 
-            // Inicializar la lista de espacios libres con el espacio completo de la hoja si es la primera vez
-            List<Rectangle> espaciosLibres;
-            if (posicionesOcupadas.Count == 0)
-            {
-                espaciosLibres = new List<Rectangle>
-        {
-            new Rectangle(0, 0, hojaAncho, hojaAlto)
-        };
-            }
-            else
-            {
-                // Si ya hay posiciones ocupadas, calcular los espacios libres restantes
-                espaciosLibres = CalcularEspaciosLibres(hojaAncho, hojaAlto);
-            }
+             // Inicializar la lista de espacios libres con el espacio completo de la hoja si es la primera vez
+             List<Rectangle> espaciosLibres;
+             if (posicionesOcupadas.Count == 0)
+             {
+                 espaciosLibres = new List<Rectangle>
+         {
+             new Rectangle(0, 0, hojaAncho, hojaAlto)
+         };
+             }
+             else
+             {
+                 // Si ya hay posiciones ocupadas, calcular los espacios libres restantes
+                 espaciosLibres = CalcularEspaciosLibres(hojaAncho, hojaAlto);
+             }
 
-            for (int i = 0; i < nC; i++)
-            {
-                // Usar la imagen recortada si está disponible, de lo contrario usar la imagen original
-                //Image imagenAUsar = Imagen.Image;    // MODIFICADO 
+             for (int i = 0; i < nC; i++)
+             {
+                 // Usar la imagen recortada si está disponible, de lo contrario usar la imagen original
+                 //Image imagenAUsar = Imagen.Image;    // MODIFICADO 
 
-                Size tamanoImagen = new Size((int)(Imagen.Width * zoomFactor), (int)(Imagen.Height * zoomFactor));
-                Rectangle mejorEspacio = Rectangle.Empty;
-                int mejorIndice = -1;
+                 Size tamanoImagen = new Size((int)(Imagen.Width * zoomFactor), (int)(Imagen.Height * zoomFactor));
+                 Rectangle mejorEspacio = Rectangle.Empty;
+                 int mejorIndice = -1;
 
-                // Buscar el mejor espacio para la imagen
-                for (int j = 0; j < espaciosLibres.Count; j++)
-                {
-                    Rectangle espacio = espaciosLibres[j];
-                    if (tamanoImagen.Width <= espacio.Width && tamanoImagen.Height <= espacio.Height)
-                    {
-                        if (mejorEspacio == Rectangle.Empty || espacio.Width * espacio.Height < mejorEspacio.Width * mejorEspacio.Height)
-                        {
-                            mejorEspacio = espacio;
-                            mejorIndice = j;
-                        }
-                    }
-                }
+                 // Buscar el mejor espacio para la imagen
+                 for (int j = 0; j < espaciosLibres.Count; j++)
+                 {
+                     Rectangle espacio = espaciosLibres[j];
+                     if (tamanoImagen.Width <= espacio.Width && tamanoImagen.Height <= espacio.Height)
+                     {
+                         if (mejorEspacio == Rectangle.Empty || espacio.Width * espacio.Height < mejorEspacio.Width * mejorEspacio.Height)
+                         {
+                             mejorEspacio = espacio;
+                             mejorIndice = j;
+                         }
+                     }
+                 }
 
-                // Si no se encuentra un espacio adecuado, salir del bucle
-                if (mejorEspacio == Rectangle.Empty)
-                {
-                    MessageBox.Show("No hay suficiente espacio en la hoja para colocar todas las imágenes.");
-                    break;
-                }
+                 // Si no se encuentra un espacio adecuado, salir del bucle
+                 if (mejorEspacio == Rectangle.Empty)
+                 {
+                     MessageBox.Show("No hay suficiente espacio en la hoja para colocar todas las imágenes.");
+                     break;
+                 }
 
-                // Crear el PictureBox y ubicarlo en el mejor espacio encontrado
-                PictureBox pictureBox1 = new PictureBox
-                {
-                    Image = Imagen,
-                    Size = tamanoImagen,
-                    Location = new Point(mejorEspacio.X, mejorEspacio.Y),
-                    SizeMode = PictureBoxSizeMode.StretchImage
-                };
-                Globales.Hoja.Controls.Add(pictureBox1);
+                 // Crear el PictureBox y ubicarlo en el mejor espacio encontrado
+                 PictureBox pictureBox1 = new PictureBox
+                 {
+                     Image = Imagen,
+                     Size = tamanoImagen,
+                     Location = new Point(mejorEspacio.X, mejorEspacio.Y),
+                     SizeMode = PictureBoxSizeMode.StretchImage
+                 };
+                 Hoja.Controls.Add(pictureBox1);
 
-                // Actualizar la lista de posiciones ocupadas
-                Rectangle espacioUsado = new Rectangle(mejorEspacio.X, mejorEspacio.Y, tamanoImagen.Width, tamanoImagen.Height);
-                posicionesOcupadas.Add(espacioUsado);
+                 // Actualizar la lista de posiciones ocupadas
+                 Rectangle espacioUsado = new Rectangle(mejorEspacio.X, mejorEspacio.Y, tamanoImagen.Width, tamanoImagen.Height);
+                 posicionesOcupadas.Add(espacioUsado);
 
-                // Actualizar la lista de espacios libres
-                espaciosLibres.RemoveAt(mejorIndice);
-                // Agregar los nuevos espacios libres generados por el espacio ocupado
-                espaciosLibres.Add(new Rectangle(espacioUsado.Right, espacioUsado.Top, mejorEspacio.Width - espacioUsado.Width, espacioUsado.Height)); // Espacio a la derecha
-                espaciosLibres.Add(new Rectangle(espacioUsado.Left, espacioUsado.Bottom, espacioUsado.Width, mejorEspacio.Height - espacioUsado.Height)); // Espacio debajo
+                 // Actualizar la lista de espacios libres
+                 espaciosLibres.RemoveAt(mejorIndice);
+                 // Agregar los nuevos espacios libres generados por el espacio ocupado
+                 espaciosLibres.Add(new Rectangle(espacioUsado.Right, espacioUsado.Top, mejorEspacio.Width - espacioUsado.Width, espacioUsado.Height)); // Espacio a la derecha
+                 espaciosLibres.Add(new Rectangle(espacioUsado.Left, espacioUsado.Bottom, espacioUsado.Width, mejorEspacio.Height - espacioUsado.Height)); // Espacio debajo
 
-                // Eliminar espacios libres que tengan ancho o alto cero
-                espaciosLibres = espaciosLibres.Where(e => e.Width > 0 && e.Height > 0).ToList();
-            }
-        }
+                 // Eliminar espacios libres que tengan ancho o alto cero
+                 espaciosLibres = espaciosLibres.Where(e => e.Width > 0 && e.Height > 0).ToList();
+             }
+         }
 
-        public  List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto)
-        {
-            List<Rectangle> espaciosLibres = new List<Rectangle>
-    {
-        new Rectangle(0, 0, hojaAncho, hojaAlto)
-    };
+         public  List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto)
+         {
+             List<Rectangle> espaciosLibres = new List<Rectangle>
+     {
+         new Rectangle(0, 0, hojaAncho, hojaAlto)
+     };
 
-            foreach (var pos in posicionesOcupadas)
-            {
-                for (int i = espaciosLibres.Count - 1; i >= 0; i--)
-                {
-                    var espacio = espaciosLibres[i];
-                    if (pos.IntersectsWith(espacio))
-                    {
-                        espaciosLibres.RemoveAt(i);
-                        var interseccion = Rectangle.Intersect(pos, espacio);
-                        if (interseccion.Top > espacio.Top)
-                        {
-                            espaciosLibres.Add(new Rectangle(espacio.Left, espacio.Top, espacio.Width, interseccion.Top - espacio.Top));
-                        }
-                        if (interseccion.Bottom < espacio.Bottom)
-                        {
-                            espaciosLibres.Add(new Rectangle(espacio.Left, interseccion.Bottom, espacio.Width, espacio.Bottom - interseccion.Bottom));
-                        }
-                        if (interseccion.Left > espacio.Left)
-                        {
-                            espaciosLibres.Add(new Rectangle(espacio.Left, interseccion.Top, interseccion.Left - espacio.Left, interseccion.Height));
-                        }
-                        if (interseccion.Right < espacio.Right)
-                        {
-                            espaciosLibres.Add(new Rectangle(interseccion.Right, interseccion.Top, espacio.Right - interseccion.Right, interseccion.Height));
-                        }
-                    }
-                }
-            }
+             foreach (var pos in posicionesOcupadas)
+             {
+                 for (int i = espaciosLibres.Count - 1; i >= 0; i--)
+                 {
+                     var espacio = espaciosLibres[i];
+                     if (pos.IntersectsWith(espacio))
+                     {
+                         espaciosLibres.RemoveAt(i);
+                         var interseccion = Rectangle.Intersect(pos, espacio);
+                         if (interseccion.Top > espacio.Top)
+                         {
+                             espaciosLibres.Add(new Rectangle(espacio.Left, espacio.Top, espacio.Width, interseccion.Top - espacio.Top));
+                         }
+                         if (interseccion.Bottom < espacio.Bottom)
+                         {
+                             espaciosLibres.Add(new Rectangle(espacio.Left, interseccion.Bottom, espacio.Width, espacio.Bottom - interseccion.Bottom));
+                         }
+                         if (interseccion.Left > espacio.Left)
+                         {
+                             espaciosLibres.Add(new Rectangle(espacio.Left, interseccion.Top, interseccion.Left - espacio.Left, interseccion.Height));
+                         }
+                         if (interseccion.Right < espacio.Right)
+                         {
+                             espaciosLibres.Add(new Rectangle(interseccion.Right, interseccion.Top, espacio.Right - interseccion.Right, interseccion.Height));
+                         }
+                     }
+                 }
+             }
 
-            return espaciosLibres;
-        }
+             return espaciosLibres;
+         }
+
+         
 
 
+        
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -387,11 +390,11 @@ namespace PPPP
         }
         private void btnZoomIn_Click(object sender, EventArgs e)
         {
-             ZoomIn(    Globales.Hoja);
+             ZoomIn(Hoja);
         }
         private void btnZoomOut_Click(object sender, EventArgs e)
         {
-            ZoomOut(Globales.Hoja);
+            ZoomOut(Hoja);
 
         }
 
@@ -444,7 +447,7 @@ namespace PPPP
         public void LimpiarHoja()
         {
             // Remueve todas las imágenes de la hoja
-            Globales.Hoja.Controls.Clear();
+            Hoja.Controls.Clear();
             posicionesOcupadas.Clear();
 
         }
@@ -471,10 +474,10 @@ namespace PPPP
         {
 
             // Crear un bitmap del tamaño del PictureBox
-            Bitmap bmp = new Bitmap(Globales.Hoja.Width, Globales.Hoja.Height);
+            Bitmap bmp = new Bitmap(Hoja.Width, Hoja.Height);
 
             // Dibujar el contenido del PictureBox en el bitmap
-            Globales.Hoja.DrawToBitmap(bmp, new Rectangle(0, 0, Globales.Hoja.Width, Globales.Hoja.Height));
+            Hoja.DrawToBitmap(bmp, new Rectangle(0, 0, Hoja.Width, Hoja.Height));
             // Crear un cuadro de diálogo para guardar archivo
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Archivos de imagen (*.jpg)|*.jpg|Documentos PDF (*.pdf)|*.pdf|Todos los archivos (*.*)|*.*";
@@ -496,14 +499,23 @@ namespace PPPP
 
         private void Recortar_Click(object sender, EventArgs e)
         {
-            AuxRecortar = 100; //REC
-            Recorte recorteForm = new Recorte();  //REC
-            recorteForm.Show(); //REC
-            //Recorte pnRecorte = new Recorte();
-            //pnRecorte.Show();
-            this.Visible = false;
-            //recortarActivo = true;
-            //btnAplicar.Visible = true;
+
+            if (Imagen.Image != null)
+            {
+                AuxRecortar = 100; //REC
+                Recorte recorteForm = new Recorte();  //REC
+                recorteForm.Show(); //REC
+                                    //Recorte pnRecorte = new Recorte();
+                                    //pnRecorte.Show();
+                this.Visible = false;
+                //recortarActivo = true;
+                //btnAplicar.Visible = true;
+            }
+            else {
+
+                MessageBox.Show("favor de seleccionar Una Foto");
+            }
+
         }
 
         private void Regist_Click(object sender, EventArgs e)
@@ -517,7 +529,7 @@ namespace PPPP
 
         private void Resolucion_Click(object sender, EventArgs e)
         {
-            if (Globales.RutaImagen!=null)
+            if (Imagen.Image!=null)
             {
                 pnResoluciones.Visible = !pnResoluciones.Visible;
             }
@@ -540,13 +552,13 @@ namespace PPPP
             //Reglas Basicas Para Agregar Img A Registro
             if (NC > 0)
             {
-                if (Globales.inX != 0 && Globales.inY != 0)
+                if (inX != 0 && inY != 0)
                 {
 
                     if (!string.IsNullOrEmpty(Globales.RutaImagen))
                     {
                        // LRegistro.Items.Add(openFileDialog1.FileName + ',' + inX.ToString() + ',' + inY.ToString() + ',' + NC);
-                        Globales.Registro.Items.Add(Globales.RutaImagen + ',' + Globales.inX.ToString() + ',' + Globales.inY.ToString() + ',' + NC);
+                        Globales.Registro.Items.Add(Globales.RutaImagen + ',' + inX.ToString() + ',' + inY.ToString() + ',' + NC);
                         LeerRegistro();
                     }
                     else
@@ -595,14 +607,14 @@ namespace PPPP
             pnPrevisualizacion.Controls.Clear();
             NCopias.Value = 0;
             NC = (int)NCopias.Value;
-            Globales.inX = 5;
-            Globales.inY = 7;
+            inX = 5;
+            inY = 7;
 
             // Usar la imagen recortada si está disponible
 
             
             // Redimensionar la imagen
-            Image resizedImage = Metodo.ResizeImage(Imagen.Image, Globales.inX * 300, Globales.inY * 300);
+            Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
 
             // Mostrar la imagen redimensionada en el PictureBox
             Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -621,13 +633,13 @@ namespace PPPP
             pnPrevisualizacion.Controls.Clear();
             NCopias.Value = 0;
             NC = (int)NCopias.Value;
-            Globales.inX = 4;
-            Globales.inY = 6;
+            inX = 4;
+            inY = 6;
 
             // Usar la imagen recortada si está disponible
            
             // Redimensionar la imagen
-            Image resizedImage = Metodo.ResizeImage(Imagen.Image, Globales.inX * 300, Globales.inY * 300);
+            Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
             // Mostrar la imagen redimensionada en el PictureBox
             Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
             Imagen.Size = resizedImage.Size;
@@ -645,13 +657,13 @@ namespace PPPP
             pnPrevisualizacion.Controls.Clear();
             NCopias.Value = 0;
             NC = (int)NCopias.Value;
-            Globales.inX = 2;
-            Globales.inY = 2;
+            inX = 2;
+            inY = 2;
 
             // Usar la imagen recortada si está disponible
             
             // Redimensionar la imagen
-            Image resizedImage = Metodo.ResizeImage(Imagen.Image, Globales.inX * 300, Globales.inY * 300);
+            Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
 
             // Mostrar la imagen redimensionada en el PictureBox
             Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -663,16 +675,52 @@ namespace PPPP
 
         }
 
-        private void pbRecortar_MouseDown(object sender, MouseEventArgs e)
+
+        public void  TPHoja()
         {
-            if (recortarActivo)
+            Size tamañoHoja;
+            switch (Globales.tipoH)
             {
-                // Guarda las coordenadas del punto inicial del área de recorte
-                xDown = e.X;
-                yDown = e.Y;
+                case 1: // Carta
+                    tamañoHoja = new Size(2550, 3300); // Tamaño en píxeles (ancho x alto)
+                    break;
+
+                case 2: // Oficio
+                    tamañoHoja = new Size(2550, 4200); // Tamaño en píxeles (ancho x alto)
+                    break;
+
+                case 3: // A4
+                    tamañoHoja = new Size(2490, 3510); // Tamaño en píxeles (ancho x alto)
+                    break;
+
+                // ------------------- 01/05/24 -----------------------------------------------
+                case 4://A3
+                    tamañoHoja = new Size(3510, 4950);
+                    break;
+
+                case 5://A2
+                    tamañoHoja = new Size(4950, 7020);
+                    break;
+
+                case 6:
+                    tamañoHoja = new Size(3300, 5100);
+                    break;
+
+                default:
+                    MessageBox.Show("Tipo de número no válido. Por favor, elija 1 para Carta o 2 para Oficio.");
+                    return;
             }
+
+            Hoja = new PictureBox();
+            Hoja.Left = 50;
+            Hoja.BackColor = Color.White;
+            Hoja.Top = 50;
+            Hoja.Size = tamañoHoja; // Tamaño del PictureBox igual al tamaño de la hoja
+            Hoja.SizeMode = PictureBoxSizeMode.Zoom; // Escalar la imagen para ajustarse al PictureBox
+            PanelPre.Controls.Add(Hoja);
         }
 
-     
-        }
+
+
+    }
 }
