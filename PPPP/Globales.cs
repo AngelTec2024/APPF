@@ -35,6 +35,8 @@ namespace PPPP
      
         public static Size TamañoHoja { get; set; }
 
+        public static int AuxAgregarImagen { get; set; }
+
     }
 
 

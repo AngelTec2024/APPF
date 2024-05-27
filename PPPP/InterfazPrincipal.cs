@@ -43,7 +43,9 @@ namespace PPPP
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+                InterfazAyudaa InterfazAyuda = new InterfazAyudaa();
 
+                InterfazAyuda.Show();
         }
 
         private void backUpsToolStripMenuItem_Click(object sender, EventArgs e)

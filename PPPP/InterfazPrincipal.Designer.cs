@@ -73,7 +73,7 @@
             this.backUpsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1350, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1056, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -234,7 +234,7 @@
             this.panel1.Font = new System.Drawing.Font("Palatino Linotype", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1350, 729);
+            this.panel1.Size = new System.Drawing.Size(1056, 619);
             this.panel1.TabIndex = 21;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -244,7 +244,7 @@
             this.Tabloide.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Tabloide.Controls.Add(this.label11);
             this.Tabloide.Controls.Add(this.label9);
-            this.Tabloide.Location = new System.Drawing.Point(841, 357);
+            this.Tabloide.Location = new System.Drawing.Point(780, 374);
             this.Tabloide.Name = "Tabloide";
             this.Tabloide.Size = new System.Drawing.Size(200, 200);
             this.Tabloide.TabIndex = 25;
@@ -258,7 +258,7 @@
             this.A2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.A2.Controls.Add(this.label13);
             this.A2.Controls.Add(this.label12);
-            this.A2.Location = new System.Drawing.Point(509, 363);
+            this.A2.Location = new System.Drawing.Point(421, 374);
             this.A2.Name = "A2";
             this.A2.Size = new System.Drawing.Size(200, 200);
             this.A2.TabIndex = 24;
@@ -281,7 +281,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(161, 363);
+            this.panel2.Location = new System.Drawing.Point(71, 357);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 200);
             this.panel2.TabIndex = 23;
@@ -295,7 +295,7 @@
             this.A4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.A4.Controls.Add(this.label6);
             this.A4.Controls.Add(this.label3);
-            this.A4.Location = new System.Drawing.Point(886, 39);
+            this.A4.Location = new System.Drawing.Point(780, 52);
             this.A4.Name = "A4";
             this.A4.Size = new System.Drawing.Size(200, 200);
             this.A4.TabIndex = 22;
@@ -309,7 +309,7 @@
             this.Oficio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Oficio.Controls.Add(this.label1);
             this.Oficio.Controls.Add(this.label5);
-            this.Oficio.Location = new System.Drawing.Point(536, 39);
+            this.Oficio.Location = new System.Drawing.Point(421, 52);
             this.Oficio.Name = "Oficio";
             this.Oficio.Size = new System.Drawing.Size(200, 200);
             this.Oficio.TabIndex = 22;
@@ -323,7 +323,7 @@
             this.Carta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Carta.Controls.Add(this.label2);
             this.Carta.Controls.Add(this.label4);
-            this.Carta.Location = new System.Drawing.Point(161, 39);
+            this.Carta.Location = new System.Drawing.Point(71, 52);
             this.Carta.Name = "Carta";
             this.Carta.Size = new System.Drawing.Size(200, 200);
             this.Carta.TabIndex = 21;
@@ -335,14 +335,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(1056, 619);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "InterfazPrincipal";
-            this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Interfaz Principal";
             this.Load += new System.EventHandler(this.InterfazPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

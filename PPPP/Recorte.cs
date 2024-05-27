@@ -207,7 +207,10 @@ namespace PPPP
         {
             Globales.RutaImagen = Globales.RutaImagenCP;
             ImageContainer.ImagenRecortada = Globales.ImagenGlobalCP;
-
+            if (Globales.ImagenGlobalCP != null)
+            {
+                pbRecortar2.Image = Globales.ImagenGlobalCP;
+            }
         }
     }
 }

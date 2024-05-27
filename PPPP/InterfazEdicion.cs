@@ -50,6 +50,16 @@ namespace PPPP
             Globales.Registro.Visible = false;;
             pnResoluciones.Visible = false;
             
+            if(Globales.AuxAgregarImagen == 0 )
+            {
+                NCopias.Enabled = false;
+                Recortar.Enabled = false;
+                Resolucion.Enabled = false;
+                AgregarImg.Enabled = false;
+            }
+            
+
+
         /*    if (Globales.AlertaRecorte == true)  {
                 NCopias.Enabled = true;
                 Resolucion.Enabled = true;
@@ -164,6 +174,8 @@ namespace PPPP
                     NCopias.Enabled = true;
                     Resolucion.Enabled = true;
                     Recortar.Enabled = true;
+                 
+                    AgregarImg.Enabled = true;
                 }
                 else {
 
@@ -558,6 +570,7 @@ namespace PPPP
         private void Seleccionar_Click(object sender, EventArgs e)
         {
             AbrirImagen();
+            Globales.AuxAgregarImagen = 1;
         }
 
         private void AgregarImg_Click(object sender, EventArgs e)

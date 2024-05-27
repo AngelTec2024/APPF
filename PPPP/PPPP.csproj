@@ -61,7 +61,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InterfazAyudaa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InterfazAyudaa.Designer.cs">
+      <DependentUpon>InterfazAyudaa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Globales.cs" />
+    <Compile Include="InterfazAyuda.cs" />
     <Compile Include="PosicionOcupada.cs" />
     <Compile Include="InterfazPrincipal.cs">
       <SubType>Form</SubType>
@@ -87,6 +94,9 @@
     <Compile Include="Resources\RJButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <EmbeddedResource Include="InterfazAyudaa.resx">
+      <DependentUpon>InterfazAyudaa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InterfazEdicion.resx">
       <DependentUpon>InterfazEdicion.cs</DependentUpon>
     </EmbeddedResource>

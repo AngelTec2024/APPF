@@ -31,17 +31,15 @@
             this.pnPrevisualizacion = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnResoluciones = new System.Windows.Forms.Panel();
+            this.infantil = new PPPP.Resources.RJButton();
+            this.i4x6 = new PPPP.Resources.RJButton();
+            this.i5x7 = new PPPP.Resources.RJButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.NCopias = new System.Windows.Forms.NumericUpDown();
             this.PanelPre = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.Acercar = new System.Windows.Forms.Button();
-            this.Alejar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.infantil = new PPPP.Resources.RJButton();
-            this.i4x6 = new PPPP.Resources.RJButton();
-            this.i5x7 = new PPPP.Resources.RJButton();
             this.Seleccionar = new PPPP.Resources.RJButton();
             this.Regist = new PPPP.Resources.RJButton();
             this.Recortar = new PPPP.Resources.RJButton();
@@ -70,7 +68,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(62)))), ((int)(((byte)(59)))));
-            this.label1.Location = new System.Drawing.Point(11, 14);
+            this.label1.Location = new System.Drawing.Point(0, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(251, 29);
             this.label1.TabIndex = 3;
@@ -82,102 +80,10 @@
             this.pnResoluciones.Controls.Add(this.infantil);
             this.pnResoluciones.Controls.Add(this.i4x6);
             this.pnResoluciones.Controls.Add(this.i5x7);
-            this.pnResoluciones.Location = new System.Drawing.Point(155, 146);
+            this.pnResoluciones.Location = new System.Drawing.Point(153, 189);
             this.pnResoluciones.Name = "pnResoluciones";
-            this.pnResoluciones.Size = new System.Drawing.Size(96, 203);
+            this.pnResoluciones.Size = new System.Drawing.Size(96, 124);
             this.pnResoluciones.TabIndex = 4;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "\"Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp\"";
-            // 
-            // NCopias
-            // 
-            this.NCopias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NCopias.Location = new System.Drawing.Point(426, 414);
-            this.NCopias.Name = "NCopias";
-            this.NCopias.Size = new System.Drawing.Size(59, 26);
-            this.NCopias.TabIndex = 8;
-            this.NCopias.ValueChanged += new System.EventHandler(this.NCopias_ValueChanged);
-            // 
-            // PanelPre
-            // 
-            this.PanelPre.AutoScroll = true;
-            this.PanelPre.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.PanelPre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelPre.Location = new System.Drawing.Point(709, 47);
-            this.PanelPre.Name = "PanelPre";
-            this.PanelPre.Size = new System.Drawing.Size(745, 525);
-            this.PanelPre.TabIndex = 9;
-            this.PanelPre.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPre_Paint);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(280, 420);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Numero de Copias";
-            // 
-            // Acercar
-            // 
-            this.Acercar.BackgroundImage = global::PPPP.Properties.Resources.boton_para_acercar__1_;
-            this.Acercar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Acercar.Location = new System.Drawing.Point(1117, 592);
-            this.Acercar.Name = "Acercar";
-            this.Acercar.Size = new System.Drawing.Size(70, 70);
-            this.Acercar.TabIndex = 7;
-            this.Acercar.UseVisualStyleBackColor = true;
-            this.Acercar.Click += new System.EventHandler(this.btnZoomIn_Click);
-            // 
-            // Alejar
-            // 
-            this.Alejar.BackgroundImage = global::PPPP.Properties.Resources.lupa_con_signo_menos__2_;
-            this.Alejar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Alejar.Location = new System.Drawing.Point(1022, 592);
-            this.Alejar.Name = "Alejar";
-            this.Alejar.Size = new System.Drawing.Size(70, 70);
-            this.Alejar.TabIndex = 6;
-            this.Alejar.UseVisualStyleBackColor = true;
-            this.Alejar.Click += new System.EventHandler(this.btnZoomOut_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.pnResoluciones);
-            this.panel1.Controls.Add(this.pnPrevisualizacion);
-            this.panel1.Controls.Add(this.NCopias);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.rjButton1);
-            this.panel1.Controls.Add(this.AgregarImg);
-            this.panel1.Controls.Add(this.Guardar);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.Alejar);
-            this.panel1.Controls.Add(this.Acercar);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1370, 749);
-            this.panel1.TabIndex = 16;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Controls.Add(this.Seleccionar);
-            this.panel3.Controls.Add(this.Regist);
-            this.panel3.Controls.Add(this.Recortar);
-            this.panel3.Controls.Add(this.Resolucion);
-            this.panel3.Location = new System.Drawing.Point(16, 55);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(136, 294);
-            this.panel3.TabIndex = 22;
             // 
             // infantil
             // 
@@ -244,6 +150,75 @@
             this.i5x7.UseMnemonic = false;
             this.i5x7.UseVisualStyleBackColor = false;
             this.i5x7.Click += new System.EventHandler(this.i5x7_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "\"Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp\"";
+            // 
+            // NCopias
+            // 
+            this.NCopias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NCopias.Location = new System.Drawing.Point(409, 414);
+            this.NCopias.Name = "NCopias";
+            this.NCopias.Size = new System.Drawing.Size(59, 26);
+            this.NCopias.TabIndex = 8;
+            this.NCopias.ValueChanged += new System.EventHandler(this.NCopias_ValueChanged);
+            // 
+            // PanelPre
+            // 
+            this.PanelPre.AutoScroll = true;
+            this.PanelPre.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.PanelPre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelPre.Location = new System.Drawing.Point(719, 46);
+            this.PanelPre.Name = "PanelPre";
+            this.PanelPre.Size = new System.Drawing.Size(745, 601);
+            this.PanelPre.TabIndex = 9;
+            this.PanelPre.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPre_Paint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(263, 416);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Numero de Copias";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.PanelPre);
+            this.panel1.Controls.Add(this.pnResoluciones);
+            this.panel1.Controls.Add(this.pnPrevisualizacion);
+            this.panel1.Controls.Add(this.NCopias);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.rjButton1);
+            this.panel1.Controls.Add(this.AgregarImg);
+            this.panel1.Controls.Add(this.Guardar);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1469, 660);
+            this.panel1.TabIndex = 16;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.Seleccionar);
+            this.panel3.Controls.Add(this.Regist);
+            this.panel3.Controls.Add(this.Recortar);
+            this.panel3.Controls.Add(this.Resolucion);
+            this.panel3.Location = new System.Drawing.Point(11, 108);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(136, 294);
+            this.panel3.TabIndex = 22;
             // 
             // Seleccionar
             // 
@@ -350,9 +325,9 @@
             this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton1.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton1.ForeColor = System.Drawing.Color.Maroon;
-            this.rjButton1.Location = new System.Drawing.Point(284, 611);
+            this.rjButton1.Location = new System.Drawing.Point(257, 567);
             this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(352, 75);
+            this.rjButton1.Size = new System.Drawing.Size(445, 75);
             this.rjButton1.TabIndex = 17;
             this.rjButton1.Text = "Salir";
             this.rjButton1.TextColor = System.Drawing.Color.Maroon;
@@ -373,9 +348,9 @@
             this.AgregarImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AgregarImg.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AgregarImg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(117)))), ((int)(((byte)(117)))));
-            this.AgregarImg.Location = new System.Drawing.Point(534, 408);
+            this.AgregarImg.Location = new System.Drawing.Point(474, 408);
             this.AgregarImg.Name = "AgregarImg";
-            this.AgregarImg.Size = new System.Drawing.Size(142, 35);
+            this.AgregarImg.Size = new System.Drawing.Size(228, 35);
             this.AgregarImg.TabIndex = 16;
             this.AgregarImg.Text = "Agregar Imagen";
             this.AgregarImg.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(117)))), ((int)(((byte)(117)))));
@@ -395,9 +370,9 @@
             this.Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Guardar.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Guardar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.Guardar.Location = new System.Drawing.Point(284, 496);
+            this.Guardar.Location = new System.Drawing.Point(257, 472);
             this.Guardar.Name = "Guardar";
-            this.Guardar.Size = new System.Drawing.Size(352, 75);
+            this.Guardar.Size = new System.Drawing.Size(445, 75);
             this.Guardar.TabIndex = 0;
             this.Guardar.Text = "Guardar";
             this.Guardar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
@@ -410,11 +385,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
-            this.Controls.Add(this.PanelPre);
+            this.ClientSize = new System.Drawing.Size(1469, 660);
             this.Controls.Add(this.panel1);
             this.Name = "InterfazEdicion";
-            this.Text = "Form1";
+            this.Text = "Interfaz Edición";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnResoluciones.ResumeLayout(false);
@@ -432,8 +406,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnResoluciones;
         public System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button Alejar;
-        private System.Windows.Forms.Button Acercar;
         private System.Windows.Forms.NumericUpDown NCopias;
         private System.Windows.Forms.Panel PanelPre;
         private System.Windows.Forms.Label label2;
