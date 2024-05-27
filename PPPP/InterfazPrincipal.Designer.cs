@@ -2,6 +2,7 @@
 {
     partial class InterfazPrincipal
     {
+
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -361,6 +362,9 @@
             this.Carta.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InterfazPrincipal_FormClosing); // Asocia el evento FormClosing
+ 
 
         }
 

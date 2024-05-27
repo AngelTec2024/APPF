@@ -8,22 +8,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace PPPP
 {
     public partial class InterfazPrincipal : Form
     {
+        private const string ConfigFilePath = "configuracion.json";
+
+
         int TipoH;
         
 
         public InterfazPrincipal()
         {
             InitializeComponent();
-            //pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-//            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-  //          pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            //pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
         }
+
+
+        
+        private void InterfazPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Globales.GuardarConfiguracion(ConfigFilePath);
+            Globales.GuardarConfiguracion();
+        }
+
+        private void listarBackupsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Globales.ListarBackups();
+        }
+
+        private void restaurarBackupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = @"C:\MiCarpetaDeImagenes\backups";
+            openFileDialog.Filter = "JSON files (*.json)|*.json";
+            openFileDialog.Title = "Selecciona un archivo de backup";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string backupFileName = Path.GetFileName(openFileDialog.FileName);
+                Globales.RestaurarBackup(backupFileName);
+                MessageBox.Show("Backup restaurado exitosamente.");
+            }
+        }
+
+
+
+        ///////////////////////////////////////////////////////////////////////////////////
 
         public void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -55,7 +87,8 @@ namespace PPPP
 
         private void InterfazPrincipal_Load(object sender, EventArgs e)
         {
-
+            Globales.CargarConfiguracion();
+            //Globales.CargarConfiguracion(ConfigFilePath);
         }
 
         private void label8_Click(object sender, EventArgs e)
