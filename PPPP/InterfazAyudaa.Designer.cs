@@ -57,7 +57,7 @@
             // p1
             // 
             this.p1.Image = ((System.Drawing.Image)(resources.GetObject("p1.Image")));
-            this.p1.Location = new System.Drawing.Point(195, 12);
+            this.p1.Location = new System.Drawing.Point(12, 41);
             this.p1.Name = "p1";
             this.p1.Size = new System.Drawing.Size(662, 381);
             this.p1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -79,7 +79,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1313, 870);
+            this.ClientSize = new System.Drawing.Size(1313, 749);
             this.Controls.Add(this.pb2);
             this.Controls.Add(this.p1);
             this.Controls.Add(this.btnRegresar);

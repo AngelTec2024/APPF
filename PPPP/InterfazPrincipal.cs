@@ -29,29 +29,13 @@ namespace PPPP
         
         private void InterfazPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Globales.GuardarConfiguracion(ConfigFilePath);
             //Globales.GuardarConfiguracion(ConfigFilePath);
-            Globales.GuardarConfiguracion();
+            //Globales.GuardarConfiguracion();
         }
 
-        private void listarBackupsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Globales.ListarBackups();
-        }
+     
 
-        private void restaurarBackupToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = @"C:\MiCarpetaDeImagenes\backups";
-            openFileDialog.Filter = "JSON files (*.json)|*.json";
-            openFileDialog.Title = "Selecciona un archivo de backup";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                string backupFileName = Path.GetFileName(openFileDialog.FileName);
-                Globales.RestaurarBackup(backupFileName);
-                MessageBox.Show("Backup restaurado exitosamente.");
-            }
-        }
 
 
 
@@ -87,7 +71,7 @@ namespace PPPP
 
         private void InterfazPrincipal_Load(object sender, EventArgs e)
         {
-            Globales.CargarConfiguracion();
+            Globales.CargarConfiguracion(ConfigFilePath);
             //Globales.CargarConfiguracion(ConfigFilePath);
         }
 
@@ -243,6 +227,11 @@ namespace PPPP
         private void A2_MouseLeave(object sender, EventArgs e)
         {
             A2.BackColor = Color.Transparent;
+
+        }
+
+        private void restaurarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
 
         }
     }

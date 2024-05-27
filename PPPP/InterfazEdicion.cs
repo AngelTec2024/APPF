@@ -49,7 +49,7 @@ namespace PPPP
             LeerRegistro();
             Globales.Registro.Visible = false;;
             pnResoluciones.Visible = false;
-            
+            btnEliminar.Visible = false;
             if(Globales.AuxAgregarImagen == 0 )
             {
                 NCopias.Enabled = false;
@@ -550,7 +550,7 @@ namespace PPPP
 
 
             Globales.Registro.Visible = !(Globales.Registro.Visible);
-
+            btnEliminar.Visible = !(btnEliminar.Visible);
 
         }
 
@@ -612,11 +612,15 @@ namespace PPPP
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
-
+            
             var result = MessageBox.Show("¿Estás seguro de que deseas salir?", "Confirmar salida", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (result != DialogResult.Cancel)
-            { 
-            InterfazPrincipal interfazPrincipal = new InterfazPrincipal();
+            {
+
+                //Globales.GuardarConfiguracion(ConfigFilePath);
+
+
+                InterfazPrincipal interfazPrincipal = new InterfazPrincipal();
 
             // Mostrar el nuevo formulario
             this.Visible = false;
@@ -699,6 +703,25 @@ namespace PPPP
             Imagen.Image = resizedImage;
              pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;*/
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int selectedIndex = Globales.Registro.SelectedIndex;
+
+            // Verificar si hay un elemento seleccionado
+            if (selectedIndex != -1)
+            {
+                // Eliminar el elemento seleccionado
+                Globales.Registro.Items.RemoveAt(selectedIndex);
+                LeerRegistro();
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un elemento para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+
         }
 
         private void infantil_Click(object sender, EventArgs e)

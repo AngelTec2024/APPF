@@ -47,6 +47,7 @@
             this.rjButton1 = new PPPP.Resources.RJButton();
             this.AgregarImg = new PPPP.Resources.RJButton();
             this.Guardar = new PPPP.Resources.RJButton();
+            this.btnEliminar = new PPPP.Resources.RJButton();
             this.pnResoluciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).BeginInit();
             this.panel1.SuspendLayout();
@@ -191,6 +192,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.PanelPre);
             this.panel1.Controls.Add(this.pnResoluciones);
             this.panel1.Controls.Add(this.pnPrevisualizacion);
@@ -204,7 +206,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1469, 660);
+            this.panel1.Size = new System.Drawing.Size(1370, 660);
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -380,12 +382,31 @@
             this.Guardar.UseVisualStyleBackColor = false;
             this.Guardar.Click += new System.EventHandler(this.Guardar_Click);
             // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnEliminar.BorderRadius = 0;
+            this.btnEliminar.BorderSize = 0;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.White;
+            this.btnEliminar.Location = new System.Drawing.Point(40, 567);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(150, 40);
+            this.btnEliminar.TabIndex = 23;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextColor = System.Drawing.Color.White;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
             // InterfazEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1469, 660);
+            this.ClientSize = new System.Drawing.Size(1370, 660);
             this.Controls.Add(this.panel1);
             this.Name = "InterfazEdicion";
             this.Text = "Interfaz Edición";
@@ -421,6 +442,7 @@
         private Resources.RJButton infantil;
         private Resources.RJButton i4x6;
         private Resources.RJButton i5x7;
+        private Resources.RJButton btnEliminar;
     }
 }
 

@@ -33,90 +33,12 @@ namespace PPPP
         public static int AuxAgregarImagen { get; set; }
 
 
-
-
-
-        private const string BackupDirectory = @"C:\MiCarpetaDeImagenes\backups";
-        private const string ConfigFileName = "configuracion.json";
-        private static string ConfigFilePath => Path.Combine(BackupDirectory, ConfigFileName);
-
         public static int VariableEntera { get; set; }
         public static string VariableCadena { get; set; }
 
 
-        static Globales()
-        {
-            // Asegúrate de que el directorio de backups exista
-            if (!Directory.Exists(BackupDirectory))
-            {
-                Directory.CreateDirectory(BackupDirectory);
-            }
-        }
 
-
-        public static void GuardarConfiguracion()
-        {
-            var configuracion = new
-            {
-                VariableEntera,
-                VariableCadena,
-                // Agrega otras variables según sea necesario
-            };
-
-            string json = JsonConvert.SerializeObject(configuracion, Formatting.Indented);
-
-            // Guarda la configuración actual
-            File.WriteAllText(ConfigFilePath, json);
-
-            // Guarda una copia de respaldo con timestamp
-            string backupFilePath = Path.Combine(BackupDirectory, $"{Path.GetFileNameWithoutExtension(ConfigFileName)}_{DateTime.Now:yyyyMMdd_HHmmss}.json");
-            File.WriteAllText(backupFilePath, json);
-        }
-
-
-        public static void CargarConfiguracion()
-        {
-            if (File.Exists(ConfigFilePath))
-            {
-                string json = File.ReadAllText(ConfigFilePath);
-                dynamic configuracion = JsonConvert.DeserializeObject(json);
-
-                VariableEntera = configuracion.VariableEntera;
-                VariableCadena = configuracion.VariableCadena;
-                // Agrega otras variables según sea necesario
-            }
-        }
-
-
-        public static void ListarBackups()
-        {
-            string[] backupFiles = Directory.GetFiles(BackupDirectory, "configuracion_*.json");
-
-            Console.WriteLine("Lista de archivos de configuración disponibles:");
-            foreach (var file in backupFiles)
-            {
-                Console.WriteLine(Path.GetFileName(file));
-            }
-        }
-
-        public static void RestaurarBackup(string backupFileName)
-        {
-            string backupFilePath = Path.Combine(BackupDirectory, backupFileName);
-            if (File.Exists(backupFilePath))
-            {
-                string json = File.ReadAllText(backupFilePath);
-                File.WriteAllText(ConfigFilePath, json);
-                CargarConfiguracion();
-            }
-            else
-            {
-                Console.WriteLine("El archivo de backup no existe.");
-            }
-        }
-
-
-
-        /*public static void GuardarConfiguracion(string filePath)
+        public static void GuardarConfiguracion(string filePath)
         {
             var configuracion = new Configuracion
             {
@@ -148,16 +70,16 @@ namespace PPPP
                 RutaImagenCP = configuracion.RutaImagenCP;
                 ImagenGlobalCP = Base64ToImagen(configuracion.ImagenGlobalCP);
                 ImagenGlobal = Base64ToImagen(configuracion.ImagenGlobal);
-                Registro.Items.Clear();
+                //Registro.Items.Clear();
                 foreach (var item in configuracion.Registro)
                 {
                     Registro.Items.Add(item);
                 }
-                AlertaRecorte = configuracion.AlertaRecorte;
-                NC = configuracion.NC;
-                tipoH = configuracion.TipoH;
-                TamañoHoja = configuracion.TamañoHoja;
-                AuxAgregarImagen = configuracion.AuxAgregarImagen;
+                Globales.AlertaRecorte = configuracion.AlertaRecorte;
+                Globales.NC = configuracion.NC;
+                Globales. tipoH = configuracion.TipoH;
+                Globales.TamañoHoja = configuracion.TamañoHoja;
+                Globales.AuxAgregarImagen = configuracion.AuxAgregarImagen;
             }
         }
 
@@ -182,7 +104,7 @@ namespace PPPP
             }
         }
 
-        */
+      
 
 
 
