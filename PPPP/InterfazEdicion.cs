@@ -8,8 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using System.Timers;
 using static PPPP.Metodos;
 
 namespace PPPP
@@ -39,6 +41,11 @@ namespace PPPP
         int NC = 0,inX=0,inY=0;
         double zoomFactor = 1.0;
 
+
+        private System.Timers.Timer backupTimer;
+
+
+
         public InterfazEdicion()
         {
 
@@ -57,26 +64,34 @@ namespace PPPP
                 Resolucion.Enabled = false;
                 AgregarImg.Enabled = false;
             }
-            
 
-
-        /*    if (Globales.AlertaRecorte == true)  {
-                NCopias.Enabled = true;
-                Resolucion.Enabled = true;
-                Recortar.Enabled = true;
-                RecuperaInfo();
-              
-            } else {
-                NCopias.Enabled = false;
-                Resolucion.Enabled = false;
-                Recortar.Enabled = false;
-               
-            }
-          */  
-            
-           
+            InitializeBackupTimer();
 
         }
+        private void InitializeBackupTimer()         //  BKUPAUTO
+        {
+            backupTimer = new System.Timers.Timer();
+            backupTimer.Interval = 60000; // Intervalo en milisegundos (60000 ms = 1 minuto)
+            backupTimer.Elapsed += BackupTimer_Elapsed;
+            backupTimer.AutoReset = true; // Para que se repita automáticamente
+            backupTimer.Start();
+        }
+
+        private void BackupTimer_Elapsed(object sender, ElapsedEventArgs e)       //  BKUPAUTO
+        {
+            CrearRespaldo();
+        }
+
+        private void CrearRespaldo()   //  BKUPAUTO
+        {
+            string backupFileName = $"configuracion_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+            string filePath = Path.Combine(Globales.BackupDirectory, backupFileName);
+            Globales.GuardarConfiguracion(filePath);
+        }
+
+
+
+
 
         private void InicializaListBox()
         {
@@ -612,23 +627,41 @@ namespace PPPP
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
-            
-            var result = MessageBox.Show("¿Estás seguro de que deseas salir?", "Confirmar salida", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (result != DialogResult.Cancel)
+
+            var result = MessageBox.Show("¿Desea guardar el estado del programa?", "Estado del programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
             {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.InitialDirectory = Globales.BackupDirectory;
+                    saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+                    saveFileDialog.DefaultExt = "json";
+                    saveFileDialog.AddExtension = true;
+                    saveFileDialog.FileName = $"configuracion_{DateTime.Now:yyyyMMdd_HHmmss}.json";
 
-                //Globales.GuardarConfiguracion(ConfigFilePath);
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = saveFileDialog.FileName;
+                        Globales.GuardarConfiguracion(filePath);
+                    }
+                }
 
+               
 
-                InterfazPrincipal interfazPrincipal = new InterfazPrincipal();
+            }
+            Globales.ReiniciarVariables();
 
-            // Mostrar el nuevo formulario
-            this.Visible = false;
-            interfazPrincipal.Show();
-                //System.exit()
+            // Detén el temporizador al salir
+            if (backupTimer != null)
+            {
+                backupTimer.Stop();
+                backupTimer.Dispose();
             }
 
-
+            InterfazPrincipal interfazPrincipal = new InterfazPrincipal();
+            this.Visible = false;
+            interfazPrincipal.Show();
 
         }
 

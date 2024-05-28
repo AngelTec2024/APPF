@@ -39,6 +39,7 @@
             this.PanelPre = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEliminar = new PPPP.Resources.RJButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Seleccionar = new PPPP.Resources.RJButton();
             this.Regist = new PPPP.Resources.RJButton();
@@ -47,7 +48,6 @@
             this.rjButton1 = new PPPP.Resources.RJButton();
             this.AgregarImg = new PPPP.Resources.RJButton();
             this.Guardar = new PPPP.Resources.RJButton();
-            this.btnEliminar = new PPPP.Resources.RJButton();
             this.pnResoluciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).BeginInit();
             this.panel1.SuspendLayout();
@@ -206,9 +206,28 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1370, 660);
+            this.panel1.Size = new System.Drawing.Size(1471, 837);
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.Transparent;
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnEliminar.BorderColor = System.Drawing.Color.Black;
+            this.btnEliminar.BorderRadius = 8;
+            this.btnEliminar.BorderSize = 2;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminar.Location = new System.Drawing.Point(10, 668);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(235, 52);
+            this.btnEliminar.TabIndex = 23;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextColor = System.Drawing.Color.Black;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // panel3
             // 
@@ -318,7 +337,7 @@
             // 
             this.rjButton1.BackColor = System.Drawing.Color.Transparent;
             this.rjButton1.BackgroundColor = System.Drawing.Color.Transparent;
-            this.rjButton1.BorderColor = System.Drawing.Color.Maroon;
+            this.rjButton1.BorderColor = System.Drawing.Color.Black;
             this.rjButton1.BorderRadius = 8;
             this.rjButton1.BorderSize = 2;
             this.rjButton1.FlatAppearance.BorderSize = 0;
@@ -327,9 +346,9 @@
             this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton1.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton1.ForeColor = System.Drawing.Color.Maroon;
-            this.rjButton1.Location = new System.Drawing.Point(257, 567);
+            this.rjButton1.Location = new System.Drawing.Point(252, 572);
             this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(445, 75);
+            this.rjButton1.Size = new System.Drawing.Size(450, 75);
             this.rjButton1.TabIndex = 17;
             this.rjButton1.Text = "Salir";
             this.rjButton1.TextColor = System.Drawing.Color.Maroon;
@@ -364,7 +383,7 @@
             // 
             this.Guardar.BackColor = System.Drawing.Color.Transparent;
             this.Guardar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.Guardar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.Guardar.BorderColor = System.Drawing.Color.Black;
             this.Guardar.BorderRadius = 8;
             this.Guardar.BorderSize = 2;
             this.Guardar.FlatAppearance.BorderSize = 0;
@@ -372,9 +391,9 @@
             this.Guardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Guardar.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Guardar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.Guardar.Location = new System.Drawing.Point(257, 472);
+            this.Guardar.Location = new System.Drawing.Point(252, 471);
             this.Guardar.Name = "Guardar";
-            this.Guardar.Size = new System.Drawing.Size(445, 75);
+            this.Guardar.Size = new System.Drawing.Size(450, 75);
             this.Guardar.TabIndex = 0;
             this.Guardar.Text = "Guardar";
             this.Guardar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
@@ -382,31 +401,12 @@
             this.Guardar.UseVisualStyleBackColor = false;
             this.Guardar.Click += new System.EventHandler(this.Guardar_Click);
             // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnEliminar.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnEliminar.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnEliminar.BorderRadius = 0;
-            this.btnEliminar.BorderSize = 0;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.ForeColor = System.Drawing.Color.White;
-            this.btnEliminar.Location = new System.Drawing.Point(40, 567);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(150, 40);
-            this.btnEliminar.TabIndex = 23;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.TextColor = System.Drawing.Color.White;
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
             // InterfazEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1370, 660);
+            this.ClientSize = new System.Drawing.Size(1471, 837);
             this.Controls.Add(this.panel1);
             this.Name = "InterfazEdicion";
             this.Text = "Interfaz Edición";

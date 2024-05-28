@@ -36,6 +36,20 @@ namespace PPPP
         public static int VariableEntera { get; set; }
         public static string VariableCadena { get; set; }
 
+        public static string BackupDirectory { get; } = @"C:\MiCarpetaDeImagenes\backups";
+
+
+        //public static string CargarDirectory { get; } = @"C:\MiCarpetaDeImagenes\backups";
+
+        static Globales()
+        {
+            // Asegúrate de que el directorio de backups exista
+            if (!Directory.Exists(BackupDirectory))
+            {
+                Directory.CreateDirectory(BackupDirectory);
+            }
+        }
+
 
 
         public static void GuardarConfiguracion(string filePath)
@@ -104,8 +118,21 @@ namespace PPPP
             }
         }
 
-      
-
+        public static void ReiniciarVariables()
+        {
+            RutaImagen = null;
+            RutaImagenCP = null;
+            ImagenGlobalCP = null;
+            ImagenGlobal = null;
+            Registro.Items.Clear();
+            AlertaRecorte = false;
+            NC = 0;
+            tipoH = 0;
+            TamañoHoja = Size.Empty;
+            AuxAgregarImagen = 0;
+            VariableEntera = 0;
+            VariableCadena = null;
+        }
 
 
 

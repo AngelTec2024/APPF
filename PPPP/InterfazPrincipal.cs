@@ -25,8 +25,12 @@ namespace PPPP
             InitializeComponent();
         }
 
-
-        
+        ///////////////////////////////////BACKUPS ////////////////////////////////////////////////
+        private void InterfazPrincipal_Load(object sender, EventArgs e)
+        {
+           // Globales.CargarConfiguracion(ConfigFilePath);
+            //Globales.CargarConfiguracion(ConfigFilePath);
+        }
         private void InterfazPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
             Globales.GuardarConfiguracion(ConfigFilePath);
@@ -34,26 +38,52 @@ namespace PPPP
             //Globales.GuardarConfiguracion();
         }
 
-     
+        private void restaurarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = @"C:\MiCarpetaDeImagenes\backups";
+                openFileDialog.Filter = "Archivos JSON (*.json)|*.json";
+                openFileDialog.Title = "Selecciona un estado del programa;";
 
-
-
-
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string archivoSeleccionado = openFileDialog.FileName;
+                    Globales.CargarConfiguracion(archivoSeleccionado);
+                    MessageBox.Show("Configuración restaurada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    InterfazEdicion IE = new InterfazEdicion();
+                    IE.Show();
+                    this.Visible = false;
+                }
+            }
+        }
         ///////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
 
         public void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            openFileDialog1.ShowDialog();
-            try
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                StreamReader lector = new StreamReader(openFileDialog1.FileName);
-            }
-            catch { 
-            
-            }
+                openFileDialog.InitialDirectory = @"C:\MiCarpetaDeImagenes\backups";
+                openFileDialog.Filter = "Archivos JSON (*.json)|*.json";
+                openFileDialog.Title = "Selecciona un estado del programa;";
 
-
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string archivoSeleccionado = openFileDialog.FileName;
+                    Globales.CargarConfiguracion(archivoSeleccionado);
+                    MessageBox.Show("Configuración restaurada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    InterfazEdicion IE = new InterfazEdicion();
+                    IE.Show();
+                    this.Visible = false;
+                }
+            }
         }
 
 
@@ -69,11 +99,7 @@ namespace PPPP
 
         }
 
-        private void InterfazPrincipal_Load(object sender, EventArgs e)
-        {
-            Globales.CargarConfiguracion(ConfigFilePath);
-            //Globales.CargarConfiguracion(ConfigFilePath);
-        }
+        
 
         private void label8_Click(object sender, EventArgs e)
         {
@@ -230,7 +256,7 @@ namespace PPPP
 
         }
 
-        private void restaurarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Carta_Paint(object sender, PaintEventArgs e)
         {
 
         }
