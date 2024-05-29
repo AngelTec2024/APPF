@@ -71,7 +71,7 @@ namespace PPPP
         private void InitializeBackupTimer()         //  BKUPAUTO
         {
             backupTimer = new System.Timers.Timer();
-            backupTimer.Interval = 60000; // Intervalo en milisegundos (60000 ms = 1 minuto)
+            backupTimer.Interval = 300000; // Intervalo en milisegundos (60000 ms = 1 minuto)
             backupTimer.Elapsed += BackupTimer_Elapsed;
             backupTimer.AutoReset = true; // Para que se repita automáticamente
             backupTimer.Start();
@@ -79,8 +79,19 @@ namespace PPPP
 
         private void BackupTimer_Elapsed(object sender, ElapsedEventArgs e)       //  BKUPAUTO
         {
+             string fileExtension = ".json";
+            var jsonFiles = Directory.GetFiles(Globales.BackupDirectory, "*" + fileExtension);
+
+            if (jsonFiles.Length >= 10)
+            {
+                // Ordena los archivos por fecha de creación y elimina el más antiguo
+                var oldestFile = jsonFiles.OrderBy(f => File.GetCreationTime(f)).First();
+                File.Delete(oldestFile);
+             
+            }
             CrearRespaldo();
         }
+
 
         private void CrearRespaldo()   //  BKUPAUTO
         {
@@ -101,34 +112,10 @@ namespace PPPP
             Globales.Registro.Size = new Size(225, 238);    // Establecer el tamaño
             panel1.Controls.Add(Globales.Registro);
          
-           
 
 
         }
 
-      /*  private void RecuperaInfo()
-        {
-
-            PanelPre.Controls.Clear();
-            PanelPre.Controls.Add(Globales.Hoja);
-            LimpiarHoja();
-            NCopias.Value = 0;
-            NC = (int)NCopias.Value;
-            inX = 0;
-            inY = 0;
-            zoomFactor = 1;
-            LeerRegistro();
-
-            Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen);
-            Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
-            Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
-            pnPrevisualizacion.Controls.Add(Imagen); // Agrega el PictureBox al panel
-            
-            Globales.Hoja.Tag = Globales.TamañoHoja; // Almacenar el tamaño original de la imagen en el Tag del PictureBox
-            
-            //  VerificarRecorte();
-        }
-      */
 
 
             private void VerificarRecorte()
@@ -176,13 +163,6 @@ namespace PPPP
                 Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
                 pnPrevisualizacion.Controls.Add(Imagen);
 
-
-                /*
-                Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
-                Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
-                Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
-                pnPrevisualizacion.Controls.Add(Imagen);// Agrega el PictureBox al panel
-                */
                 
                 if (Globales.RutaImagen != null)
                 {
@@ -202,81 +182,7 @@ namespace PPPP
             catch{}}
 
 
-        /*
-        private void AgrImgHoj(int nC, double zoomFactor)
-        {
-            int hojaAncho = Hoja.Width; // Ancho del contenedor Hoja
-            int hojaAlto = Hoja.Height; // Alto del contenedor Hoja
-
-            // Puntero para encontrar la posición donde colocar la próxima imagen
-            Point posicion = new Point(0, 0);
-
-            // Iterar sobre cada imagen
-            for (int i = 0; i < nC; i++)
-            {
-                // Crear un nuevo PictureBox para la imagen
-                PictureBox pictureBox1 = new PictureBox();
-                pictureBox1.Image = Imagen.Image; // Asignar la imagen
-                pictureBox1.Size = Imagen.Size; // Asignar el tamaño de la imagen
-
-                // Verificar si la imagen cabe en la fila actual
-                if (posicion.X + pictureBox1.Width <= hojaAncho)
-                {
-                    // La imagen cabe en la fila actual, se agrega en la posición actual
-                    pictureBox1.Location = posicion;
-                    posicion.X += pictureBox1.Width + 10; // Actualizar la posición X con el espacio entre imágenes
-                }
-                else
-                {
-                    // La imagen no cabe en la fila actual, se reinicia el puntero
-                    posicion = new Point(0, posicion.Y + maxAlturaFila + 10);
-
-                    // Reiniciar la altura máxima de la fila
-                    maxAlturaFila = 0;
-
-                    // Mover el puntero hacia abajo hasta encontrar espacio libre
-                    while (true)
-                    {
-                        // Verificar si hay espacio disponible en la posición actual
-                        bool espacioDisponible = true;
-                        foreach (PosicionOcupada pos in posicionesOcupadas)
-                        {
-                            if (posicion.X >= pos.X && posicion.X + pictureBox1.Width <= pos.X + pos.Width &&
-                                posicion.Y >= pos.Y && posicion.Y + pictureBox1.Height <= pos.Y + pos.Height)
-                            {
-                                espacioDisponible = false;
-                                break;
-                            }
-                        }
-
-                        // Si hay espacio disponible, se coloca la imagen en la posición actual y se actualiza el puntero
-                        if (espacioDisponible)
-                        {
-                            pictureBox1.Location = posicion;
-                            posicion.X += pictureBox1.Width + 10; // Actualizar la posición X con el espacio entre imágenes
-
-                            // Actualizar la altura máxima de la fila si es necesario
-                            maxAlturaFila = Math.Max(maxAlturaFila, pictureBox1.Height);
-
-                            break;
-                        }
-                        else
-                        {
-                            // Si no hay espacio disponible, se mueve hacia abajo
-                            posicion.X = 0;
-                            posicion.Y += maxAlturaFila + 10; // Mover a la siguiente fila, usando la altura máxima de la fila actual
-                        }
-                    }
-                }
-
-                // Agregar el PictureBox al PictureBox de la hoja
-                Hoja.Controls.Add(pictureBox1);
-
-                // Guardar la posición ocupada
-                posicionesOcupadas.Add(new PosicionOcupada(pictureBox1.Location.X, pictureBox1.Location.Y, pictureBox1.Width, pictureBox1.Height));
-            }
-        }
-*/
+  
 
         // Version PreUlti
         
@@ -628,17 +534,20 @@ namespace PPPP
         private void rjButton1_Click(object sender, EventArgs e)
         {
 
+            
             var result = MessageBox.Show("¿Desea guardar el estado del programa?", "Estado del programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
                 using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                 {
-                    saveFileDialog.InitialDirectory = Globales.BackupDirectory;
+                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                    saveFileDialog.InitialDirectory = documentsPath;
                     saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
                     saveFileDialog.DefaultExt = "json";
                     saveFileDialog.AddExtension = true;
-                    saveFileDialog.FileName = $"configuracion_{DateTime.Now:yyyyMMdd_HHmmss}.json";
+                    saveFileDialog.FileName = $"txt.json";
 
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
@@ -692,15 +601,6 @@ namespace PPPP
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
 
-
-            // Mostrar la imagen redimensionada en el PictureBox
-            /*
-            Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
-            Imagen.Size = resizedImage.Size;
-            Imagen.Image = resizedImage;
-            pnPrevisualizacion.Controls.Add(Imagen);
-            pnResoluciones.Visible = false;
-            */
         }
 
 
@@ -729,13 +629,7 @@ namespace PPPP
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
 
-            /*
-            // Mostrar la imagen redimensionada en el PictureBox
-            Imagen.SizeMode = PictureBoxSizeMode.StretchImage;
-            Imagen.Size = resizedImage.Size;
-            Imagen.Image = resizedImage;
-             pnPrevisualizacion.Controls.Add(Imagen);
-            pnResoluciones.Visible = false;*/
+            
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -755,6 +649,11 @@ namespace PPPP
             }
 
 
+        }
+
+        private void InterfazEdicion_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
 
         private void infantil_Click(object sender, EventArgs e)
@@ -818,43 +717,7 @@ namespace PPPP
                     return;
             }
 
-            /*PanelPre.BackColor = Color.Gray;
-            Hoja = new PictureBox
-            {
-                BackColor = Color.White,
-                SizeMode = PictureBoxSizeMode.Zoom // Ajustar la imagen manteniendo la proporción
-            };
-
-            // Calcular las dimensiones del PictureBox para que se ajuste dentro del Panel manteniendo la proporción
-            Size panelSize = PanelPre.ClientSize;
-            float ratioHoja = (float)tamañoHoja.Width / tamañoHoja.Height;
-            float ratioPanel = (float)panelSize.Width / panelSize.Height;
-
-            if (ratioHoja > ratioPanel)
-            {
-                Hoja.Width = panelSize.Width;
-                Hoja.Height = (int)(panelSize.Width / ratioHoja);
-            }
-            else
-            {
-                Hoja.Height = panelSize.Height;
-                Hoja.Width = (int)(panelSize.Height * ratioHoja);
-            }
-
-            // Centrando el PictureBox dentro del Panel
-            Hoja.Location = new Point(
-                (panelSize.Width - Hoja.Width) / 2,
-                (panelSize.Height - Hoja.Height) / 2
-            );
-
-            // Añadir el PictureBox grande (Hoja) al Panel
-            PanelPre.Controls.Clear(); // Limpiar controles previos si existen
-            PanelPre.Controls.Add(Hoja);
-            PanelPre.BackColor = Color.Gray;
-        
-        //-------------
-        */
-
+         
 
 
 

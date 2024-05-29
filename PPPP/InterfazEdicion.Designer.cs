@@ -31,16 +31,16 @@
             this.pnPrevisualizacion = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnResoluciones = new System.Windows.Forms.Panel();
-            this.infantil = new PPPP.Resources.RJButton();
-            this.i4x6 = new PPPP.Resources.RJButton();
-            this.i5x7 = new PPPP.Resources.RJButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.NCopias = new System.Windows.Forms.NumericUpDown();
             this.PanelPre = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnEliminar = new PPPP.Resources.RJButton();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnEliminar = new PPPP.Resources.RJButton();
+            this.infantil = new PPPP.Resources.RJButton();
+            this.i4x6 = new PPPP.Resources.RJButton();
+            this.i5x7 = new PPPP.Resources.RJButton();
             this.Seleccionar = new PPPP.Resources.RJButton();
             this.Regist = new PPPP.Resources.RJButton();
             this.Recortar = new PPPP.Resources.RJButton();
@@ -85,6 +85,95 @@
             this.pnResoluciones.Name = "pnResoluciones";
             this.pnResoluciones.Size = new System.Drawing.Size(96, 124);
             this.pnResoluciones.TabIndex = 4;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "\"Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp\"";
+            // 
+            // NCopias
+            // 
+            this.NCopias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NCopias.Location = new System.Drawing.Point(409, 414);
+            this.NCopias.Name = "NCopias";
+            this.NCopias.Size = new System.Drawing.Size(59, 26);
+            this.NCopias.TabIndex = 8;
+            this.NCopias.ValueChanged += new System.EventHandler(this.NCopias_ValueChanged);
+            // 
+            // PanelPre
+            // 
+            this.PanelPre.AutoScroll = true;
+            this.PanelPre.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.PanelPre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelPre.Location = new System.Drawing.Point(719, 46);
+            this.PanelPre.Name = "PanelPre";
+            this.PanelPre.Size = new System.Drawing.Size(745, 601);
+            this.PanelPre.TabIndex = 9;
+            this.PanelPre.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPre_Paint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(263, 416);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(140, 20);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Numero de Copias";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnEliminar);
+            this.panel1.Controls.Add(this.PanelPre);
+            this.panel1.Controls.Add(this.pnResoluciones);
+            this.panel1.Controls.Add(this.pnPrevisualizacion);
+            this.panel1.Controls.Add(this.NCopias);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.rjButton1);
+            this.panel1.Controls.Add(this.AgregarImg);
+            this.panel1.Controls.Add(this.Guardar);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1370, 749);
+            this.panel1.TabIndex = 16;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.Seleccionar);
+            this.panel3.Controls.Add(this.Regist);
+            this.panel3.Controls.Add(this.Recortar);
+            this.panel3.Controls.Add(this.Resolucion);
+            this.panel3.Location = new System.Drawing.Point(11, 108);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(136, 294);
+            this.panel3.TabIndex = 22;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.BackColor = System.Drawing.Color.Transparent;
+            this.btnEliminar.BackgroundColor = System.Drawing.Color.Transparent;
+            this.btnEliminar.BorderColor = System.Drawing.Color.Black;
+            this.btnEliminar.BorderRadius = 8;
+            this.btnEliminar.BorderSize = 2;
+            this.btnEliminar.FlatAppearance.BorderSize = 0;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminar.Location = new System.Drawing.Point(10, 668);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(235, 52);
+            this.btnEliminar.TabIndex = 23;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.TextColor = System.Drawing.Color.Black;
+            this.btnEliminar.UseVisualStyleBackColor = false;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // infantil
             // 
@@ -151,95 +240,6 @@
             this.i5x7.UseMnemonic = false;
             this.i5x7.UseVisualStyleBackColor = false;
             this.i5x7.Click += new System.EventHandler(this.i5x7_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            this.openFileDialog1.Filter = "\"Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp\"";
-            // 
-            // NCopias
-            // 
-            this.NCopias.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NCopias.Location = new System.Drawing.Point(409, 414);
-            this.NCopias.Name = "NCopias";
-            this.NCopias.Size = new System.Drawing.Size(59, 26);
-            this.NCopias.TabIndex = 8;
-            this.NCopias.ValueChanged += new System.EventHandler(this.NCopias_ValueChanged);
-            // 
-            // PanelPre
-            // 
-            this.PanelPre.AutoScroll = true;
-            this.PanelPre.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.PanelPre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelPre.Location = new System.Drawing.Point(719, 46);
-            this.PanelPre.Name = "PanelPre";
-            this.PanelPre.Size = new System.Drawing.Size(745, 601);
-            this.PanelPre.TabIndex = 9;
-            this.PanelPre.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPre_Paint);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(263, 416);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 20);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Numero de Copias";
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnEliminar);
-            this.panel1.Controls.Add(this.PanelPre);
-            this.panel1.Controls.Add(this.pnResoluciones);
-            this.panel1.Controls.Add(this.pnPrevisualizacion);
-            this.panel1.Controls.Add(this.NCopias);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.rjButton1);
-            this.panel1.Controls.Add(this.AgregarImg);
-            this.panel1.Controls.Add(this.Guardar);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1471, 837);
-            this.panel1.TabIndex = 16;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.BackColor = System.Drawing.Color.Transparent;
-            this.btnEliminar.BackgroundColor = System.Drawing.Color.Transparent;
-            this.btnEliminar.BorderColor = System.Drawing.Color.Black;
-            this.btnEliminar.BorderRadius = 8;
-            this.btnEliminar.BorderSize = 2;
-            this.btnEliminar.FlatAppearance.BorderSize = 0;
-            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminar.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminar.Location = new System.Drawing.Point(10, 668);
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(235, 52);
-            this.btnEliminar.TabIndex = 23;
-            this.btnEliminar.Text = "Eliminar";
-            this.btnEliminar.TextColor = System.Drawing.Color.Black;
-            this.btnEliminar.UseVisualStyleBackColor = false;
-            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Controls.Add(this.Seleccionar);
-            this.panel3.Controls.Add(this.Regist);
-            this.panel3.Controls.Add(this.Recortar);
-            this.panel3.Controls.Add(this.Resolucion);
-            this.panel3.Location = new System.Drawing.Point(11, 108);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(136, 294);
-            this.panel3.TabIndex = 22;
             // 
             // Seleccionar
             // 
@@ -395,7 +395,7 @@
             this.Guardar.Name = "Guardar";
             this.Guardar.Size = new System.Drawing.Size(450, 75);
             this.Guardar.TabIndex = 0;
-            this.Guardar.Text = "Guardar";
+            this.Guardar.Text = "Guardar Hoja";
             this.Guardar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
             this.Guardar.UseMnemonic = false;
             this.Guardar.UseVisualStyleBackColor = false;
@@ -406,11 +406,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1471, 837);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.panel1);
             this.Name = "InterfazEdicion";
             this.Text = "Interfaz Edición";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InterfazEdicion_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.pnResoluciones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).EndInit();

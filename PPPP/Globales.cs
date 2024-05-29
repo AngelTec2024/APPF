@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Globalization;
 using Newtonsoft.Json;
+using static PPPP.Metodos;
 
 namespace PPPP
 {
@@ -67,6 +68,7 @@ namespace PPPP
                 TamañoHoja = TamañoHoja,
                 AuxAgregarImagen = AuxAgregarImagen
             };
+
 
             var json = JsonConvert.SerializeObject(configuracion, Formatting.Indented);
             File.WriteAllText(filePath, json);
@@ -132,6 +134,8 @@ namespace PPPP
             AuxAgregarImagen = 0;
             VariableEntera = 0;
             VariableCadena = null;
+            Globales.RutaImagen = null;
+            ImageContainer.ImagenRecortada =null;
         }
 
 

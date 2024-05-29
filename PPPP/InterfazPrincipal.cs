@@ -33,7 +33,8 @@ namespace PPPP
         }
         private void InterfazPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Globales.GuardarConfiguracion(ConfigFilePath);
+         //   Globales.GuardarConfiguracion(ConfigFilePath);
+            Application.Exit();
             //Globales.GuardarConfiguracion(ConfigFilePath);
             //Globales.GuardarConfiguracion();
         }
@@ -42,7 +43,9 @@ namespace PPPP
         {
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
+                
                 openFileDialog.InitialDirectory = @"C:\MiCarpetaDeImagenes\backups";
+               
                 openFileDialog.Filter = "Archivos JSON (*.json)|*.json";
                 openFileDialog.Title = "Selecciona un estado del programa;";
 
@@ -60,17 +63,13 @@ namespace PPPP
         ///////////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-
-
         public void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.InitialDirectory = @"C:\MiCarpetaDeImagenes\backups";
+                string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                openFileDialog.InitialDirectory = documentsPath;
                 openFileDialog.Filter = "Archivos JSON (*.json)|*.json";
                 openFileDialog.Title = "Selecciona un estado del programa;";
 
