@@ -259,5 +259,11 @@ namespace PPPP
         {
 
         }
+
+        private void restaurarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            InterfazBackups Back = new InterfazBackups();
+            Back.Show();
+        }
     }
 }

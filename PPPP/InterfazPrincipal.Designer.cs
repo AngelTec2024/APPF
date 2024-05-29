@@ -57,6 +57,7 @@
             this.A4 = new System.Windows.Forms.Panel();
             this.Oficio = new System.Windows.Forms.Panel();
             this.Carta = new System.Windows.Forms.Panel();
+            this.restaurarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Tabloide.SuspendLayout();
@@ -96,7 +97,8 @@
             // backUpsToolStripMenuItem
             // 
             this.backUpsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.restaurarToolStripMenuItem});
+            this.restaurarToolStripMenuItem,
+            this.restaurarToolStripMenuItem1});
             this.backUpsToolStripMenuItem.Name = "backUpsToolStripMenuItem";
             this.backUpsToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.backUpsToolStripMenuItem.Text = "BackUps";
@@ -105,7 +107,7 @@
             // restaurarToolStripMenuItem
             // 
             this.restaurarToolStripMenuItem.Name = "restaurarToolStripMenuItem";
-            this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.restaurarToolStripMenuItem.Text = "Restaurar";
             this.restaurarToolStripMenuItem.Click += new System.EventHandler(this.restaurarToolStripMenuItem_Click);
             // 
@@ -343,6 +345,13 @@
             this.Carta.MouseEnter += new System.EventHandler(this.Carta_MouseEnter);
             this.Carta.MouseLeave += new System.EventHandler(this.Carta_MouseLeave);
             // 
+            // restaurarToolStripMenuItem1
+            // 
+            this.restaurarToolStripMenuItem1.Name = "restaurarToolStripMenuItem1";
+            this.restaurarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.restaurarToolStripMenuItem1.Text = "Restaurar";
+            this.restaurarToolStripMenuItem1.Click += new System.EventHandler(this.restaurarToolStripMenuItem1_Click);
+            // 
             // InterfazPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,5 +414,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel Tabloide;
         private System.Windows.Forms.ToolStripMenuItem restaurarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem restaurarToolStripMenuItem1;
     }
 }

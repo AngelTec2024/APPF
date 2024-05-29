@@ -653,7 +653,8 @@ namespace PPPP
 
         private void InterfazEdicion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Application.Exit();
+            this.Dispose();
+            
         }
 
         private void infantil_Click(object sender, EventArgs e)

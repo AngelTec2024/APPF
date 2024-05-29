@@ -107,6 +107,9 @@
     <EmbeddedResource Include="InterfazAyudaa.resx">
       <DependentUpon>InterfazAyudaa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="InterfazBackups.resx">
+      <DependentUpon>InterfazBackups.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InterfazEdicion.resx">
       <DependentUpon>InterfazEdicion.cs</DependentUpon>
     </EmbeddedResource>
