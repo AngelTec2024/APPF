@@ -110,6 +110,8 @@ namespace PPPP
             }
         }
 
+
+
         private static Image Base64ToImagen(string base64String)
         {
             if (string.IsNullOrEmpty(base64String)) return null;

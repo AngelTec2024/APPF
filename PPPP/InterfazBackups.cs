@@ -20,55 +20,89 @@ namespace PPPP
         public InterfazBackups()
         {
             InitializeComponent();
-            CargarArchivosDeRespaldo();
+            CargarListaDeBackups();
+            //CargarArchivosDeRespaldo();
 
         }
+
+        private void CargarListaDeBackups()
+        {
+            string directorio = Globales.BackupDirectory;
+
+            if (Directory.Exists(directorio))
+            {
+                string[] archivos = Directory.GetFiles(directorio, "*.json");
+
+                LBack.Items.Clear();
+                LBack.Items.AddRange(archivos);
+            }
+            else
+            {
+                MessageBox.Show("El directorio de backups no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
             int selectedIndex = LBack.SelectedIndex;
-            
-            // Verificar si hay un elemento seleccionado
             if (selectedIndex != -1)
             {
-                // Eliminar el elemento seleccionado
-                //Globales.Registro.Items.RemoveAt(selectedIndex);
-               //string CarpertaBck = Environment.GetFolderPath();
-                //LeerRegistro();
-                Globales.CargarConfiguracion(LBack.SelectedIndex.ToString());
+               
+                string archivoSeleccionado = LBack.Items[selectedIndex].ToString();
+                Globales.CargarConfiguracion(archivoSeleccionado);
                 InterfazEdicion IE = new InterfazEdicion();
                 IE.Show();
                 this.Dispose();
             }
             else
             {
-                MessageBox.Show("Seleccione un elemento para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un elemento para restaurar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
 
-
-
-
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            InterfazPrincipal interfazPrincipal = new InterfazPrincipal();
+            this.Visible = false;
+            interfazPrincipal.Show();
 
         }
 
-        private void CargarArchivosDeRespaldo()
+        private void btnEliminar_Click(object sender, EventArgs e)
         {
-            LBack.Items.Clear();
+            int selectedIndex = LBack.SelectedIndex;
 
-            if (Directory.Exists(backupFolderPath))
+            // Verificar si hay un elemento seleccionado
+            if (selectedIndex != -1)
             {
-                string[] archivos = Directory.GetFiles(backupFolderPath, "*.json");
+                // Obtener la ruta del archivo seleccionado
+                string archivoSeleccionado = LBack.Items[selectedIndex].ToString();
 
-                foreach (string archivo in archivos)
+                // Confirmar la eliminación
+                DialogResult result = MessageBox.Show($"¿Está seguro que desea eliminar el archivo de backup '{archivoSeleccionado}'?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
-                   LBack.Items.Add(Path.GetFileName(archivo));
+                    try
+                    {
+                        // Eliminar el archivo
+                        File.Delete(archivoSeleccionado);
+
+                        // Actualizar la lista de backups
+                        CargarListaDeBackups();
+
+                        MessageBox.Show("Archivo eliminado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ocurrió un error al eliminar el archivo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("La carpeta de respaldo no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un archivo para eliminar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
     }
 }
