@@ -11,7 +11,8 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed resources should be 
+        /// d; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -34,7 +35,7 @@
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backUpsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restaurarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.restaurarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
@@ -57,7 +58,6 @@
             this.A4 = new System.Windows.Forms.Panel();
             this.Oficio = new System.Windows.Forms.Panel();
             this.Carta = new System.Windows.Forms.Panel();
-            this.restaurarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.Tabloide.SuspendLayout();
@@ -97,19 +97,18 @@
             // backUpsToolStripMenuItem
             // 
             this.backUpsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.restaurarToolStripMenuItem,
             this.restaurarToolStripMenuItem1});
             this.backUpsToolStripMenuItem.Name = "backUpsToolStripMenuItem";
             this.backUpsToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.backUpsToolStripMenuItem.Text = "BackUps";
             this.backUpsToolStripMenuItem.Click += new System.EventHandler(this.backUpsToolStripMenuItem_Click);
             // 
-            // restaurarToolStripMenuItem
+            // restaurarToolStripMenuItem1
             // 
-            this.restaurarToolStripMenuItem.Name = "restaurarToolStripMenuItem";
-            this.restaurarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.restaurarToolStripMenuItem.Text = "Restaurar";
-            this.restaurarToolStripMenuItem.Click += new System.EventHandler(this.restaurarToolStripMenuItem_Click);
+            this.restaurarToolStripMenuItem1.Name = "restaurarToolStripMenuItem1";
+            this.restaurarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.restaurarToolStripMenuItem1.Text = "Restaurar";
+            this.restaurarToolStripMenuItem1.Click += new System.EventHandler(this.restaurarToolStripMenuItem1_Click);
             // 
             // openFileDialog1
             // 
@@ -345,13 +344,6 @@
             this.Carta.MouseEnter += new System.EventHandler(this.Carta_MouseEnter);
             this.Carta.MouseLeave += new System.EventHandler(this.Carta_MouseLeave);
             // 
-            // restaurarToolStripMenuItem1
-            // 
-            this.restaurarToolStripMenuItem1.Name = "restaurarToolStripMenuItem1";
-            this.restaurarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.restaurarToolStripMenuItem1.Text = "Restaurar";
-            this.restaurarToolStripMenuItem1.Click += new System.EventHandler(this.restaurarToolStripMenuItem1_Click);
-            // 
             // InterfazPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,7 +405,6 @@
         private System.Windows.Forms.Panel A2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel Tabloide;
-        private System.Windows.Forms.ToolStripMenuItem restaurarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem restaurarToolStripMenuItem1;
     }
 }

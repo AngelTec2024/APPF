@@ -9,6 +9,7 @@ using System.IO;
 using System.Globalization;
 using Newtonsoft.Json;
 using static PPPP.Metodos;
+using System.ComponentModel;
 
 namespace PPPP
 {
@@ -19,24 +20,13 @@ namespace PPPP
 
         public static string RutaImagenCP { get; set; } // ruta se utiliza en Recorte Como Panel
         public static Image ImagenGlobalCP { get; set; } // imagen se utiliza en Recorte Como Panel
-        public static Image ImagenGlobal { get; set; } // imagen
-
         public static ListBox Registro { get; set; } = new ListBox();
-
         public static Boolean AlertaRecorte { get; set; }
 
         public static int NC = 0;
-
         public static int tipoH { get; set; }
-     
         public static Size TamañoHoja { get; set; }
-
         public static int AuxAgregarImagen { get; set; }
-
-
-        public static int VariableEntera { get; set; }
-        public static string VariableCadena { get; set; }
-
         public static string BackupDirectory { get; } = @"C:\MiCarpetaDeImagenes\backups";
 
 
@@ -57,20 +47,16 @@ namespace PPPP
         {
             var configuracion = new Configuracion
             {
-                RutaImagen = RutaImagen,
-                RutaImagenCP = RutaImagenCP,
-                ImagenGlobalCP = ImagenToBase64(ImagenGlobalCP),
-                ImagenGlobal = ImagenToBase64(ImagenGlobal),
-                Registro = Registro.Items.Cast<string>().ToList(),
-                AlertaRecorte = AlertaRecorte,
-                NC = NC,
-                TipoH = tipoH,
-                TamañoHoja = TamañoHoja,
-                AuxAgregarImagen = AuxAgregarImagen
+                RutaImagen = Globales.RutaImagen,
+                RutaImagenCP = Globales.RutaImagenCP,
+                Registro = Globales.Registro.Items.Cast<string>().ToList(),
+                AlertaRecorte = Globales.AlertaRecorte,
+                NC = Globales.NC,
+                TipoH = Globales.tipoH,
+                TamañoHoja = Globales.TamañoHoja,
+                AuxAgregarImagen = Globales.AuxAgregarImagen
             };
-
-
-            var json = JsonConvert.SerializeObject(configuracion, Formatting.Indented);
+              var json = JsonConvert.SerializeObject(configuracion, Formatting.Indented);
             File.WriteAllText(filePath, json);
         }
 
@@ -82,24 +68,22 @@ namespace PPPP
                 var json = File.ReadAllText(filePath);
                 var configuracion = JsonConvert.DeserializeObject<Configuracion>(json);
 
-                RutaImagen = configuracion.RutaImagen;
-                RutaImagenCP = configuracion.RutaImagenCP;
-                ImagenGlobalCP = Base64ToImagen(configuracion.ImagenGlobalCP);
-                ImagenGlobal = Base64ToImagen(configuracion.ImagenGlobal);
-                //Registro.Items.Clear();
+                Globales.RutaImagen = configuracion.RutaImagen;
+                Globales.RutaImagenCP = configuracion.RutaImagenCP;
                 foreach (var item in configuracion.Registro)
                 {
-                    Registro.Items.Add(item);
+                    Globales.Registro.Items.Add(item);
                 }
                 Globales.AlertaRecorte = configuracion.AlertaRecorte;
                 Globales.NC = configuracion.NC;
                 Globales. tipoH = configuracion.TipoH;
                 Globales.TamañoHoja = configuracion.TamañoHoja;
                 Globales.AuxAgregarImagen = configuracion.AuxAgregarImagen;
+             
             }
         }
 
-
+        /*
         private static string ImagenToBase64(Image image)
         {
             if (image == null) return null;
@@ -109,10 +93,7 @@ namespace PPPP
                 return Convert.ToBase64String(ms.ToArray());
             }
         }
-
-
-
-        private static Image Base64ToImagen(string base64String)
+         private static Image Base64ToImagen(string base64String)
         {
             if (string.IsNullOrEmpty(base64String)) return null;
             var imageBytes = Convert.FromBase64String(base64String);
@@ -122,29 +103,25 @@ namespace PPPP
             }
         }
 
+        */
+
         public static void ReiniciarVariables()
         {
             RutaImagen = null;
             RutaImagenCP = null;
             ImagenGlobalCP = null;
-            ImagenGlobal = null;
+            //ImagenGlobal = null;
             Registro.Items.Clear();
+
+
             AlertaRecorte = false;
             NC = 0;
             tipoH = 0;
             TamañoHoja = Size.Empty;
             AuxAgregarImagen = 0;
-            VariableEntera = 0;
-            VariableCadena = null;
             Globales.RutaImagen = null;
             ImageContainer.ImagenRecortada =null;
         }
-
-
-
-
-
-
 
 
     } ///

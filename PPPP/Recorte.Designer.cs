@@ -10,7 +10,8 @@
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        /// <param name="disposing">true if managed resources should be 
+        /// d; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -115,6 +116,7 @@
             this.Controls.Add(this.pbRecortar2);
             this.Name = "Recorte";
             this.Text = "Recorte";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Recorte_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbRecortar2)).EndInit();
             this.ResumeLayout(false);
 

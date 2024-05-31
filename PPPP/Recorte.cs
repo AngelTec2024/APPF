@@ -90,15 +90,13 @@ namespace PPPP
         }
 
 
-
-
         private void btnRegresar_Click(object sender, EventArgs e)
         {
             InterfazEdicion IE = new InterfazEdicion();
             IE.Show();
             //Recorte pnRecorte = new Recorte();
             //pnRecorte.Show();
-            this.Visible = false;
+            this.Close();
         }
 
         private void pbRecortar2_MouseDown(object sender, MouseEventArgs e)
@@ -190,12 +188,9 @@ namespace PPPP
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
-            InterfazEdicion IE = new InterfazEdicion();
-            IE.Show();
-
             //Recorte pnRecorte = new Recorte();
             //pnRecorte.Show();
-            this.Visible = false;
+            this.Close();
         }
 
         private void pbRecortar2_Click(object sender, EventArgs e)
@@ -211,6 +206,13 @@ namespace PPPP
             {
                 pbRecortar2.Image = Globales.ImagenGlobalCP;
             }
+        }
+
+        private void Recorte_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            InterfazEdicion IE = new InterfazEdicion();
+            IE.Show();
+
         }
     }
 }

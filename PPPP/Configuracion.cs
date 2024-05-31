@@ -11,8 +11,6 @@ namespace PPPP
     {
         public string RutaImagen { get; set; }
         public string RutaImagenCP { get; set; }
-        public string ImagenGlobalCP { get; set; } // Base64 string
-        public string ImagenGlobal { get; set; } // Base64 string
         public List<string> Registro { get; set; } = new List<string>();
         public bool AlertaRecorte { get; set; }
         public int NC { get; set; }

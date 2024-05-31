@@ -18,9 +18,9 @@ namespace PPPP
 {
     public partial class InterfazEdicion : Form
     {
-        private int HojaOriginal1;
+        //private int HojaOriginal1;
         PictureBox Hoja;
-        private int maxAlturaFila = 0; // Declaración de la variable maxAlturaFila
+        //private int maxAlturaFila = 0; // Declaración de la variable maxAlturaFila
         private List<Rectangle> posicionesOcupadas = new List<Rectangle>();
         
         
@@ -35,6 +35,7 @@ namespace PPPP
 
 
         PictureBox Imagen = new PictureBox();
+
         PictureBox ImagenL = new PictureBox();
 
 
@@ -71,7 +72,7 @@ namespace PPPP
         private void InitializeBackupTimer()         //  BKUPAUTO
         {
             backupTimer = new System.Timers.Timer();
-            backupTimer.Interval = 300000; // Intervalo en milisegundos (60000 ms = 1 minuto)
+            backupTimer.Interval = 15000; // Intervalo en milisegundos (60000 ms = 1 minuto)
             backupTimer.Elapsed += BackupTimer_Elapsed;
             backupTimer.AutoReset = true; // Para que se repita automáticamente
             backupTimer.Start();
@@ -79,17 +80,55 @@ namespace PPPP
 
         private void BackupTimer_Elapsed(object sender, ElapsedEventArgs e)       //  BKUPAUTO
         {
-             string fileExtension = ".json";
-            var jsonFiles = Directory.GetFiles(Globales.BackupDirectory, "*" + fileExtension);
+            string fileExtension = ".json";
+            string directorioGuardado = @"C:\MiCarpetaDeImagenes"; // Cambia esto a la ruta deseada
 
-            if (jsonFiles.Length >= 10)
+            if (Directory.Exists(Globales.BackupDirectory))
             {
-                // Ordena los archivos por fecha de creación y elimina el más antiguo
-                var oldestFile = jsonFiles.OrderBy(f => File.GetCreationTime(f)).First();
-                File.Delete(oldestFile);
-             
+                var jsonFiles = Directory.GetFiles(Globales.BackupDirectory, "*" + fileExtension);
+
+                if (jsonFiles.Length >= 10)
+                {
+                    // Ordena los archivos por fecha de creación y elimina el más antiguo
+                    var oldestFile = jsonFiles.OrderBy(f => File.GetCreationTime(f)).First();
+                    File.Delete(oldestFile);
+
+                }
+                CrearRespaldo();
             }
-            CrearRespaldo();
+            else {
+                if (Directory.Exists(directorioGuardado))
+                {
+                    Directory.CreateDirectory(Globales.BackupDirectory);
+
+                    var jsonFiles = Directory.GetFiles(Globales.BackupDirectory, "*" + fileExtension);
+
+                    if (jsonFiles.Length >= 10)
+                    {
+                        // Ordena los archivos por fecha de creación y elimina el más antiguo
+                        var oldestFile = jsonFiles.OrderBy(f => File.GetCreationTime(f)).First();
+                        File.Delete(oldestFile);
+
+                    }
+                    CrearRespaldo();
+
+                }
+                else {
+                    Directory.CreateDirectory(directorioGuardado);
+                    Directory.CreateDirectory(Globales.BackupDirectory);
+
+                    var jsonFiles = Directory.GetFiles(Globales.BackupDirectory, "*" + fileExtension);
+
+                    if (jsonFiles.Length >= 10)
+                    {
+                        // Ordena los archivos por fecha de creación y elimina el más antiguo
+                        var oldestFile = jsonFiles.OrderBy(f => File.GetCreationTime(f)).First();
+                        File.Delete(oldestFile);
+
+                    }
+                    CrearRespaldo();
+                }
+            }
         }
 
 
@@ -120,13 +159,18 @@ namespace PPPP
 
             private void VerificarRecorte()
             {
+            try
+            {
 
-            // Limpiar cualquier control existente en el panel
-            //pnPrevisualizacion.Controls.Clear();
+                Globales.ImagenGlobalCP = System.Drawing.Image.FromFile(Globales.RutaImagenCP);
+                ImageContainer.ImagenRecortada = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
+            }catch { 
+            }
+                                                                               //  Globales.ImagenGlobal = System.Drawing.Image.FromFile(Globales.RutaImagen);
+                                                                               // Limpiar cualquier control existente en el panel
+                                                                               //pnPrevisualizacion.Controls.Clear();
             Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
 
-            //Imagen.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
-            
             pnPrevisualizacion.BackColor = Color.Gray;
             Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
             Imagen.Dock = DockStyle.Fill;
@@ -135,7 +179,7 @@ namespace PPPP
             pnPrevisualizacion.Controls.Add(Imagen);
             if (Imagen.Image == null)
                 {
-                    //MessageBox.Show("No se encontró ninguna imagen para mostrar.");
+                    
                 }
 
             }
@@ -164,6 +208,7 @@ namespace PPPP
                 pnPrevisualizacion.Controls.Add(Imagen);
 
                 
+
                 if (Globales.RutaImagen != null)
                 {
                     NCopias.Enabled = true;
@@ -388,7 +433,6 @@ namespace PPPP
                         Console.WriteLine("Formato de cadena no válido: " + cadena);
                     }
             }
-    
         }
 
        
@@ -397,7 +441,6 @@ namespace PPPP
             // Remueve todas las imágenes de la hoja
             Hoja.Controls.Clear();
             posicionesOcupadas.Clear();
-
         }
 
    
@@ -447,16 +490,23 @@ namespace PPPP
 
         private void Recortar_Click(object sender, EventArgs e)
         {
-
+            panel1.Controls.Remove(Globales.Registro);
             if (Imagen.Image != null)
             {
                 AuxRecortar = 100; //REC
-                Recorte recorteForm = new Recorte();  //REC
-                recorteForm.Show(); //REC
+                
+
                                     //Recorte pnRecorte = new Recorte();
                                     //pnRecorte.Show();
-                this.Visible = false;
-                //recortarActivo = true;
+
+                
+
+                Recorte IR = new Recorte();
+                //IE.FormClosed += (s, args) => this.Show();
+                IR.Show();
+                this.Dispose();
+
+                ;                //recortarActivo = true;
                 //btnAplicar.Visible = true;
             }
             else {
@@ -469,10 +519,9 @@ namespace PPPP
         private void Regist_Click(object sender, EventArgs e)
         {
 
-
-            Globales.Registro.Visible = !(Globales.Registro.Visible);
-            btnEliminar.Visible = !(btnEliminar.Visible);
-
+                Globales.Registro.Visible = !(Globales.Registro.Visible);
+                btnEliminar.Visible = !(btnEliminar.Visible);
+            
         }
 
         private void Resolucion_Click(object sender, EventArgs e)
@@ -527,50 +576,16 @@ namespace PPPP
                 MessageBox.Show("Ingresa un Numero de Copias Valido");
             }
 
-
-
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
         }
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
-
+       
+            this.Close();
             
-            var result = MessageBox.Show("¿Desea guardar el estado del programa?", "Estado del programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
-                {
-                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-                    saveFileDialog.InitialDirectory = documentsPath;
-                    saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
-                    saveFileDialog.DefaultExt = "json";
-                    saveFileDialog.AddExtension = true;
-                    saveFileDialog.FileName = $"txt.json";
-
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                    {
-                        string filePath = saveFileDialog.FileName;
-                        Globales.GuardarConfiguracion(filePath);
-                    }
-                }
-
-               
-
-            }
-            Globales.ReiniciarVariables();
-
-            // Detén el temporizador al salir
-            if (backupTimer != null)
-            {
-                backupTimer.Stop();
-                backupTimer.Dispose();
-            }
-
-            InterfazPrincipal interfazPrincipal = new InterfazPrincipal();
-            this.Visible = false;
-            interfazPrincipal.Show();
 
         }
 
@@ -619,8 +634,6 @@ namespace PPPP
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
 
-
-
             pnPrevisualizacion.BackColor = Color.Gray;
             Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
             Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
@@ -628,8 +641,7 @@ namespace PPPP
             Imagen.Image = resizedImage;
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
-
-            
+ 
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -653,8 +665,50 @@ namespace PPPP
 
         private void InterfazEdicion_FormClosing(object sender, FormClosingEventArgs e)
         {
-            this.Dispose();
-            
+            panel1.Controls.Remove(Globales.Registro);
+
+            var result = MessageBox.Show("¿Desea guardar el estado del programa?", "Estado del programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                    saveFileDialog.InitialDirectory = documentsPath;
+                    saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+                    saveFileDialog.DefaultExt = "json";
+                    saveFileDialog.AddExtension = true;
+                    saveFileDialog.FileName = $"txt.json";
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = saveFileDialog.FileName;
+                        Globales.GuardarConfiguracion(filePath);
+                    }
+
+                }
+            }
+
+            Globales.ReiniciarVariables();
+
+            // Detén el temporizador al salir
+            if (backupTimer != null)
+            {
+                backupTimer.Stop();
+                backupTimer.Dispose();
+            }
+
+            //this.Close();
+            InterfazPrincipal IP = new InterfazPrincipal();
+            IP.Show();
+
+
+        }
+
+        private void InterfazEdicion_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
         }
 
         private void infantil_Click(object sender, EventArgs e)
@@ -728,7 +782,6 @@ namespace PPPP
             
             // funciona con scroll
             Hoja = new PictureBox();
-
             Hoja.Left = 50;
             Hoja.BackColor = Color.White;
             Hoja.Top = 50;

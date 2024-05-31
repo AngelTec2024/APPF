@@ -33,7 +33,7 @@ namespace PPPP
         }
         private void InterfazPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-         //   Globales.GuardarConfiguracion(ConfigFilePath);
+            //   Globales.GuardarConfiguracion(ConfigFilePath);
             Application.Exit();
             //Globales.GuardarConfiguracion(ConfigFilePath);
             //Globales.GuardarConfiguracion();
@@ -56,7 +56,7 @@ namespace PPPP
                     MessageBox.Show("Configuración restaurada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     InterfazEdicion IE = new InterfazEdicion();
                     IE.Show();
-                    this.Visible = false;
+                    this.Close();
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace PPPP
                     MessageBox.Show("Configuración restaurada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     InterfazEdicion IE = new InterfazEdicion();
                     IE.Show();
-                    this.Visible = false;
+                    this.Close();
                 }
             }
         }
@@ -88,9 +88,12 @@ namespace PPPP
 
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-                InterfazAyudaa InterfazAyuda = new InterfazAyudaa();
 
-                InterfazAyuda.Show();
+            InterfazAyudaa IA = new InterfazAyudaa();
+            IA.FormClosed += (s, args) => this.Show();
+            IA.Show();
+            this.Hide();
+            
         }
 
         private void backUpsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,34 +132,30 @@ namespace PPPP
             //Carta
             Globales.tipoH= 1;
             // Mostrar el nuevo formulario
-
-            
-            
-            InterfazEdicion interfazEdicion = new InterfazEdicion();
-            interfazEdicion.Show();
-
-            this.Visible = false;
+            CV();
         }
 
+        private void CV()
+        {
+            InterfazEdicion IE = new InterfazEdicion();
+            //IE.FormClosed += (s, args) => this.Show();
+            IE.Show();
+            this.Hide();
+        }
+
+       
         private void Oficio_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //Oficio
             Globales.tipoH = 2;
-            InterfazEdicion interfazEdicion = new InterfazEdicion();
-            
-            interfazEdicion.Show();
-
-            this.Visible = false;
+            CV();
         }
 
         private void A4_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             //A4
             Globales.tipoH = 3;
-            InterfazEdicion interfazEdicion = new InterfazEdicion();
-            
-            interfazEdicion.Show();
-            this.Visible = false;
+            CV();
 
         }
 
@@ -165,10 +164,7 @@ namespace PPPP
         {
             //A3
             Globales.tipoH = 4;
-            InterfazEdicion interfazEdicion = new InterfazEdicion();
-            interfazEdicion.Show();
-
-            this.Visible = false;
+            CV();
         }
 
 
@@ -176,10 +172,7 @@ namespace PPPP
         {
             //A2
             Globales.tipoH = 5;
-            InterfazEdicion interfazEdicion = new InterfazEdicion();
-            
-            interfazEdicion.Show();
-            this.Visible = false;
+            CV();
         }
 
 
@@ -187,10 +180,7 @@ namespace PPPP
         {
             //A2
             Globales.tipoH = 6;
-            InterfazEdicion interfazEdicion = new InterfazEdicion();
-
-            interfazEdicion.Show();
-            this.Visible = false;
+            CV();
         }
 
         private void Carta_MouseEnter(object sender, EventArgs e)
@@ -262,8 +252,11 @@ namespace PPPP
 
         private void restaurarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+
             InterfazBackups Back = new InterfazBackups();
             Back.Show();
+            this.Hide();
+
         }
     }
 }

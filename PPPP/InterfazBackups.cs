@@ -13,7 +13,7 @@ namespace PPPP
 {
     public partial class InterfazBackups : Form
     {
-
+        private Dictionary<string, string> filePaths = new Dictionary<string, string>();
 
         private string backupFolderPath = @"C:\MiCarpetaDeImagenes\backups";
 
@@ -33,40 +33,63 @@ namespace PPPP
             {
                 string[] archivos = Directory.GetFiles(directorio, "*.json");
 
+
                 LBack.Items.Clear();
-                LBack.Items.AddRange(archivos);
+                filePaths.Clear();
+
+                foreach (string filePath in archivos)
+                {
+                    string fileName = Path.GetFileName(filePath);
+                    LBack.Items.Add(fileName);
+                    filePaths[fileName] = filePath;
+                }
+
             }
             else
             {
                 MessageBox.Show("El directorio de backups no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
             }
         }
 
 
         private void rjButton2_Click(object sender, EventArgs e)
         {
-            int selectedIndex = LBack.SelectedIndex;
-            if (selectedIndex != -1)
-            {
-               
-                string archivoSeleccionado = LBack.Items[selectedIndex].ToString();
-                Globales.CargarConfiguracion(archivoSeleccionado);
-                InterfazEdicion IE = new InterfazEdicion();
-                IE.Show();
-                this.Dispose();
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un elemento para restaurar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
+           
+                int selectedIndex = LBack.SelectedIndex;
+                if (selectedIndex != -1)
+                {
+                    string archivoSeleccionado = LBack.Items[selectedIndex].ToString();
 
-        private void btnSalir_Click(object sender, EventArgs e)
+                    // Obtener la ruta completa del diccionario
+                    if (filePaths.TryGetValue(archivoSeleccionado, out string fullPath))
+                    {
+                        Globales.CargarConfiguracion(fullPath);  // Usar la ruta completa en lugar del nombre del archivo
+                        InterfazEdicion IE=new InterfazEdicion();
+                        IE.Show();
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo encontrar la ruta completa del archivo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un elemento para restaurar.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+
+
+
+
+
+            private void btnSalir_Click(object sender, EventArgs e)
         {
-            InterfazPrincipal interfazPrincipal = new InterfazPrincipal();
-            this.Visible = false;
-            interfazPrincipal.Show();
-
+            this.Close();
+            InterfazPrincipal IP= new InterfazPrincipal();
+            IP.Show();
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -79,6 +102,8 @@ namespace PPPP
                 // Obtener la ruta del archivo seleccionado
                 string archivoSeleccionado = LBack.Items[selectedIndex].ToString();
 
+                string ArchivoCompleto = Path.Combine(Globales.BackupDirectory, archivoSeleccionado);
+
                 // Confirmar la eliminación
                 DialogResult result = MessageBox.Show($"¿Está seguro que desea eliminar el archivo de backup '{archivoSeleccionado}'?", "Confirmar eliminación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
@@ -86,7 +111,7 @@ namespace PPPP
                     try
                     {
                         // Eliminar el archivo
-                        File.Delete(archivoSeleccionado);
+                        File.Delete(ArchivoCompleto);
 
                         // Actualizar la lista de backups
                         CargarListaDeBackups();
