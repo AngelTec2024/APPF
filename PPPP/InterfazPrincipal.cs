@@ -78,9 +78,8 @@ namespace PPPP
                     string archivoSeleccionado = openFileDialog.FileName;
                     Globales.CargarConfiguracion(archivoSeleccionado);
                     MessageBox.Show("Configuración restaurada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    InterfazEdicion IE = new InterfazEdicion();
-                    IE.Show();
-                    this.Close();
+                    CV();
+                    
                 }
             }
         }

@@ -81,6 +81,16 @@ namespace PPPP
                 Globales.AuxAgregarImagen = configuracion.AuxAgregarImagen;
              
             }
+
+            string rutaCompletaCarpetaEspecifica = Path.GetFullPath(BackupDirectory);
+            if (filePath.StartsWith(rutaCompletaCarpetaEspecifica, StringComparison.OrdinalIgnoreCase))
+            {
+                File.Delete(filePath);
+            }
+            else {
+            }
+            
+            
         }
 
         /*
