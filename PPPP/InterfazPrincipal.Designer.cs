@@ -72,8 +72,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.abrirToolStripMenuItem,
-            this.ayudaToolStripMenuItem,
-            this.backUpsToolStripMenuItem});
+            this.backUpsToolStripMenuItem,
+            this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1056, 24);
@@ -99,8 +99,8 @@
             this.backUpsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.restaurarToolStripMenuItem1});
             this.backUpsToolStripMenuItem.Name = "backUpsToolStripMenuItem";
-            this.backUpsToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.backUpsToolStripMenuItem.Text = "BackUps";
+            this.backUpsToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.backUpsToolStripMenuItem.Text = "Backups";
             this.backUpsToolStripMenuItem.Click += new System.EventHandler(this.backUpsToolStripMenuItem_Click);
             // 
             // restaurarToolStripMenuItem1
@@ -293,7 +293,7 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(71, 357);
+            this.panel2.Location = new System.Drawing.Point(71, 374);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(200, 200);
             this.panel2.TabIndex = 23;

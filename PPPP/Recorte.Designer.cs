@@ -38,7 +38,7 @@
             // 
             // pbRecortar2
             // 
-            this.pbRecortar2.Location = new System.Drawing.Point(366, 29);
+            this.pbRecortar2.Location = new System.Drawing.Point(12, 12);
             this.pbRecortar2.Name = "pbRecortar2";
             this.pbRecortar2.Size = new System.Drawing.Size(560, 497);
             this.pbRecortar2.TabIndex = 0;
@@ -58,11 +58,11 @@
             this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjButton1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.rjButton1.Location = new System.Drawing.Point(56, 68);
+            this.rjButton1.Location = new System.Drawing.Point(586, 222);
             this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(169, 74);
+            this.rjButton1.Size = new System.Drawing.Size(215, 59);
             this.rjButton1.TabIndex = 5;
-            this.rjButton1.Text = "Desasher";
+            this.rjButton1.Text = "Deshacer";
             this.rjButton1.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.rjButton1.UseVisualStyleBackColor = false;
             this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
@@ -78,11 +78,11 @@
             this.Aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Aceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Aceptar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Aceptar.Location = new System.Drawing.Point(56, 263);
+            this.Aceptar.Location = new System.Drawing.Point(586, 333);
             this.Aceptar.Name = "Aceptar";
-            this.Aceptar.Size = new System.Drawing.Size(169, 74);
+            this.Aceptar.Size = new System.Drawing.Size(215, 59);
             this.Aceptar.TabIndex = 4;
-            this.Aceptar.Text = "Aceptar";
+            this.Aceptar.Text = "Regresar";
             this.Aceptar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Aceptar.UseVisualStyleBackColor = false;
             this.Aceptar.Click += new System.EventHandler(this.Aceptar_Click);
@@ -98,9 +98,9 @@
             this.Recortar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Recortar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Recortar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.Recortar.Location = new System.Drawing.Point(56, 160);
+            this.Recortar.Location = new System.Drawing.Point(586, 111);
             this.Recortar.Name = "Recortar";
-            this.Recortar.Size = new System.Drawing.Size(169, 74);
+            this.Recortar.Size = new System.Drawing.Size(215, 59);
             this.Recortar.TabIndex = 3;
             this.Recortar.Text = "Recortar";
             this.Recortar.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -112,7 +112,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1069, 585);
+            this.ClientSize = new System.Drawing.Size(813, 516);
             this.ControlBox = false;
             this.Controls.Add(this.rjButton1);
             this.Controls.Add(this.Aceptar);

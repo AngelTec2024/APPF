@@ -159,7 +159,7 @@ namespace PPPP
 
 
 
-            private void VerificarRecorte()
+        private void VerificarRecorte()
             {
             try
             {
@@ -196,53 +196,61 @@ namespace PPPP
                 inY = 0;
                 RI = Globales.RutaImagen;
                 RICP = Globales.RutaImagenCP;
-                
-                
-                try
+
+
+            try
+            {
+                openFileDialog1.ShowDialog();
+                if (string.IsNullOrEmpty(openFileDialog1.FileName))
                 {
-                    openFileDialog1.ShowDialog();
-                    Globales.RutaImagen = openFileDialog1.FileName;
-                    Globales.RutaImagenCP = openFileDialog1.FileName;
+                    // Si no se seleccionó un archivo, salir del método.
+                    MessageBox.Show("No se seleccionó ninguna imagen.");
+                    return;
+                }
+
+                Globales.RutaImagen = openFileDialog1.FileName;
+                Globales.RutaImagenCP = openFileDialog1.FileName;
                 Globales.ImagenGlobalCP = System.Drawing.Image.FromFile(Globales.RutaImagen);
-                }
-                catch { 
-                    Globales.RutaImagen = RI;
-                    Globales.RutaImagenCP = RICP;
-                
             }
-                
-                pnPrevisualizacion.BackColor = Color.Gray;
-                Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
-                Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
-                Imagen.Dock = DockStyle.Fill;
-                Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
-                pnPrevisualizacion.Controls.Add(Imagen);
 
-                
-
-                if (Globales.RutaImagen != null)
-                {
-                    NCopias.Enabled = true;
-                    Resolucion.Enabled = true;
-                    Recortar.Enabled = true;
-                 
-                    AgregarImg.Enabled = true;
-                }
-                else {
-
-                    MessageBox.Show("Ingresa Una Imagen");
-                }
-
-                // Configurar el cursor para el PictureBox de recorte
+            catch
+            {
+                Globales.RutaImagen = RI;
+                Globales.RutaImagenCP = RICP;
+                //MessageBox.Show("Error al cargar la imagen. Se restauraron las rutas anteriores.");
+                return;
             }
-            
+
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = System.Drawing.Image.FromFile(Globales.RutaImagen); // Carga la imagen
+            pnPrevisualizacion.Controls.Add(Imagen);
+
+            if (Globales.RutaImagen != null)
+            {
+                NCopias.Enabled = true;
+                Resolucion.Enabled = true;
+                Recortar.Enabled = true;
+                AgregarImg.Enabled = true;
+            }
+            else
+            {
+                MessageBox.Show("Ingresa Una Imagen");
+            }
 
 
-  
+            // Configurar el cursor para el PictureBox de recorte
+        }
+
+
+
+
 
         // Version PreUlti
-        
-         private void AgrImgHoj(int nC, double zoomFactor,Image Imagen)
+
+        private void AgrImgHoj(int nC, double zoomFactor,Image Imagen)
          {
              int hojaAncho =Hoja.Width;
              int hojaAlto = Hoja.Height;
@@ -316,7 +324,9 @@ namespace PPPP
                  // Eliminar espacios libres que tengan ancho o alto cero
                  espaciosLibres = espaciosLibres.Where(e => e.Width > 0 && e.Height > 0).ToList();
              }
-         }
+
+               
+        }
 
          public  List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto)
          {
@@ -880,6 +890,10 @@ namespace PPPP
             Contador = 0;
         }
 
+        private void previsualizacionreal_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void infantil_Click(object sender, EventArgs e)
         {
