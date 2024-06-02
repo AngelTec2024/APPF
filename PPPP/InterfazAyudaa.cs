@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace PPPP
 {
     public partial class InterfazAyudaa : Form
     {
-        private string[] imagePaths;
+        private string[] imagePath;
         private string[] descriptions;
         private int currentIndex = 0;
         private Timer timer;
@@ -27,27 +28,24 @@ namespace PPPP
         }
         private void LoadImages()
         {// Carga las rutas de las imágenes en el array
-            imagePaths = new string[]
+            imagePath = new string[]
             {
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\InterfazPrincipal.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Principal_Formatos.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Principal_Cargar.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Principal_Backups.png",
-
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\InterfazEdicion.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Edicion_Herramientas.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Edicion_pnaux.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Edicion_HojaPre.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\InterfazEdicion_Agregar.png.",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\InterfazEdicion_Guardar.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\InterfazEdicion_Salir.png",
-
-
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\InterfazBackups.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Backups_Disponibles.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Backups_Recuperar.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Backups_Eliminar.png",
-                "C:\\MiCarpetaDeImagenes\\ImgAyuda\\Backups_Regresar.png"
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazPrincipal.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Principal_Formatos.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Principal_Cargar.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Principal_Backups.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazEdicion.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Edicion_Herramientas.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Edicion_pnaux.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Edicion_HojaPre.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazEdicion_Agregar.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazEdicion_Guardar.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazEdicion_Salir.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazBackups.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Backups_Disponibles.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Backups_Recuperar.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Backups_Eliminar.png",
+                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Backups_Regresar.png"
             };
 
             // Carga las descripciones en el array
@@ -83,48 +81,38 @@ namespace PPPP
 
         private void ShowImage()
         {
-            if (imagePaths.Length > 0)
+            if (imagePath.Length > 0)
             {
-                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; // Ajusta la imagen al tamaño del PictureBox
-
-                // Ruta de la imagen principal
-                string mainImagePath = imagePaths[currentIndex];
+                // URL de la imagen actual
+                string imageUrl = imagePath[currentIndex];
 
                 try
                 {
-                    // Verificar si la ruta es correcta y el archivo existe
-                    if (!System.IO.File.Exists(mainImagePath))
+                    using (WebClient client = new WebClient())
                     {
-                        throw new System.IO.FileNotFoundException($"Imagen principal no encontrada: {mainImagePath}");
+                        byte[] imageBytes = client.DownloadData(imageUrl);
+                        using (var ms = new System.IO.MemoryStream(imageBytes))
+                        {
+                            Image image = Image.FromStream(ms);
+                            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; // Ajustar la imagen al tamaño del PictureBox
+                            pictureBox1.Image = image;
+                        }
                     }
-
-                    // Cargar la imagen principal
-                    Image mainImage = Image.FromFile(mainImagePath);
-
-                    // Mostrar la imagen principal en pictureBox1
-                    pictureBox1.Image = mainImage;
 
                     // Mostrar la descripción en el label
                     txtDescripcion.Text = descriptions[currentIndex];
-
-                    //txtDescripcion.Text = descriptions[currentIndex];
-                    //txtDescripcion.TextAlign = ContentAlignment.MiddleCenter;
-                    //txtDescripcion.AutoSize = true;
-                    //txtDescripcion.Dock = DockStyle.Fill;
-                    //txtDescripcion.Padding = new Padding(10);
-
-
+                    txtDescripcion.TextAlign = ContentAlignment.MiddleCenter;
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error al cargar imágenes: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show($"Error al cargar la imagen desde la URL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            currentIndex = (currentIndex + 1) % imagePaths.Length;
+            currentIndex = (currentIndex + 1) % imagePath.Length;
             ShowImage();
         }
 
@@ -136,7 +124,7 @@ namespace PPPP
         private void btnAtras_Click(object sender, EventArgs e)
         {
             timer.Stop();
-            currentIndex = (currentIndex - 1 + imagePaths.Length) % imagePaths.Length;
+            currentIndex = (currentIndex - 1 + imagePath.Length) % imagePath.Length;
             ShowImage();
             timer.Start();
         }
@@ -144,7 +132,7 @@ namespace PPPP
         private void btnAdelante_Click(object sender, EventArgs e)
         {
             timer.Stop();
-            currentIndex = (currentIndex + 1) % imagePaths.Length;
+            currentIndex = (currentIndex + 1) % imagePath.Length;
             ShowImage();
             timer.Start();
         }
