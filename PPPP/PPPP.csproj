@@ -194,6 +194,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PP.ico" />
+    <Content Include="Resources\Backups_Disponibles.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
