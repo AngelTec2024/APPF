@@ -195,6 +195,21 @@
   <ItemGroup>
     <Content Include="PP.ico" />
     <Content Include="Resources\Backups_Disponibles.png" />
+    <Content Include="Resources\Backups_Eliminar.png" />
+    <Content Include="Resources\Backups_Recuperar.png" />
+    <Content Include="Resources\Backups_Regresar.png" />
+    <Content Include="Resources\Edicion_Herramientas.png" />
+    <Content Include="Resources\Edicion_HojaPre.png" />
+    <Content Include="Resources\Edicion_pnaux.png" />
+    <Content Include="Resources\InterfazBackups.png" />
+    <Content Include="Resources\InterfazEdicion.png" />
+    <Content Include="Resources\InterfazEdicion_Agregar.png" />
+    <Content Include="Resources\InterfazEdicion_Guardar.png" />
+    <Content Include="Resources\InterfazEdicion_Salir.png" />
+    <Content Include="Resources\InterfazPrincipal.png" />
+    <Content Include="Resources\Principal_Backups.png" />
+    <Content Include="Resources\Principal_Cargar.png" />
+    <Content Include="Resources\Principal_Formatos.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
