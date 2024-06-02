@@ -31,6 +31,7 @@ namespace PPPP
 
             if (Directory.Exists(directorio))
             {
+                
                 string[] archivos = Directory.GetFiles(directorio, "*.json");
 
 
@@ -48,7 +49,6 @@ namespace PPPP
             else
             {
                 MessageBox.Show("El directorio de backups no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
             }
         }
 
@@ -68,8 +68,9 @@ namespace PPPP
                         InterfazEdicion IE=new InterfazEdicion();
                         IE.Show();
                         this.Close();
+                        
 
-                    }
+                }
                     else
                     {
                         MessageBox.Show("No se pudo encontrar la ruta completa del archivo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

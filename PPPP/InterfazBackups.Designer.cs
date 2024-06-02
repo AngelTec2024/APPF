@@ -29,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterfazBackups));
             this.LBack = new System.Windows.Forms.ListBox();
             this.btnRecuperar = new PPPP.Resources.RJButton();
             this.btnEliminar = new PPPP.Resources.RJButton();
@@ -107,13 +108,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(737, 365);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnRecuperar);
             this.Controls.Add(this.LBack);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InterfazBackups";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "InterfazBackups";
+            this.Text = "Backups";
             this.ResumeLayout(false);
 
         }

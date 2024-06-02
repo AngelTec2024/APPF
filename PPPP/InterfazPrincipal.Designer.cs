@@ -106,7 +106,7 @@
             // restaurarToolStripMenuItem1
             // 
             this.restaurarToolStripMenuItem1.Name = "restaurarToolStripMenuItem1";
-            this.restaurarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.restaurarToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.restaurarToolStripMenuItem1.Text = "Restaurar";
             this.restaurarToolStripMenuItem1.Click += new System.EventHandler(this.restaurarToolStripMenuItem1_Click);
             // 
@@ -352,10 +352,11 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "InterfazPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Interfaz Principal";
+            this.Text = "Formato Hoja";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InterfazPrincipal_FormClosing);
             this.Load += new System.EventHandler(this.InterfazPrincipal_Load);
             this.menuStrip1.ResumeLayout(false);

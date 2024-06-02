@@ -120,7 +120,87 @@
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>156, 17</value>
+  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAABMLAAATCwAAAAAAAAAA
+        AABvFToAbRQ4AG4VOTduFTmrbhU58W4VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTnxbhU5rG4V
+        OTdtFDgAbxU6AG0VOQBuFTlNbhU53W4VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU53m4VOU1uFTkAbhU5M24VOdtuFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5224VOTNuFTmlbhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5pW4VOe1uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTnsbhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/3IVO/90Fjz/dBY8/28VOv9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9wFTr/mhpN/6obVP+kG1L/eBY+/20V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9vFTr/oxpR/70dXf+4HVr/fxdB/20VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/3IVO/+4HVv/0x9n/8ke
+        Yv9/F0H/bRU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/3AVOv+yHFj/0h9m/8sfY/+EF0P/bRU4/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/chU7/7cd
+        Wv/RH2b/xx5h/34XQP9tFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/cBU6/7EcV//RH2b/yh9j/4QX
+        Q/9tFTj/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9yFTv/tx1a/9EfZv/HHmH/fhdA/2wVOP9tFTn/bhU5/24VOf9uFTn/bhU5/24VOf9wFTr/sRxX/9Ef
+        Zv/KH2P/ghdC/2sVOP9sFTj/bRU4/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/3IVO/+3HVr/0R9m/8geYv+KGEb/fBY//3oWPv9zFjv/bRU5/20VOf9uFTn/bhU5/3AV
+        Ov+xHFf/0R9m/8wfZP+cGk7/jRhH/4sYRv+AF0H/cxU7/20VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/chU7/7cdWv/QH2b/zh9l/8ceYv/GHmH/xB5g/7odW/+gGlD/exY//20V
+        Of9uFTn/cBU6/7EcV//RH2b/zx9l/84fZf/OH2X/zR9k/8geYv+2HFr/jBhH/28VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9yFTv/tx1a/9AfZv/PH2X/0R9m/9EfZv/RH2b/0R9m/9Af
+        Zv+7HVz/fxdB/20VOf9wFTr/sRxX/9EfZv/PH2X/zh9k/84fZP/QH2X/0R9m/9EfZv/JHmL/kBhI/20V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/3IVO/+3HVr/0R9m/8wfZP+pG1T/oRpQ/64c
+        Vv/GHmH/0B9l/9EfZv+wHFf/cRU6/28VOv+xHFf/0R9m/8wfZP+cGk7/jBhG/5cZS/+2HVr/zh9l/9Af
+        Zv++HV3/eBY9/20VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/chU7/7cdWv/RH2b/yB5i/38X
+        QP9sFTj/bxU5/4YYRP/EHmD/0B9m/8geYv+AF0H/bhU5/7EcV//RH2b/yx9j/4QXQ/9rFTj/bBU4/3cW
+        Pf+5HVv/0B9m/80fZP+JGEX/bRU4/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9yFTv/tx1a/9Ef
+        Zv/IHmL/gBdB/20VOP9uFTn/bhU5/60cVf/RH2b/zR9k/4sYRv9uFTn/sRxX/9EfZv/LH2P/hRdD/20V
+        OP9uFTn/bRU4/6UbUf/RH2b/zx9l/5IZSf9sFTj/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/3IV
+        O/+3HVr/0R9m/8geYv+AF0H/bRU4/20VOf9vFTr/sRxX/9EfZv/NH2T/ihhG/24VOf+xHFf/0R9m/8sf
+        Y/+EF0P/bBU4/2wVOP9wFTr/sRxX/9EfZv/OH2T/jRhH/2wVOP9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/chU7/7cdWv/RH2b/yR5i/4QXQ/9xFTv/dhY9/5UZSv/JHmL/0B9m/8UeYf99F0D/bxU5/7Ec
+        V//RH2b/zB9k/5IZSf99Fz//hBdD/6MbUf/LH2P/0B9l/8UeYP99F0D/bRU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9yFTv/tx1a/9EfZv/OH2T/vh1d/7kdW/+/Hl7/zB9k/9AfZf/QH2b/pxtT/28V
+        Ov9vFTr/sRxX/9EfZv/PH2X/yR9i/8ceYf/KH2P/zx9l/9AfZf/PH2X/oRpQ/28VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/3IVO/+4HVv/0h9m/9AfZv/RH2b/0h9m/9EfZv/RH2b/zh9k/68c
+        Vv94Fj7/bRU5/3AVOv+yHFj/0h9m/9EfZv/RH2b/0R9m/9EfZv/QH2X/xx5i/6IaUf90Fjz/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/cRU6/6QbUf+4HVv/uR1b/7sdXP+7HVz/uB1a/6sb
+        Vf+QGUj/cxY7/20VOf9uFTn/bxU5/5IZSf+kG1L/phtS/6cbU/+oG1P/pRtS/5gZTP+BF0L/bxU5/20V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/cBU6/3IVO/9zFTv/cxY7/3MW
+        O/9yFTv/bhU5/20VOP9uFTn/bhU5/24VOf9uFTn/bRU5/20VOf9tFTn/bhU5/24VOf9tFTn/bBU4/20V
+        OP9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTntbhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU57G4VOaVuFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTmlbxU5M24V
+        OdxuFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU53G8V
+        OTRsFDgAbhU5TG4VOd1uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Od1vFTlMbBQ4AHAWOgBsFDcAbxU5N24VOatuFTnwbhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        Of9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24VOf9uFTn/bhU5/24V
+        OfFuFTmsbxU5N2sUNwBwFjsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+</value>
+  </data>
 </root>

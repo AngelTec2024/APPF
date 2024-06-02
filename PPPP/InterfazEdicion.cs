@@ -20,6 +20,9 @@ namespace PPPP
     {
         //private int HojaOriginal1;
         PictureBox Hoja;
+
+        int I = 0;
+
         //private int maxAlturaFila = 0; // Declaración de la variable maxAlturaFila
         private List<Rectangle> posicionesOcupadas = new List<Rectangle>();
         
@@ -30,9 +33,9 @@ namespace PPPP
         Metodos Metodo = new Metodos();//llamar Clase
         
         public StreamReader lector;
-       // PictureBox Hoja;
+        // PictureBox Hoja;
 
-
+        int Contador = 0;
 
         PictureBox Imagen = new PictureBox();
 
@@ -51,6 +54,7 @@ namespace PPPP
         {
 
             InitializeComponent();
+            pnResoluciones1.Visible = false;
             TPHoja();
             VerificarRecorte();
             InicializaListBox();
@@ -151,8 +155,6 @@ namespace PPPP
             Globales.Registro.Size = new Size(225, 238);    // Establecer el tamaño
             panel1.Controls.Add(Globales.Registro);
          
-
-
         }
 
 
@@ -186,20 +188,29 @@ namespace PPPP
         
         private void AbrirImagen()
         {
-            try
-            {
-                
+          
+                string RI = null, RICP = null;
                 NCopias.Value = 0;
                 NC = (int)NCopias.Value;
                 inX = 0;
                 inY = 0;
-                openFileDialog1.ShowDialog();
-                Globales.RutaImagen = openFileDialog1.FileName;
-                Globales.RutaImagenCP = openFileDialog1.FileName;
+                RI = Globales.RutaImagen;
+                RICP = Globales.RutaImagenCP;
                 
+                
+                try
+                {
+                    openFileDialog1.ShowDialog();
+                    Globales.RutaImagen = openFileDialog1.FileName;
+                    Globales.RutaImagenCP = openFileDialog1.FileName;
                 Globales.ImagenGlobalCP = System.Drawing.Image.FromFile(Globales.RutaImagen);
-
-
+                }
+                catch { 
+                    Globales.RutaImagen = RI;
+                    Globales.RutaImagenCP = RICP;
+                
+            }
+                
                 pnPrevisualizacion.BackColor = Color.Gray;
                 Imagen.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
                 Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
@@ -224,7 +235,7 @@ namespace PPPP
 
                 // Configurar el cursor para el PictureBox de recorte
             }
-            catch{}}
+            
 
 
   
@@ -291,8 +302,9 @@ namespace PPPP
                  };
                  Hoja.Controls.Add(pictureBox1);
 
-                 // Actualizar la lista de posiciones ocupadas
-                 Rectangle espacioUsado = new Rectangle(mejorEspacio.X, mejorEspacio.Y, tamanoImagen.Width, tamanoImagen.Height);
+
+                // Actualizar la lista de posiciones ocupadas
+                Rectangle espacioUsado = new Rectangle(mejorEspacio.X, mejorEspacio.Y, tamanoImagen.Width, tamanoImagen.Height);
                  posicionesOcupadas.Add(espacioUsado);
 
                  // Actualizar la lista de espacios libres
@@ -423,9 +435,13 @@ namespace PPPP
 
                          ImagenL.Size = pnPrevisualizacion.Size; // Tamaño de la imagen dentro del panel
                          ImagenL.SizeMode = PictureBoxSizeMode.StretchImage; // Escala la imagen para ajustarse al PictureBox
+                    try { 
                          ImagenL.Image = System.Drawing.Image.FromFile(RutaImagen); // Carga la imagen
                          Metodo.AddImageToPictureBox(RutaImagen, ImagenL, inX, inY);
                          AgrImgHoj(nc,zoomFactor,ImagenL.Image);
+                    }catch{
+
+                    }
                 }
                 else
                     {
@@ -490,24 +506,16 @@ namespace PPPP
 
         private void Recortar_Click(object sender, EventArgs e)
         {
-            panel1.Controls.Remove(Globales.Registro);
+            I = 1;
             if (Imagen.Image != null)
             {
                 AuxRecortar = 100; //REC
-                
-
-                                    //Recorte pnRecorte = new Recorte();
-                                    //pnRecorte.Show();
-
-                
 
                 Recorte IR = new Recorte();
-                //IE.FormClosed += (s, args) => this.Show();
+                //IR.FormClosed += (s, args) => this.Show();
                 IR.Show();
-                this.Dispose();
+                this.Close();
 
-                ;                //recortarActivo = true;
-                //btnAplicar.Visible = true;
             }
             else {
 
@@ -524,11 +532,37 @@ namespace PPPP
             
         }
 
+        
         private void Resolucion_Click(object sender, EventArgs e)
         {
             if (Imagen.Image!=null)
             {
-                pnResoluciones.Visible = !pnResoluciones.Visible;
+                Contador = Contador + 1;
+                if (Contador == 1)
+                {
+                    pnResoluciones.Visible = true;
+                }
+                else {
+                    if (Contador == 2)
+                    {
+                        pnResoluciones.Visible = false;
+                        pnResoluciones1.Visible = true;
+                    }
+                    else {
+                        if (Contador == 3)
+                        {
+                            pnResoluciones1.Visible = false;
+                            Contador = 0;
+                        }
+                    }
+                }
+                
+                
+                
+
+
+
+
             }
             else {
                 MessageBox.Show("Seleciona Una IMG Primero");
@@ -582,11 +616,10 @@ namespace PPPP
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
-       
+            I = 0;
             this.Close();
-            
-
-
+            InterfazPrincipal IP = new InterfazPrincipal();
+            IP.Show();
         }
 
         private void i5x7_Click(object sender, EventArgs e)
@@ -615,7 +648,7 @@ namespace PPPP
             Imagen.Image = resizedImage;
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
-
+            Contador = 0;
         }
 
 
@@ -641,7 +674,7 @@ namespace PPPP
             Imagen.Image = resizedImage;
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
- 
+            Contador = 0;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -666,43 +699,44 @@ namespace PPPP
         private void InterfazEdicion_FormClosing(object sender, FormClosingEventArgs e)
         {
             panel1.Controls.Remove(Globales.Registro);
-
-            var result = MessageBox.Show("¿Desea guardar el estado del programa?", "Estado del programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-            {
-                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            
+            if (I == 0)
                 {
-                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                var result = MessageBox.Show("¿Desea guardar el estado del programa?", "Estado del programa", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    saveFileDialog.InitialDirectory = documentsPath;
-                    saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
-                    saveFileDialog.DefaultExt = "json";
-                    saveFileDialog.AddExtension = true;
-                    saveFileDialog.FileName = $"txt.json";
-
-                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                if (result == DialogResult.Yes)
+                {
+                    using (SaveFileDialog saveFileDialog = new SaveFileDialog())
                     {
-                        string filePath = saveFileDialog.FileName;
-                        Globales.GuardarConfiguracion(filePath);
+                        string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                        saveFileDialog.InitialDirectory = documentsPath;
+                        saveFileDialog.Filter = "JSON files (*.json)|*.json|All files (*.*)|*.*";
+                        saveFileDialog.DefaultExt = "json";
+                        saveFileDialog.AddExtension = true;
+                        saveFileDialog.FileName = $"txt.json";
+
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            string filePath = saveFileDialog.FileName;
+                            Globales.GuardarConfiguracion(filePath);
+                        }
+
                     }
-
                 }
+
+
+
+                // Detén el temporizador al salir
+                
             }
-
-            Globales.ReiniciarVariables();
-
-            // Detén el temporizador al salir
+            
             if (backupTimer != null)
             {
                 backupTimer.Stop();
                 backupTimer.Dispose();
             }
-
-            //this.Close();
-            InterfazPrincipal IP = new InterfazPrincipal();
-            IP.Show();
-
+            this.Dispose();
 
         }
 
@@ -710,6 +744,142 @@ namespace PPPP
         {
 
         }
+
+        private void infantilInvt_Click(object sender, EventArgs e)
+        {
+            pnResoluciones.Visible = false;
+            pnPrevisualizacion.Controls.Clear();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 2;
+            inY = 2;
+
+            // Usar la imagen recortada si está disponible
+
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
+
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = resizedImage;
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones1.Visible = false;
+            Contador = 0;
+        }
+
+        private void i6x4_Click(object sender, EventArgs e)
+        {
+            pnResoluciones.Visible = false;
+            pnPrevisualizacion.Controls.Clear();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 6;
+            inY = 4;
+
+            // Usar la imagen recortada si está disponible
+
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
+
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = resizedImage;
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones1.Visible = false;
+            Contador=0;
+
+        }
+
+        private void i7x5_Click(object sender, EventArgs e)
+        {
+            pnResoluciones.Visible = false;
+            pnPrevisualizacion.Controls.Clear();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 7;
+            inY = 5;
+
+            // Usar la imagen recortada si está disponible
+
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
+
+
+
+
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = resizedImage;
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones1.Visible = false;
+            Contador = 0;
+        }
+
+        private void i8x6_Click(object sender, EventArgs e)
+        {
+            pnResoluciones.Visible = false;
+            pnPrevisualizacion.Controls.Clear();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 8;
+            inY = 6;
+
+            // Usar la imagen recortada si está disponible
+
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
+
+
+
+
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = resizedImage;
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones1.Visible = false;
+            Contador = 0;
+        }
+
+        private void i6x8_Click(object sender, EventArgs e)
+        {
+            pnResoluciones.Visible = false;
+            pnPrevisualizacion.Controls.Clear();
+            NCopias.Value = 0;
+            NC = (int)NCopias.Value;
+            inX = 6;
+            inY = 8;
+
+            // Usar la imagen recortada si está disponible
+
+
+            // Redimensionar la imagen
+            Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
+
+
+
+
+            pnPrevisualizacion.BackColor = Color.Gray;
+            Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
+            Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
+            Imagen.Dock = DockStyle.Fill;
+            Imagen.Image = resizedImage;
+            pnPrevisualizacion.Controls.Add(Imagen);
+            pnResoluciones.Visible = false;
+            Contador = 0;
+        }
+
 
         private void infantil_Click(object sender, EventArgs e)
         {
@@ -734,7 +904,7 @@ namespace PPPP
             Imagen.Image = resizedImage;
             pnPrevisualizacion.Controls.Add(Imagen);
             pnResoluciones.Visible = false;
-
+            Contador = 0;
         }
 
 
@@ -796,3 +966,5 @@ namespace PPPP
 
     }
 }
+
+

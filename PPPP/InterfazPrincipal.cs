@@ -21,8 +21,10 @@ namespace PPPP
         
 
         public InterfazPrincipal()
-        {
+        { 
             InitializeComponent();
+            Globales.ReiniciarVariables();
+
         }
 
         ///////////////////////////////////BACKUPS ////////////////////////////////////////////////

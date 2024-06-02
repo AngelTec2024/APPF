@@ -132,6 +132,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1313, 749);
+            this.ControlBox = false;
             this.Controls.Add(this.btnAdelante);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.pictureBox1);

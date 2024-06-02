@@ -23,9 +23,9 @@ namespace PPPP
         public static ListBox Registro { get; set; } = new ListBox();
         public static Boolean AlertaRecorte { get; set; }
 
-        public static int NC = 0;
+        //  public static int NC = 0;
         public static int tipoH { get; set; }
-        public static Size TamañoHoja { get; set; }
+        //public static Size TamañoHoja { get; set; }
         public static int AuxAgregarImagen { get; set; }
         public static string BackupDirectory { get; } = @"C:\MiCarpetaDeImagenes\backups";
 
@@ -41,8 +41,6 @@ namespace PPPP
             }
         }
 
-
-
         public static void GuardarConfiguracion(string filePath)
         {
             var configuracion = new Configuracion
@@ -51,11 +49,12 @@ namespace PPPP
                 RutaImagenCP = Globales.RutaImagenCP,
                 Registro = Globales.Registro.Items.Cast<string>().ToList(),
                 AlertaRecorte = Globales.AlertaRecorte,
-                NC = Globales.NC,
+               // NC = Globales.NC,
                 TipoH = Globales.tipoH,
-                TamañoHoja = Globales.TamañoHoja,
+                //TamañoHoja = Globales.TamañoHoja,
                 AuxAgregarImagen = Globales.AuxAgregarImagen
             };
+            Console.WriteLine(tipoH);
               var json = JsonConvert.SerializeObject(configuracion, Formatting.Indented);
             File.WriteAllText(filePath, json);
         }
@@ -75,9 +74,9 @@ namespace PPPP
                     Globales.Registro.Items.Add(item);
                 }
                 Globales.AlertaRecorte = configuracion.AlertaRecorte;
-                Globales.NC = configuracion.NC;
+                //Globales.NC = configuracion.NC;
                 Globales. tipoH = configuracion.TipoH;
-                Globales.TamañoHoja = configuracion.TamañoHoja;
+                //Globales.TamañoHoja = configuracion.TamañoHoja;
                 Globales.AuxAgregarImagen = configuracion.AuxAgregarImagen;
              
             }
@@ -125,9 +124,9 @@ namespace PPPP
 
 
             AlertaRecorte = false;
-            NC = 0;
+            //NC = 0;
             tipoH = 0;
-            TamañoHoja = Size.Empty;
+          //  TamañoHoja = Size.Empty;
             AuxAgregarImagen = 0;
             Globales.RutaImagen = null;
             ImageContainer.ImagenRecortada =null;

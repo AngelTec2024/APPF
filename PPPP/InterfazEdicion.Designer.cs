@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterfazEdicion));
             this.pnPrevisualizacion = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnResoluciones = new System.Windows.Forms.Panel();
+            this.i6x8 = new PPPP.Resources.RJButton();
             this.infantil = new PPPP.Resources.RJButton();
             this.i4x6 = new PPPP.Resources.RJButton();
             this.i5x7 = new PPPP.Resources.RJButton();
@@ -39,6 +42,11 @@
             this.PanelPre = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pnResoluciones1 = new System.Windows.Forms.Panel();
+            this.i8x6 = new PPPP.Resources.RJButton();
+            this.infantilInvt = new PPPP.Resources.RJButton();
+            this.i6x4 = new PPPP.Resources.RJButton();
+            this.i7x5 = new PPPP.Resources.RJButton();
             this.btnEliminar = new PPPP.Resources.RJButton();
             this.panel3 = new System.Windows.Forms.Panel();
             this.Seleccionar = new PPPP.Resources.RJButton();
@@ -48,9 +56,11 @@
             this.rjButton1 = new PPPP.Resources.RJButton();
             this.AgregarImg = new PPPP.Resources.RJButton();
             this.Guardar = new PPPP.Resources.RJButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnResoluciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnResoluciones1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,13 +88,36 @@
             // pnResoluciones
             // 
             this.pnResoluciones.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnResoluciones.Controls.Add(this.i6x8);
             this.pnResoluciones.Controls.Add(this.infantil);
             this.pnResoluciones.Controls.Add(this.i4x6);
             this.pnResoluciones.Controls.Add(this.i5x7);
-            this.pnResoluciones.Location = new System.Drawing.Point(153, 189);
+            this.pnResoluciones.Location = new System.Drawing.Point(153, 198);
             this.pnResoluciones.Name = "pnResoluciones";
-            this.pnResoluciones.Size = new System.Drawing.Size(96, 124);
+            this.pnResoluciones.Size = new System.Drawing.Size(98, 204);
             this.pnResoluciones.TabIndex = 4;
+            // 
+            // i6x8
+            // 
+            this.i6x8.BackColor = System.Drawing.Color.Transparent;
+            this.i6x8.BackgroundColor = System.Drawing.Color.Transparent;
+            this.i6x8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x8.BorderRadius = 8;
+            this.i6x8.BorderSize = 2;
+            this.i6x8.FlatAppearance.BorderSize = 0;
+            this.i6x8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.i6x8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.i6x8.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.i6x8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x8.Location = new System.Drawing.Point(1, 82);
+            this.i6x8.Name = "i6x8";
+            this.i6x8.Size = new System.Drawing.Size(92, 34);
+            this.i6x8.TabIndex = 26;
+            this.i6x8.Text = "6x8";
+            this.i6x8.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x8.UseMnemonic = false;
+            this.i6x8.UseVisualStyleBackColor = false;
+            this.i6x8.Click += new System.EventHandler(this.i6x8_Click);
             // 
             // infantil
             // 
@@ -98,7 +131,7 @@
             this.infantil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.infantil.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.infantil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.infantil.Location = new System.Drawing.Point(0, 83);
+            this.infantil.Location = new System.Drawing.Point(1, 123);
             this.infantil.Name = "infantil";
             this.infantil.Size = new System.Drawing.Size(92, 34);
             this.infantil.TabIndex = 25;
@@ -120,7 +153,7 @@
             this.i4x6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.i4x6.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.i4x6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i4x6.Location = new System.Drawing.Point(0, 45);
+            this.i4x6.Location = new System.Drawing.Point(1, 3);
             this.i4x6.Name = "i4x6";
             this.i4x6.Size = new System.Drawing.Size(92, 34);
             this.i4x6.TabIndex = 24;
@@ -142,7 +175,7 @@
             this.i5x7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.i5x7.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.i5x7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i5x7.Location = new System.Drawing.Point(1, 4);
+            this.i5x7.Location = new System.Drawing.Point(1, 42);
             this.i5x7.Name = "i5x7";
             this.i5x7.Size = new System.Drawing.Size(92, 34);
             this.i5x7.TabIndex = 23;
@@ -164,6 +197,8 @@
             this.NCopias.Name = "NCopias";
             this.NCopias.Size = new System.Drawing.Size(59, 26);
             this.NCopias.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.NCopias, "Modifica el numero de copias que se agregaran a la Hoja \r\nAsi como una previsuali" +
+        "zacion de esta antes de Presionar \"Agregar Imagen\"");
             this.NCopias.ValueChanged += new System.EventHandler(this.NCopias_ValueChanged);
             // 
             // PanelPre
@@ -192,6 +227,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.pnResoluciones1);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.PanelPre);
             this.panel1.Controls.Add(this.pnResoluciones);
@@ -210,6 +246,106 @@
             this.panel1.TabIndex = 16;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // pnResoluciones1
+            // 
+            this.pnResoluciones1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.pnResoluciones1.Controls.Add(this.i8x6);
+            this.pnResoluciones1.Controls.Add(this.infantilInvt);
+            this.pnResoluciones1.Controls.Add(this.i6x4);
+            this.pnResoluciones1.Controls.Add(this.i7x5);
+            this.pnResoluciones1.Location = new System.Drawing.Point(153, 198);
+            this.pnResoluciones1.Name = "pnResoluciones1";
+            this.pnResoluciones1.Size = new System.Drawing.Size(98, 204);
+            this.pnResoluciones1.TabIndex = 27;
+            // 
+            // i8x6
+            // 
+            this.i8x6.BackColor = System.Drawing.Color.Transparent;
+            this.i8x6.BackgroundColor = System.Drawing.Color.Transparent;
+            this.i8x6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i8x6.BorderRadius = 8;
+            this.i8x6.BorderSize = 2;
+            this.i8x6.FlatAppearance.BorderSize = 0;
+            this.i8x6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.i8x6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.i8x6.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.i8x6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i8x6.Location = new System.Drawing.Point(1, 82);
+            this.i8x6.Name = "i8x6";
+            this.i8x6.Size = new System.Drawing.Size(92, 34);
+            this.i8x6.TabIndex = 26;
+            this.i8x6.Text = "8x6";
+            this.i8x6.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i8x6.UseMnemonic = false;
+            this.i8x6.UseVisualStyleBackColor = false;
+            this.i8x6.Click += new System.EventHandler(this.i8x6_Click);
+            // 
+            // infantilInvt
+            // 
+            this.infantilInvt.BackColor = System.Drawing.Color.Transparent;
+            this.infantilInvt.BackgroundColor = System.Drawing.Color.Transparent;
+            this.infantilInvt.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.infantilInvt.BorderRadius = 8;
+            this.infantilInvt.BorderSize = 2;
+            this.infantilInvt.FlatAppearance.BorderSize = 0;
+            this.infantilInvt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.infantilInvt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.infantilInvt.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infantilInvt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.infantilInvt.Location = new System.Drawing.Point(1, 123);
+            this.infantilInvt.Name = "infantilInvt";
+            this.infantilInvt.Size = new System.Drawing.Size(92, 34);
+            this.infantilInvt.TabIndex = 25;
+            this.infantilInvt.Text = "infantil";
+            this.infantilInvt.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.infantilInvt.UseMnemonic = false;
+            this.infantilInvt.UseVisualStyleBackColor = false;
+            this.infantilInvt.Click += new System.EventHandler(this.infantilInvt_Click);
+            // 
+            // i6x4
+            // 
+            this.i6x4.BackColor = System.Drawing.Color.Transparent;
+            this.i6x4.BackgroundColor = System.Drawing.Color.Transparent;
+            this.i6x4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x4.BorderRadius = 8;
+            this.i6x4.BorderSize = 2;
+            this.i6x4.FlatAppearance.BorderSize = 0;
+            this.i6x4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.i6x4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.i6x4.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.i6x4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x4.Location = new System.Drawing.Point(1, 3);
+            this.i6x4.Name = "i6x4";
+            this.i6x4.Size = new System.Drawing.Size(92, 34);
+            this.i6x4.TabIndex = 24;
+            this.i6x4.Text = "6x4";
+            this.i6x4.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x4.UseMnemonic = false;
+            this.i6x4.UseVisualStyleBackColor = false;
+            this.i6x4.Click += new System.EventHandler(this.i6x4_Click);
+            // 
+            // i7x5
+            // 
+            this.i7x5.BackColor = System.Drawing.Color.Transparent;
+            this.i7x5.BackgroundColor = System.Drawing.Color.Transparent;
+            this.i7x5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i7x5.BorderRadius = 8;
+            this.i7x5.BorderSize = 2;
+            this.i7x5.FlatAppearance.BorderSize = 0;
+            this.i7x5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.i7x5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.i7x5.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.i7x5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i7x5.Location = new System.Drawing.Point(1, 42);
+            this.i7x5.Name = "i7x5";
+            this.i7x5.Size = new System.Drawing.Size(92, 34);
+            this.i7x5.TabIndex = 23;
+            this.i7x5.Text = "7x5";
+            this.i7x5.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i7x5.UseMnemonic = false;
+            this.i7x5.UseVisualStyleBackColor = false;
+            this.i7x5.Click += new System.EventHandler(this.i7x5_Click);
+            // 
             // btnEliminar
             // 
             this.btnEliminar.BackColor = System.Drawing.Color.Transparent;
@@ -226,6 +362,7 @@
             this.btnEliminar.TabIndex = 23;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextColor = System.Drawing.Color.Black;
+            this.toolTip1.SetToolTip(this.btnEliminar, "Permite Eliminar Las Imagenes Agregadas a la Hoja");
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -260,6 +397,7 @@
             this.Seleccionar.TabIndex = 18;
             this.Seleccionar.Text = "Seleccionar Imagen";
             this.Seleccionar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(62)))), ((int)(((byte)(59)))));
+            this.toolTip1.SetToolTip(this.Seleccionar, "Sirve para seleccionar la Imagen a Modificar");
             this.Seleccionar.UseMnemonic = false;
             this.Seleccionar.UseVisualStyleBackColor = false;
             this.Seleccionar.Click += new System.EventHandler(this.Seleccionar_Click);
@@ -283,6 +421,7 @@
             this.Regist.TabIndex = 20;
             this.Regist.Text = "Registro";
             this.Regist.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(62)))), ((int)(((byte)(59)))));
+            this.toolTip1.SetToolTip(this.Regist, "Muestra el Historial de las Imagenes Agregadas a la Hoja\r\n");
             this.Regist.UseMnemonic = false;
             this.Regist.UseVisualStyleBackColor = false;
             this.Regist.Click += new System.EventHandler(this.Regist_Click);
@@ -306,6 +445,7 @@
             this.Recortar.TabIndex = 21;
             this.Recortar.Text = "Recortar";
             this.Recortar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(62)))), ((int)(((byte)(59)))));
+            this.toolTip1.SetToolTip(this.Recortar, "Este Elemento sirve para Dirigirnos a un Area de Recorte");
             this.Recortar.UseMnemonic = false;
             this.Recortar.UseVisualStyleBackColor = false;
             this.Recortar.Click += new System.EventHandler(this.Recortar_Click);
@@ -327,8 +467,10 @@
             this.Resolucion.Name = "Resolucion";
             this.Resolucion.Size = new System.Drawing.Size(121, 64);
             this.Resolucion.TabIndex = 19;
-            this.Resolucion.Text = "Resolucion De Imagen";
+            this.Resolucion.Text = "Ajustar Imagen";
             this.Resolucion.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(62)))), ((int)(((byte)(59)))));
+            this.toolTip1.SetToolTip(this.Resolucion, "Este Elemento Sirve Para Ajustar La Imagen Modificada a Distintos Formatos En (In" +
+        ")\r\n1 Formato (al X an)\r\n2 Formato (an X al)\r\n\r\n\r\n");
             this.Resolucion.UseMnemonic = false;
             this.Resolucion.UseVisualStyleBackColor = false;
             this.Resolucion.Click += new System.EventHandler(this.Resolucion_Click);
@@ -352,6 +494,7 @@
             this.rjButton1.TabIndex = 17;
             this.rjButton1.Text = "Salir";
             this.rjButton1.TextColor = System.Drawing.Color.Maroon;
+            this.toolTip1.SetToolTip(this.rjButton1, "Nos Permite Salir al Menu Principal y Guardar o Descartar El Archivo Generado");
             this.rjButton1.UseMnemonic = false;
             this.rjButton1.UseVisualStyleBackColor = false;
             this.rjButton1.Click += new System.EventHandler(this.rjButton1_Click);
@@ -375,6 +518,7 @@
             this.AgregarImg.TabIndex = 16;
             this.AgregarImg.Text = "Agregar Imagen";
             this.AgregarImg.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(117)))), ((int)(((byte)(117)))));
+            this.toolTip1.SetToolTip(this.AgregarImg, "Agrega la Imagen Modificada a la Hoja de Manera Estatica");
             this.AgregarImg.UseMnemonic = false;
             this.AgregarImg.UseVisualStyleBackColor = false;
             this.AgregarImg.Click += new System.EventHandler(this.AgregarImg_Click);
@@ -397,6 +541,7 @@
             this.Guardar.TabIndex = 0;
             this.Guardar.Text = "Guardar Hoja";
             this.Guardar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.toolTip1.SetToolTip(this.Guardar, "Nos Permite Guardar La Hoja Para su Posterior Uso\r\n");
             this.Guardar.UseMnemonic = false;
             this.Guardar.UseVisualStyleBackColor = false;
             this.Guardar.Click += new System.EventHandler(this.Guardar_Click);
@@ -407,9 +552,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ControlBox = false;
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InterfazEdicion";
-            this.Text = "Interfaz Edición";
+            this.Text = "Edición";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InterfazEdicion_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InterfazEdicion_FormClosed);
@@ -418,6 +565,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.pnResoluciones1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -445,6 +593,13 @@
         private Resources.RJButton i4x6;
         private Resources.RJButton i5x7;
         private Resources.RJButton btnEliminar;
+        private Resources.RJButton i6x8;
+        private System.Windows.Forms.Panel pnResoluciones1;
+        private Resources.RJButton i8x6;
+        private Resources.RJButton infantilInvt;
+        private Resources.RJButton i6x4;
+        private Resources.RJButton i7x5;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
