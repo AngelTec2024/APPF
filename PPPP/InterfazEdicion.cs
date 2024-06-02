@@ -143,10 +143,6 @@ namespace PPPP
             Globales.GuardarConfiguracion(filePath);
         }
 
-
-
-
-
         private void InicializaListBox()
         {
             //desactivo Variables Principales
@@ -157,9 +153,7 @@ namespace PPPP
          
         }
 
-
-
-        private void VerificarRecorte()
+         private void VerificarRecorte()
             {
             try
             {
@@ -239,16 +233,11 @@ namespace PPPP
             {
                 MessageBox.Show("Ingresa Una Imagen");
             }
-
-
             // Configurar el cursor para el PictureBox de recorte
         }
 
 
 
-
-
-        // Version PreUlti
 
         private void AgrImgHoj(int nC, double zoomFactor,Image Imagen)
          {
@@ -309,9 +298,7 @@ namespace PPPP
                      SizeMode = PictureBoxSizeMode.StretchImage
                  };
                  Hoja.Controls.Add(pictureBox1);
-
-
-                // Actualizar la lista de posiciones ocupadas
+                  // Actualizar la lista de posiciones ocupadas
                 Rectangle espacioUsado = new Rectangle(mejorEspacio.X, mejorEspacio.Y, tamanoImagen.Width, tamanoImagen.Height);
                  posicionesOcupadas.Add(espacioUsado);
 
@@ -324,8 +311,6 @@ namespace PPPP
                  // Eliminar espacios libres que tengan ancho o alto cero
                  espaciosLibres = espaciosLibres.Where(e => e.Width > 0 && e.Height > 0).ToList();
              }
-
-               
         }
 
          public  List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto)
@@ -367,53 +352,6 @@ namespace PPPP
              return espaciosLibres;
          }
 
-         
-
-
-        
-
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-   
-
-
-     
-
-
-        private void ZoomIn(PictureBox pictureBox)
-        {
-            Size tamañoOriginal = (Size)pictureBox.Tag;
-            Size tamañoActual = pictureBox.ClientSize;
-            int nuevoAncho = (int)(tamañoActual.Width * 1.1);
-            int nuevoAlto = (int)(tamañoActual.Height * 1.1);
-            nuevoAncho = Math.Min(nuevoAncho, tamañoOriginal.Width);
-            nuevoAlto = Math.Min(nuevoAlto, tamañoOriginal.Height);
-            pictureBox.ClientSize = new Size(nuevoAncho, nuevoAlto);
-        }
-
-        // Método para alejar la imagen de la hoja
-        private void ZoomOut(PictureBox pictureBox)
-        {
-            Size tamañoActual = pictureBox.ClientSize;
-            int nuevoAncho = (int)(tamañoActual.Width / 1.1);
-            int nuevoAlto = (int)(tamañoActual.Height / 1.1);
-            pictureBox.ClientSize = new Size(nuevoAncho, nuevoAlto);
-        }
-        private void btnZoomIn_Click(object sender, EventArgs e)
-        {
-             ZoomIn(Hoja);
-        }
-        private void btnZoomOut_Click(object sender, EventArgs e)
-        {
-            ZoomOut(Hoja);
-
-        }
-
-
         private void NCopias_ValueChanged(object sender, EventArgs e)
         {
             NC = (int)NCopias.Value;
@@ -421,9 +359,6 @@ namespace PPPP
             AgrImgHoj(NC, zoomFactor, Imagen.Image);
 
         }
-
-
-   
 
         public void LeerRegistro()
         {
@@ -470,26 +405,9 @@ namespace PPPP
         }
 
    
-        private void PanelPre_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pnPrevisualizacion_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-      
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+    
         private void Guardar_Click(object sender, EventArgs e)
         {
-
             // Crear un bitmap del tamaño del PictureBox
             Bitmap bmp = new Bitmap(Hoja.Width, Hoja.Height);
 
@@ -508,10 +426,8 @@ namespace PPPP
                 MessageBox.Show("La hoja se ha guardado correctamente en formato JPG.");
 
             }
-
-            // Liberar los recursos del bitmap
+              // Liberar los recursos del bitmap
             bmp.Dispose();
-
         }
 
         private void Recortar_Click(object sender, EventArgs e)
@@ -536,13 +452,10 @@ namespace PPPP
 
         private void Regist_Click(object sender, EventArgs e)
         {
-
                 Globales.Registro.Visible = !(Globales.Registro.Visible);
-                btnEliminar.Visible = !(btnEliminar.Visible);
-            
+                btnEliminar.Visible = !(btnEliminar.Visible);   
         }
 
-        
         private void Resolucion_Click(object sender, EventArgs e)
         {
             if (Imagen.Image!=null)
@@ -567,12 +480,7 @@ namespace PPPP
                     }
                 }
                 
-                
-                
-
-
-
-
+            
             }
             else {
                 MessageBox.Show("Seleciona Una IMG Primero");
@@ -643,14 +551,8 @@ namespace PPPP
             inY = 7;
 
             // Usar la imagen recortada si está disponible
-
-            
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
-
-
-
-
             pnPrevisualizacion.BackColor = Color.Gray;
             Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
             Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
@@ -660,7 +562,6 @@ namespace PPPP
             pnResoluciones.Visible = false;
             Contador = 0;
         }
-
 
 
         private void i4x6_Click(object sender, EventArgs e)
@@ -734,10 +635,7 @@ namespace PPPP
 
                     }
                 }
-
-
-
-                // Detén el temporizador al salir
+                  // Detén el temporizador al salir
                 
             }
             
@@ -750,10 +648,6 @@ namespace PPPP
 
         }
 
-        private void InterfazEdicion_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
-        }
 
         private void infantilInvt_Click(object sender, EventArgs e)
         {
@@ -763,13 +657,9 @@ namespace PPPP
             NC = (int)NCopias.Value;
             inX = 2;
             inY = 2;
-
             // Usar la imagen recortada si está disponible
-
-
-            // Redimensionar la imagen
+             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
-
             pnPrevisualizacion.BackColor = Color.Gray;
             Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
             Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
@@ -790,11 +680,8 @@ namespace PPPP
             inY = 4;
 
             // Usar la imagen recortada si está disponible
-
-
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
-
             pnPrevisualizacion.BackColor = Color.Gray;
             Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
             Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
@@ -816,14 +703,8 @@ namespace PPPP
             inY = 5;
 
             // Usar la imagen recortada si está disponible
-
-
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
-
-
-
-
             pnPrevisualizacion.BackColor = Color.Gray;
             Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
             Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
@@ -844,14 +725,8 @@ namespace PPPP
             inY = 6;
 
             // Usar la imagen recortada si está disponible
-
-
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
-
-
-
-
             pnPrevisualizacion.BackColor = Color.Gray;
             Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
             Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
@@ -876,10 +751,6 @@ namespace PPPP
 
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
-
-
-
-
             pnPrevisualizacion.BackColor = Color.Gray;
             Imagen.Size = resizedImage.Size; // Tamaño de la imagen dentro del panel
             Imagen.SizeMode = PictureBoxSizeMode.Zoom; // Ajusta la imagen para que se vea completa
@@ -890,10 +761,6 @@ namespace PPPP
             Contador = 0;
         }
 
-        private void previsualizacionreal_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void infantil_Click(object sender, EventArgs e)
         {
@@ -906,7 +773,6 @@ namespace PPPP
             inY = 2;
 
             // Usar la imagen recortada si está disponible
-            
             // Redimensionar la imagen
             Image resizedImage = Metodo.ResizeImage(Imagen.Image, inX * 300, inY * 300);
 
@@ -920,7 +786,6 @@ namespace PPPP
             pnResoluciones.Visible = false;
             Contador = 0;
         }
-
 
         public void TPHoja()
         {
@@ -956,14 +821,6 @@ namespace PPPP
                     return;
             }
 
-         
-
-
-
-
-       
-
-            
             // funciona con scroll
             Hoja = new PictureBox();
             Hoja.Left = 50;
@@ -975,8 +832,6 @@ namespace PPPP
             PanelPre.Controls.Add(Hoja);
             
         }
- 
-
 
     }
 }

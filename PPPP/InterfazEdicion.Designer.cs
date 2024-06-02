@@ -33,23 +33,22 @@
             this.pnPrevisualizacion = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pnResoluciones = new System.Windows.Forms.Panel();
+            this.i6x8 = new PPPP.Resources.RJButton();
+            this.infantil = new PPPP.Resources.RJButton();
+            this.i4x6 = new PPPP.Resources.RJButton();
+            this.i5x7 = new PPPP.Resources.RJButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.NCopias = new System.Windows.Forms.NumericUpDown();
             this.PanelPre = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pnResoluciones1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.i8x6 = new PPPP.Resources.RJButton();
             this.infantilInvt = new PPPP.Resources.RJButton();
             this.i6x4 = new PPPP.Resources.RJButton();
             this.i7x5 = new PPPP.Resources.RJButton();
             this.btnEliminar = new PPPP.Resources.RJButton();
-            this.i6x8 = new PPPP.Resources.RJButton();
-            this.infantil = new PPPP.Resources.RJButton();
-            this.i4x6 = new PPPP.Resources.RJButton();
-            this.i5x7 = new PPPP.Resources.RJButton();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.Seleccionar = new PPPP.Resources.RJButton();
             this.Regist = new PPPP.Resources.RJButton();
             this.Recortar = new PPPP.Resources.RJButton();
@@ -57,6 +56,7 @@
             this.rjButton1 = new PPPP.Resources.RJButton();
             this.AgregarImg = new PPPP.Resources.RJButton();
             this.Guardar = new PPPP.Resources.RJButton();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.pnResoluciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).BeginInit();
             this.panel1.SuspendLayout();
@@ -72,7 +72,6 @@
             this.pnPrevisualizacion.Name = "pnPrevisualizacion";
             this.pnPrevisualizacion.Size = new System.Drawing.Size(445, 356);
             this.pnPrevisualizacion.TabIndex = 0;
-            this.pnPrevisualizacion.Paint += new System.Windows.Forms.PaintEventHandler(this.pnPrevisualizacion_Paint);
             // 
             // label1
             // 
@@ -96,6 +95,94 @@
             this.pnResoluciones.Name = "pnResoluciones";
             this.pnResoluciones.Size = new System.Drawing.Size(98, 204);
             this.pnResoluciones.TabIndex = 4;
+            // 
+            // i6x8
+            // 
+            this.i6x8.BackColor = System.Drawing.Color.Transparent;
+            this.i6x8.BackgroundColor = System.Drawing.Color.Transparent;
+            this.i6x8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x8.BorderRadius = 8;
+            this.i6x8.BorderSize = 2;
+            this.i6x8.FlatAppearance.BorderSize = 0;
+            this.i6x8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.i6x8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.i6x8.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.i6x8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x8.Location = new System.Drawing.Point(1, 82);
+            this.i6x8.Name = "i6x8";
+            this.i6x8.Size = new System.Drawing.Size(92, 34);
+            this.i6x8.TabIndex = 26;
+            this.i6x8.Text = "6x8";
+            this.i6x8.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i6x8.UseMnemonic = false;
+            this.i6x8.UseVisualStyleBackColor = false;
+            this.i6x8.Click += new System.EventHandler(this.i6x8_Click);
+            // 
+            // infantil
+            // 
+            this.infantil.BackColor = System.Drawing.Color.Transparent;
+            this.infantil.BackgroundColor = System.Drawing.Color.Transparent;
+            this.infantil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.infantil.BorderRadius = 8;
+            this.infantil.BorderSize = 2;
+            this.infantil.FlatAppearance.BorderSize = 0;
+            this.infantil.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.infantil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.infantil.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.infantil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.infantil.Location = new System.Drawing.Point(1, 123);
+            this.infantil.Name = "infantil";
+            this.infantil.Size = new System.Drawing.Size(92, 34);
+            this.infantil.TabIndex = 25;
+            this.infantil.Text = "infantil";
+            this.infantil.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.infantil.UseMnemonic = false;
+            this.infantil.UseVisualStyleBackColor = false;
+            this.infantil.Click += new System.EventHandler(this.infantil_Click);
+            // 
+            // i4x6
+            // 
+            this.i4x6.BackColor = System.Drawing.Color.Transparent;
+            this.i4x6.BackgroundColor = System.Drawing.Color.Transparent;
+            this.i4x6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i4x6.BorderRadius = 8;
+            this.i4x6.BorderSize = 2;
+            this.i4x6.FlatAppearance.BorderSize = 0;
+            this.i4x6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.i4x6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.i4x6.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.i4x6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i4x6.Location = new System.Drawing.Point(1, 3);
+            this.i4x6.Name = "i4x6";
+            this.i4x6.Size = new System.Drawing.Size(92, 34);
+            this.i4x6.TabIndex = 24;
+            this.i4x6.Text = "4x6";
+            this.i4x6.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i4x6.UseMnemonic = false;
+            this.i4x6.UseVisualStyleBackColor = false;
+            this.i4x6.Click += new System.EventHandler(this.i4x6_Click);
+            // 
+            // i5x7
+            // 
+            this.i5x7.BackColor = System.Drawing.Color.Transparent;
+            this.i5x7.BackgroundColor = System.Drawing.Color.Transparent;
+            this.i5x7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i5x7.BorderRadius = 8;
+            this.i5x7.BorderSize = 2;
+            this.i5x7.FlatAppearance.BorderSize = 0;
+            this.i5x7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.i5x7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.i5x7.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.i5x7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i5x7.Location = new System.Drawing.Point(1, 42);
+            this.i5x7.Name = "i5x7";
+            this.i5x7.Size = new System.Drawing.Size(92, 34);
+            this.i5x7.TabIndex = 23;
+            this.i5x7.Text = "5x7";
+            this.i5x7.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
+            this.i5x7.UseMnemonic = false;
+            this.i5x7.UseVisualStyleBackColor = false;
+            this.i5x7.Click += new System.EventHandler(this.i5x7_Click);
             // 
             // openFileDialog1
             // 
@@ -122,7 +209,6 @@
             this.PanelPre.Name = "PanelPre";
             this.PanelPre.Size = new System.Drawing.Size(745, 601);
             this.PanelPre.TabIndex = 9;
-            this.PanelPre.Paint += new System.Windows.Forms.PaintEventHandler(this.PanelPre_Paint);
             // 
             // label2
             // 
@@ -156,7 +242,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1370, 749);
             this.panel1.TabIndex = 16;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pnResoluciones1
             // 
@@ -169,18 +254,6 @@
             this.pnResoluciones1.Name = "pnResoluciones1";
             this.pnResoluciones1.Size = new System.Drawing.Size(98, 204);
             this.pnResoluciones1.TabIndex = 27;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.Transparent;
-            this.panel3.Controls.Add(this.Seleccionar);
-            this.panel3.Controls.Add(this.Regist);
-            this.panel3.Controls.Add(this.Recortar);
-            this.panel3.Controls.Add(this.Resolucion);
-            this.panel3.Location = new System.Drawing.Point(11, 108);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(136, 294);
-            this.panel3.TabIndex = 22;
             // 
             // i8x6
             // 
@@ -291,93 +364,17 @@
             this.btnEliminar.UseVisualStyleBackColor = false;
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
-            // i6x8
+            // panel3
             // 
-            this.i6x8.BackColor = System.Drawing.Color.Transparent;
-            this.i6x8.BackgroundColor = System.Drawing.Color.Transparent;
-            this.i6x8.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i6x8.BorderRadius = 8;
-            this.i6x8.BorderSize = 2;
-            this.i6x8.FlatAppearance.BorderSize = 0;
-            this.i6x8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
-            this.i6x8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.i6x8.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.i6x8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i6x8.Location = new System.Drawing.Point(1, 82);
-            this.i6x8.Name = "i6x8";
-            this.i6x8.Size = new System.Drawing.Size(92, 34);
-            this.i6x8.TabIndex = 26;
-            this.i6x8.Text = "6x8";
-            this.i6x8.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i6x8.UseMnemonic = false;
-            this.i6x8.UseVisualStyleBackColor = false;
-            this.i6x8.Click += new System.EventHandler(this.i6x8_Click);
-            // 
-            // infantil
-            // 
-            this.infantil.BackColor = System.Drawing.Color.Transparent;
-            this.infantil.BackgroundColor = System.Drawing.Color.Transparent;
-            this.infantil.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.infantil.BorderRadius = 8;
-            this.infantil.BorderSize = 2;
-            this.infantil.FlatAppearance.BorderSize = 0;
-            this.infantil.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
-            this.infantil.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.infantil.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.infantil.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.infantil.Location = new System.Drawing.Point(1, 123);
-            this.infantil.Name = "infantil";
-            this.infantil.Size = new System.Drawing.Size(92, 34);
-            this.infantil.TabIndex = 25;
-            this.infantil.Text = "infantil";
-            this.infantil.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.infantil.UseMnemonic = false;
-            this.infantil.UseVisualStyleBackColor = false;
-            this.infantil.Click += new System.EventHandler(this.infantil_Click);
-            // 
-            // i4x6
-            // 
-            this.i4x6.BackColor = System.Drawing.Color.Transparent;
-            this.i4x6.BackgroundColor = System.Drawing.Color.Transparent;
-            this.i4x6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i4x6.BorderRadius = 8;
-            this.i4x6.BorderSize = 2;
-            this.i4x6.FlatAppearance.BorderSize = 0;
-            this.i4x6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
-            this.i4x6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.i4x6.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.i4x6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i4x6.Location = new System.Drawing.Point(1, 3);
-            this.i4x6.Name = "i4x6";
-            this.i4x6.Size = new System.Drawing.Size(92, 34);
-            this.i4x6.TabIndex = 24;
-            this.i4x6.Text = "4x6";
-            this.i4x6.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i4x6.UseMnemonic = false;
-            this.i4x6.UseVisualStyleBackColor = false;
-            this.i4x6.Click += new System.EventHandler(this.i4x6_Click);
-            // 
-            // i5x7
-            // 
-            this.i5x7.BackColor = System.Drawing.Color.Transparent;
-            this.i5x7.BackgroundColor = System.Drawing.Color.Transparent;
-            this.i5x7.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i5x7.BorderRadius = 8;
-            this.i5x7.BorderSize = 2;
-            this.i5x7.FlatAppearance.BorderSize = 0;
-            this.i5x7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
-            this.i5x7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.i5x7.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.i5x7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i5x7.Location = new System.Drawing.Point(1, 42);
-            this.i5x7.Name = "i5x7";
-            this.i5x7.Size = new System.Drawing.Size(92, 34);
-            this.i5x7.TabIndex = 23;
-            this.i5x7.Text = "5x7";
-            this.i5x7.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(181)))), ((int)(((byte)(160)))));
-            this.i5x7.UseMnemonic = false;
-            this.i5x7.UseVisualStyleBackColor = false;
-            this.i5x7.Click += new System.EventHandler(this.i5x7_Click);
+            this.panel3.BackColor = System.Drawing.Color.Transparent;
+            this.panel3.Controls.Add(this.Seleccionar);
+            this.panel3.Controls.Add(this.Regist);
+            this.panel3.Controls.Add(this.Recortar);
+            this.panel3.Controls.Add(this.Resolucion);
+            this.panel3.Location = new System.Drawing.Point(11, 108);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(136, 294);
+            this.panel3.TabIndex = 22;
             // 
             // Seleccionar
             // 
@@ -560,8 +557,6 @@
             this.Text = "Edición";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InterfazEdicion_FormClosing);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.InterfazEdicion_FormClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.pnResoluciones.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).EndInit();
             this.panel1.ResumeLayout(false);
