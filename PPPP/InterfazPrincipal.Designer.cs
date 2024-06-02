@@ -33,9 +33,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterfazPrincipal));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.abrirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backUpsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.restaurarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.label1 = new System.Windows.Forms.Label();
@@ -87,28 +86,19 @@
             this.abrirToolStripMenuItem.Text = "Cargar";
             this.abrirToolStripMenuItem.Click += new System.EventHandler(this.abrirToolStripMenuItem_Click);
             // 
+            // backUpsToolStripMenuItem
+            // 
+            this.backUpsToolStripMenuItem.Name = "backUpsToolStripMenuItem";
+            this.backUpsToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.backUpsToolStripMenuItem.Text = "Backups";
+            this.backUpsToolStripMenuItem.Click += new System.EventHandler(this.backUpsToolStripMenuItem_Click);
+            // 
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda ";
             this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click);
-            // 
-            // backUpsToolStripMenuItem
-            // 
-            this.backUpsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.restaurarToolStripMenuItem1});
-            this.backUpsToolStripMenuItem.Name = "backUpsToolStripMenuItem";
-            this.backUpsToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.backUpsToolStripMenuItem.Text = "Backups";
-            this.backUpsToolStripMenuItem.Click += new System.EventHandler(this.backUpsToolStripMenuItem_Click);
-            // 
-            // restaurarToolStripMenuItem1
-            // 
-            this.restaurarToolStripMenuItem1.Name = "restaurarToolStripMenuItem1";
-            this.restaurarToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
-            this.restaurarToolStripMenuItem1.Text = "Restaurar";
-            this.restaurarToolStripMenuItem1.Click += new System.EventHandler(this.restaurarToolStripMenuItem1_Click);
             // 
             // openFileDialog1
             // 
@@ -406,6 +396,5 @@
         private System.Windows.Forms.Panel A2;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Panel Tabloide;
-        private System.Windows.Forms.ToolStripMenuItem restaurarToolStripMenuItem1;
     }
 }

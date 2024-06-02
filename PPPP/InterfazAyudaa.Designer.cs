@@ -130,6 +130,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRegresar);
             this.Name = "InterfazAyudaa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ayuda";
             this.Load += new System.EventHandler(this.InterfazAyudaa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

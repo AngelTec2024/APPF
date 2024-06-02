@@ -99,7 +99,9 @@ namespace PPPP
 
         private void backUpsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            InterfazBackups Back = new InterfazBackups();
+            Back.Show();
+            this.Hide();
         }
 
         

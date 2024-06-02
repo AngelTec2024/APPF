@@ -152,7 +152,8 @@ namespace PPPP
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+//            this.Dispose();
+            this.Close();
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
