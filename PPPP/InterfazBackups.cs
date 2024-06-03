@@ -20,6 +20,7 @@ namespace PPPP
         public InterfazBackups()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             CargarListaDeBackups();
             //CargarArchivosDeRespaldo();
 

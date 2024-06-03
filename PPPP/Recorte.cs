@@ -247,6 +247,7 @@ namespace PPPP
         public Recorte()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             MostrarImagen();
         }
 

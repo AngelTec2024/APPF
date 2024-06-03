@@ -23,6 +23,7 @@ namespace PPPP
         public InterfazPrincipal()
         { 
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             Globales.ReiniciarVariables();
 
         }

@@ -21,16 +21,12 @@ namespace PPPP
         //private int HojaOriginal1;
         private PictureBox miniaturaHoja;
         PictureBox Hoja;
-
+        double Escala = 0.1;
         int I = 0;
 
         //private int maxAlturaFila = 0; // Declaración de la variable maxAlturaFila
         private List<Rectangle> posicionesOcupadas = new List<Rectangle>();
-        
-        
         int AuxRecortar = 0;
-
-        ///
         Metodos Metodo = new Metodos();//llamar Clase
         
         public StreamReader lector;
@@ -55,6 +51,7 @@ namespace PPPP
         {
 
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             pnResoluciones1.Visible = false;
             TPHoja();
             VerificarRecorte();
@@ -417,7 +414,7 @@ namespace PPPP
             Hoja.DrawToBitmap(bmp, new Rectangle(0, 0, Hoja.Width, Hoja.Height));
             // Crear un cuadro de diálogo para guardar archivo
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Archivos de imagen (*.jpg)|*.jpg|Documentos PDF (*.pdf)|*.pdf|Todos los archivos (*.*)|*.*";
+            saveFileDialog.Filter = "Archivos de imagen (*.jpg)|*.jpg|Todos los archivos (*.*)|*.*";
             saveFileDialog.Title = "Guardar como";
 
             // Si el usuario selecciona una ruta y hace clic en "Guardar"
@@ -789,6 +786,54 @@ namespace PPPP
             Contador = 0;
         }
 
+        private void Menos_Click(object sender, EventArgs e)
+        {
+            if (Escala > 0.11)
+            {
+                
+                PanelPre.Controls.Remove(miniaturaHoja);
+
+                Escala -= 0.1;
+                Porcentaje.Text = "Porcentaje " + (Escala * 100) + "%";
+                miniaturaHoja = new PictureBox
+                {
+                    Left = 50,
+                    Top = 50, // Ajusta según sea necesario
+                    Size = Metodos.AjustarProporcionesHojaC(Hoja, Escala),
+                    BackColor = Color.White, // Fondo de la miniatura para diferenciar
+                    SizeMode = PictureBoxSizeMode.Zoom
+                };
+                
+                PanelPre.Controls.Add(miniaturaHoja);
+                miniaturaHoja.Controls.Clear();
+                ActualizarMiniatura();
+            }
+
+        }
+
+        private void rjButton2_Click(object sender, EventArgs e)
+        {
+            if (Escala < 1) {
+                
+                PanelPre.Controls.Remove(miniaturaHoja);
+
+                Escala += 0.1;
+                Porcentaje.Text = "Porcentaje " + (Escala * 100) + "%";
+                miniaturaHoja = new PictureBox
+                {
+                    Left = 50,
+                    Top = 50, // Ajusta según sea necesario
+                    Size = Metodos.AjustarProporcionesHojaC(Hoja, Escala),
+                    BackColor = Color.White, // Fondo de la miniatura para diferenciar
+                    SizeMode = PictureBoxSizeMode.Zoom
+                };
+                
+                PanelPre.Controls.Add(miniaturaHoja);
+                miniaturaHoja.Controls.Clear();
+                ActualizarMiniatura();
+            }
+        }
+
         public void TPHoja()
         {
             Size tamañoHoja;
@@ -838,7 +883,7 @@ namespace PPPP
             {
                 Left = 50,
                 Top = 50, // Ajusta según sea necesario
-                Size = Metodos.AjustarProporcionesHojaC(Hoja),
+                Size = Metodos.AjustarProporcionesHojaC(Hoja,Escala),
                 BackColor = Color.White, // Fondo de la miniatura para diferenciar
                 SizeMode = PictureBoxSizeMode.Zoom
             };

@@ -1,61 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PPPP
 {
     public partial class InterfazAyudaa : Form
     {
-        private string[] imagePath;
+        private Image[] images;
         private string[] descriptions;
         private int currentIndex = 0;
         private Timer timer;
 
-
-
         public InterfazAyudaa()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
             LoadImages();
             InitializeTimer();
         }
-        private void LoadImages()
-        {// Carga las rutas de las imágenes en el array
-            imagePath = new string[]
-            {
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazPrincipal.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Principal_Formatos.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Principal_Cargar.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Principal_Backups.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazEdicion.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Edicion_Herramientas.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Edicion_pnaux.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Edicion_HojaPre.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazEdicion_Agregar.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazEdicion_Guardar.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazEdicion_Salir.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/InterfazBackups.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Backups_Disponibles.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Backups_Recuperar.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Backups_Eliminar.png",
-                "https://raw.githubusercontent.com/AngelTec2024/APPF/ArregloBugs/PPPP/Resources/Backups_Regresar.png"
-            };
 
+        private void LoadImages()
+        {
             // Carga las descripciones en el array
             descriptions = new string[]
             {
                 "Interfaz Principal",
-                "Interfaz Princiapal - Formatos disponibles de hojas",
-                "Interfaz Princiapal - Cargar estado de programa",
-                "Interfaz Princiapal - Acceder a las backups realizadas",
-
+                "Interfaz Principal - Formatos disponibles de hojas",
+                "Interfaz Principal - Cargar estado de programa",
+                "Interfaz Principal - Acceder a las backups realizadas",
                 "Interfaz Edición",
                 "Interfaz Edición - Barra de herrameintas",
                 "Interfaz Edición - Panel de trabajo",
@@ -63,7 +35,6 @@ namespace PPPP
                 "Interfaz Edición - Agregar imagen a la hoja",
                 "Interfaz Edición - Guardar hoja",
                 "Interfaz Edición - Salir a la interfaz principal",
-
                 "Interfaz Backups",
                 "Interfaz Backups - Backups disponibles para restaurar",
                 "Interfaz Backups - Restaurar backup",
@@ -71,60 +42,57 @@ namespace PPPP
                 "Interfaz Backups - Regresar a la interfaz principal"
             };
 
+            // Carga las imágenes desde los recursos
+            images = new Image[]
+            {
+                PPPP.Properties.Resources.InterfazPrincipal,
+                PPPP.Properties.Resources.Principal_Formatos,
+                PPPP.Properties.Resources.Principal_Cargar,
+                PPPP.Properties.Resources.Principal_Backups,
+                PPPP.Properties.Resources.InterfazEdicion,
+                PPPP.Properties.Resources.Edicion_Herramientas,
+                PPPP.Properties.Resources.Edicion_pnaux,
+                PPPP.Properties.Resources.Edicion_HojaPre,
+                PPPP.Properties.Resources.InterfazEdicion_Agregar,
+                PPPP.Properties.Resources.InterfazEdicion_Guardar,
+                PPPP.Properties.Resources.InterfazEdicion_Salir,
+                PPPP.Properties.Resources.InterfazBackups,
+                PPPP.Properties.Resources.Backups_Disponibles,
+                PPPP.Properties.Resources.Backups_Recuperar,
+                PPPP.Properties.Resources.Backups_Eliminar,
+                PPPP.Properties.Resources.Backups_Regresar
+            };
+
             ShowImage();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void ShowImage()
         {
-            if (imagePath.Length > 0)
+            if (images.Length > 0)
             {
-                // URL de la imagen actual
-                string imageUrl = imagePath[currentIndex];
+                // Imagen actual
+                Image image = images[currentIndex];
 
-                try
-                {
-                    using (WebClient client = new WebClient())
-                    {
-                        byte[] imageBytes = client.DownloadData(imageUrl);
-                        using (var ms = new System.IO.MemoryStream(imageBytes))
-                        {
-                            Image image = Image.FromStream(ms);
-                            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; // Ajustar la imagen al tamaño del PictureBox
-                            pictureBox1.Image = image;
-                        }
-                    }
+                // Mostrar la imagen en el PictureBox
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage; // Ajustar la imagen al tamaño del PictureBox
+                pictureBox1.Image = image;
 
-                    // Mostrar la descripción en el label
-                    txtDescripcion.Text = descriptions[currentIndex];
-                    txtDescripcion.TextAlign = ContentAlignment.MiddleCenter;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Error al cargar la imagen desde la URL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                // Mostrar la descripción en el label
+                txtDescripcion.Text = descriptions[currentIndex];
+                txtDescripcion.TextAlign = ContentAlignment.MiddleCenter;
             }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            currentIndex = (currentIndex + 1) % imagePath.Length;
+            currentIndex = (currentIndex + 1) % images.Length;
             ShowImage();
-        }
-
-        private void InterfazAyudaa_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnAtras_Click(object sender, EventArgs e)
         {
             timer.Stop();
-            currentIndex = (currentIndex - 1 + imagePath.Length) % imagePath.Length;
+            currentIndex = (currentIndex - 1 + images.Length) % images.Length;
             ShowImage();
             timer.Start();
         }
@@ -132,7 +100,7 @@ namespace PPPP
         private void btnAdelante_Click(object sender, EventArgs e)
         {
             timer.Stop();
-            currentIndex = (currentIndex + 1) % imagePath.Length;
+            currentIndex = (currentIndex + 1) % images.Length;
             ShowImage();
             timer.Start();
         }
@@ -140,7 +108,7 @@ namespace PPPP
         private void InitializeTimer()
         {
             timer = new Timer();
-            timer.Interval = 2000; // Cambiar cada 3 segundos
+            timer.Interval = 2000; // Cambiar cada 2 segundos
             timer.Tick += Timer_Tick;
             timer.Start();
         }
@@ -152,11 +120,15 @@ namespace PPPP
 
         private void btnRegresar_Click(object sender, EventArgs e)
         {
-//            this.Dispose();
             this.Close();
         }
 
-        private void pictureBox1_Click_1(object sender, EventArgs e)
+        private void InterfazAyudaa_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
         }

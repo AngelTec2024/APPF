@@ -65,7 +65,6 @@
             this.pictureBox1.Size = new System.Drawing.Size(608, 400);
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // btnAtras
             // 
@@ -98,7 +97,7 @@
             this.btnAdelante.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdelante.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdelante.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAdelante.Location = new System.Drawing.Point(145, 472);
+            this.btnAdelante.Location = new System.Drawing.Point(179, 473);
             this.btnAdelante.Name = "btnAdelante";
             this.btnAdelante.Size = new System.Drawing.Size(113, 47);
             this.btnAdelante.TabIndex = 6;
@@ -132,7 +131,7 @@
             this.Name = "InterfazAyudaa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ayuda";
-            this.Load += new System.EventHandler(this.InterfazAyudaa_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.InterfazAyudaa_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

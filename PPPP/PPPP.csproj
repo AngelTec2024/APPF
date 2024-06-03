@@ -194,22 +194,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PP.ico" />
-    <Content Include="Resources\Backups_Disponibles.png" />
-    <Content Include="Resources\Backups_Eliminar.png" />
-    <Content Include="Resources\Backups_Recuperar.png" />
-    <Content Include="Resources\Backups_Regresar.png" />
-    <Content Include="Resources\Edicion_Herramientas.png" />
-    <Content Include="Resources\Edicion_HojaPre.png" />
-    <Content Include="Resources\Edicion_pnaux.png" />
-    <Content Include="Resources\InterfazBackups.png" />
-    <Content Include="Resources\InterfazEdicion.png" />
-    <Content Include="Resources\InterfazEdicion_Agregar.png" />
-    <Content Include="Resources\InterfazEdicion_Guardar.png" />
-    <Content Include="Resources\InterfazEdicion_Salir.png" />
-    <Content Include="Resources\InterfazPrincipal.png" />
-    <Content Include="Resources\Principal_Backups.png" />
-    <Content Include="Resources\Principal_Cargar.png" />
-    <Content Include="Resources\Principal_Formatos.png" />
+    <None Include="Resources\Principal_Formatos.png" />
+    <None Include="Resources\Backups_Disponibles.png" />
+    <None Include="Resources\Backups_Eliminar.png" />
+    <None Include="Resources\Backups_Recuperar.png" />
+    <None Include="Resources\Backups_Regresar.png" />
+    <None Include="Resources\Edicion_Herramientas.png" />
+    <None Include="Resources\Edicion_HojaPre.png" />
+    <None Include="Resources\Edicion_pnaux.png" />
+    <None Include="Resources\InterfazBackups.png" />
+    <None Include="Resources\InterfazEdicion.png" />
+    <None Include="Resources\InterfazEdicion_Agregar.png" />
+    <None Include="Resources\InterfazEdicion_Guardar.png" />
+    <None Include="Resources\InterfazPrincipal.jpg" />
+    <None Include="Resources\InterfazEdicion_Salir.png" />
+    <None Include="Resources\InterfazPrincipal.png" />
+    <None Include="Resources\Principal_Backups.png" />
+    <None Include="Resources\Principal_Cargar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

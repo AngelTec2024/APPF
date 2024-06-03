@@ -42,6 +42,7 @@
             this.PanelPre = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Porcentaje = new System.Windows.Forms.Label();
             this.pnResoluciones1 = new System.Windows.Forms.Panel();
             this.i8x6 = new PPPP.Resources.RJButton();
             this.infantilInvt = new PPPP.Resources.RJButton();
@@ -57,6 +58,8 @@
             this.AgregarImg = new PPPP.Resources.RJButton();
             this.Guardar = new PPPP.Resources.RJButton();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.rjButton2 = new PPPP.Resources.RJButton();
+            this.Menos = new PPPP.Resources.RJButton();
             this.pnResoluciones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.NCopias)).BeginInit();
             this.panel1.SuspendLayout();
@@ -205,9 +208,9 @@
             this.PanelPre.AutoScroll = true;
             this.PanelPre.BackColor = System.Drawing.SystemColors.ControlLight;
             this.PanelPre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelPre.Location = new System.Drawing.Point(719, 46);
+            this.PanelPre.Location = new System.Drawing.Point(719, 43);
             this.PanelPre.Name = "PanelPre";
-            this.PanelPre.Size = new System.Drawing.Size(745, 601);
+            this.PanelPre.Size = new System.Drawing.Size(623, 601);
             this.PanelPre.TabIndex = 9;
             // 
             // label2
@@ -225,6 +228,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.Porcentaje);
+            this.panel1.Controls.Add(this.rjButton2);
+            this.panel1.Controls.Add(this.Menos);
             this.panel1.Controls.Add(this.pnResoluciones1);
             this.panel1.Controls.Add(this.btnEliminar);
             this.panel1.Controls.Add(this.PanelPre);
@@ -242,6 +248,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1370, 749);
             this.panel1.TabIndex = 16;
+            // 
+            // Porcentaje
+            // 
+            this.Porcentaje.AutoSize = true;
+            this.Porcentaje.Font = new System.Drawing.Font("Microsoft YaHei", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Porcentaje.Location = new System.Drawing.Point(922, 682);
+            this.Porcentaje.Name = "Porcentaje";
+            this.Porcentaje.Size = new System.Drawing.Size(161, 26);
+            this.Porcentaje.TabIndex = 30;
+            this.Porcentaje.Text = "Porcentaje 10%";
             // 
             // pnResoluciones1
             // 
@@ -544,6 +560,52 @@
             this.Guardar.UseVisualStyleBackColor = false;
             this.Guardar.Click += new System.EventHandler(this.Guardar_Click);
             // 
+            // rjButton2
+            // 
+            this.rjButton2.BackColor = System.Drawing.Color.Transparent;
+            this.rjButton2.BackgroundColor = System.Drawing.Color.Transparent;
+            this.rjButton2.BorderColor = System.Drawing.Color.Black;
+            this.rjButton2.BorderRadius = 8;
+            this.rjButton2.BorderSize = 2;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.Font = new System.Drawing.Font("Yu Gothic UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.rjButton2.Image = global::PPPP.Properties.Resources.boton_para_acercar__1_;
+            this.rjButton2.Location = new System.Drawing.Point(1114, 661);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(79, 75);
+            this.rjButton2.TabIndex = 29;
+            this.rjButton2.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolTip1.SetToolTip(this.rjButton2, "Nos Permite Guardar La Hoja Para su Posterior Uso\r\n");
+            this.rjButton2.UseMnemonic = false;
+            this.rjButton2.UseVisualStyleBackColor = false;
+            this.rjButton2.Click += new System.EventHandler(this.rjButton2_Click);
+            // 
+            // Menos
+            // 
+            this.Menos.BackColor = System.Drawing.Color.Transparent;
+            this.Menos.BackgroundColor = System.Drawing.Color.Transparent;
+            this.Menos.BorderColor = System.Drawing.Color.Black;
+            this.Menos.BorderRadius = 8;
+            this.Menos.BorderSize = 2;
+            this.Menos.FlatAppearance.BorderSize = 0;
+            this.Menos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(125)))), ((int)(((byte)(126)))));
+            this.Menos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Menos.Font = new System.Drawing.Font("Yu Gothic UI", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Menos.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.Menos.Image = global::PPPP.Properties.Resources.lupa_con_signo_menos__2_;
+            this.Menos.Location = new System.Drawing.Point(801, 661);
+            this.Menos.Name = "Menos";
+            this.Menos.Size = new System.Drawing.Size(79, 75);
+            this.Menos.TabIndex = 28;
+            this.Menos.TextColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.toolTip1.SetToolTip(this.Menos, "Nos Permite Guardar La Hoja Para su Posterior Uso\r\n");
+            this.Menos.UseMnemonic = false;
+            this.Menos.UseVisualStyleBackColor = false;
+            this.Menos.Click += new System.EventHandler(this.Menos_Click);
+            // 
             // InterfazEdicion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -596,6 +658,9 @@
         private Resources.RJButton i6x4;
         private Resources.RJButton i7x5;
         private System.Windows.Forms.ToolTip toolTip1;
+        private Resources.RJButton Menos;
+        private System.Windows.Forms.Label Porcentaje;
+        private Resources.RJButton rjButton2;
     }
 }
 

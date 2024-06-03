@@ -83,7 +83,7 @@ namespace PPPP
             
         }
 
-        public static Size AjustarProporcionesHojaC(PictureBox Imagen)
+        public static Size AjustarProporcionesHojaC(PictureBox Imagen, double factorEscala )
         {
             PictureBox pictureBoxMiniatura;
             pictureBoxMiniatura = Imagen;
@@ -92,7 +92,7 @@ namespace PPPP
             int ImagenAlto = Imagen.Height;
 
             // Factor de escala para las miniaturas
-            double factorEscala = 0.1; // Esto puede ser ajustado según tus necesidades
+            
 
             // Calcular dimensiones de las miniaturas manteniendo la proporción
             int miniaturaAncho = (int)(ImagenAncho * factorEscala);
