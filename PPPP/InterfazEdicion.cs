@@ -19,6 +19,7 @@ namespace PPPP
     public partial class InterfazEdicion : Form
     {
         //private int HojaOriginal1;
+        private PictureBox miniaturaHoja;
         PictureBox Hoja;
 
         int I = 0;
@@ -311,6 +312,7 @@ namespace PPPP
                  // Eliminar espacios libres que tengan ancho o alto cero
                  espaciosLibres = espaciosLibres.Where(e => e.Width > 0 && e.Height > 0).ToList();
              }
+            ActualizarMiniatura();
         }
 
          public  List<Rectangle> CalcularEspaciosLibres(int hojaAncho, int hojaAlto)
@@ -402,10 +404,10 @@ namespace PPPP
             // Remueve todas las imágenes de la hoja
             Hoja.Controls.Clear();
             posicionesOcupadas.Clear();
+            // Limpiar la miniatura
+            miniaturaHoja.Image = null;
         }
 
-   
-    
         private void Guardar_Click(object sender, EventArgs e)
         {
             // Crear un bitmap del tamaño del PictureBox
@@ -829,9 +831,34 @@ namespace PPPP
             Hoja.Size = tamañoHoja; // Tamaño del PictureBox igual al tamaño de la hoja
             Hoja.SizeMode = PictureBoxSizeMode.Zoom; // Escalar la imagen para ajustarse al PictureBox
 
-            PanelPre.Controls.Add(Hoja);
-            
+            //PanelPre.Controls.Add(Hoja);
+
+
+            miniaturaHoja = new PictureBox
+            {
+                Left = 50,
+                Top = 50, // Ajusta según sea necesario
+                Size = Metodos.AjustarProporcionesHojaC(Hoja),
+                BackColor = Color.White, // Fondo de la miniatura para diferenciar
+                SizeMode = PictureBoxSizeMode.Zoom
+            };
+
+            // Agregar la miniatura al formulario
+            PanelPre.Controls.Add(miniaturaHoja);
+
         }
+
+
+        private void ActualizarMiniatura()
+        {
+            // Crear una imagen en memoria del tamaño de la hoja original
+            Bitmap imagenHoja = new Bitmap(Hoja.Width, Hoja.Height);
+            Hoja.DrawToBitmap(imagenHoja, new Rectangle(0, 0, Hoja.Width, Hoja.Height));
+
+            // Asignar la imagen reducida al PictureBox de la miniatura
+            miniaturaHoja.Image = new Bitmap(imagenHoja, miniaturaHoja.Size);
+        }
+
 
     }
 }
