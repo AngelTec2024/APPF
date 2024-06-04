@@ -376,18 +376,14 @@ namespace PPPP
 
         private void Recortar_Click(object sender, EventArgs e)
         {
-            Globales.AlertaRecorte = true;
             try
             {
                 // Escalar las coordenadas de recorte según la proporción de la imagen original y la mostrada
                 double scaleX = (double)pbRecortar2.Image.Width / pbRecortar2.ClientSize.Width;
                 double scaleY = (double)pbRecortar2.Image.Height / pbRecortar2.ClientSize.Height;
 
-                Rectangle rectCropAreaScaled = new Rectangle(
-                    (int)(rectCropArea.X * scaleX),
-                    (int)(rectCropArea.Y * scaleY),
-                    (int)(rectCropArea.Width * scaleX),
-                    (int)(rectCropArea.Height * scaleY));
+                // Ajustar la posición y el tamaño del rectángulo de recorte según el modo de ajuste del PictureBox
+                Rectangle rectCropAreaScaled = AdjustRectangleForPictureBox(pbRecortar2, rectCropArea);
 
                 // Crea un nuevo Bitmap para la imagen recortada
                 Bitmap recortadaBitmap = new Bitmap(rectCropAreaScaled.Width, rectCropAreaScaled.Height);
@@ -416,6 +412,41 @@ namespace PPPP
                 MessageBox.Show("Error al aplicar el recorte: " + ex.Message);
             }
         }
+
+        private Rectangle AdjustRectangleForPictureBox(PictureBox pb, Rectangle rect)
+        {
+            double imageAspect = (double)pb.Image.Width / pb.Image.Height;
+            double boxAspect = (double)pb.ClientSize.Width / pb.ClientSize.Height;
+
+            int scaledWidth, scaledHeight;
+            int offsetX = 0, offsetY = 0;
+
+            if (imageAspect > boxAspect)
+            {
+                // Imagen es más ancha
+                scaledWidth = pb.ClientSize.Width;
+                scaledHeight = (int)(pb.ClientSize.Width / imageAspect);
+                offsetY = (pb.ClientSize.Height - scaledHeight) / 2;
+            }
+            else
+            {
+                // Imagen es más alta
+                scaledWidth = (int)(pb.ClientSize.Height * imageAspect);
+                scaledHeight = pb.ClientSize.Height;
+                offsetX = (pb.ClientSize.Width - scaledWidth) / 2;
+            }
+
+            double scaleX = (double)pb.Image.Width / scaledWidth;
+            double scaleY = (double)pb.Image.Height / scaledHeight;
+
+            int rectX = (int)((rect.X - offsetX) * scaleX);
+            int rectY = (int)((rect.Y - offsetY) * scaleY);
+            int rectWidth = (int)(rect.Width * scaleX);
+            int rectHeight = (int)(rect.Height * scaleY);
+
+            return new Rectangle(rectX, rectY, rectWidth, rectHeight);
+        }
+
 
         private void Aceptar_Click(object sender, EventArgs e)
         {
